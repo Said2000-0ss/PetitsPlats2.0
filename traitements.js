@@ -57,23 +57,23 @@ function ParcourirTableauObjetsAvecMoinsDeLignes(){
 // // Création de la div principale (carte)
 const containerCard = document.createElement('div');
 containerCard.className = 'card';
-containerCard.setAttribute("id","Card")
+containerCard.setAttribute("id","Card");
 // //====================================================================================================================================
 // // Création des trois sous-divisions
 // //====================================================================================================================================
-// const sectionImage = document.createElement('div');//premiere sous division : SECTION IMAGE
-// sectionImage.textContent = 'Contenu 1';
-// // Création de l'élément image
-// const image = document.createElement('img');
-// image.src = 'https://via.placeholder.com/300';  // Remplace avec l'URL de ton image
-// image.alt = 'Image de la carte';
-// // Création de la div pour le temps
-// const time = document.createElement('div');
-// time.className = 'text-content';
-// time.textContent = 'Voici un exemple de texte dans la carte.';//je mettrai ici ma variable
-// // Ajout de l'image et du texte à la carte
-// sectionImage.appendChild(image);
-// sectionImage.appendChild(time);
+const sectionImage = document.createElement('div');//premiere sous division : SECTION IMAGE
+sectionImage.textContent = 'Contenu 1';
+// Création de l'élément image
+const image = document.createElement('img');
+image.src = 'https://via.placeholder.com/300';  // Remplace avec l'URL de ton image
+image.alt = 'Image de la carte';
+// Création de la div pour le temps
+const time = document.createElement('div');
+time.className = 'text-content';
+time.textContent = 'Voici un exemple de texte dans la carte.';//je mettrai ici ma variable
+// Ajout de l'image et du texte à la carte
+sectionImage.appendChild(image);
+sectionImage.appendChild(time);
 // //====================================================================================================================================
 // // Création de la div sectionRecettes
 // const sectionRecettes = document.createElement('div');//deuxieme sous division : SECTION RECETTES
@@ -127,7 +127,7 @@ containerCard.setAttribute("id","Card")
 
 // //====================================================================================================================================
 // // Ajout des sous-divisions à la carte
-// containerCard.appendChild(sectionImage);
+containerCard.appendChild(sectionImage);
 // containerCard.appendChild(sectionRecettes);
 // containerCard.appendChild(sectionIngredients);
 // //====================================================================================================================================
@@ -138,5 +138,5 @@ containerCard.setAttribute("id","Card")
 // //=====================================================================================================================================================
 
 //======================================================== APPEL DES FONCTIONS ========================================================================
-ParcourirTableauObjetsAvecMoinsDeLignes();
+// ParcourirTableauObjetsAvecMoinsDeLignes();
 // ParcourirTableauObjets();
