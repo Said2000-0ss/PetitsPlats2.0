@@ -1,7 +1,10 @@
 // Importer le tableau d'objets depuis recipes.js
 // const recipes = require('./recipes');// je récupere le tableau d'objets de la page recipes.js
-import { recipes } from './recipes.js';
-console.log(recipes);
+
+// import { recipes } from './recipes.js';
+import { recipes } from './recipesTest.js';
+
+// console.log(recipes);
 
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
@@ -135,4 +138,4 @@ function ParcourirTableauObjetsAvecMoinsDeLignes(){
 
 //======================================================== APPEL DES FONCTIONS ========================================================================
 ParcourirTableauObjetsAvecMoinsDeLignes();
-ParcourirTableauObjets();
+// ParcourirTableauObjets();
