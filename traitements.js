@@ -76,22 +76,22 @@ sectionImage.appendChild(image);
 sectionImage.appendChild(time);
 // //====================================================================================================================================
 // // Création de la div sectionRecettes
-// const sectionRecettes = document.createElement('div');//deuxieme sous division : SECTION RECETTES
-// sectionRecettes.textContent = 'Contenu 2';
-// sectionRecettes.className = 'section-recettes';
-// // Création du titre
-// const titre = document.createElement('h2');
-// titre.textContent = 'Titre de la Recette';
-// // Création du label
-// const titreRecette = document.createElement('h3');
-// titreRecette.textContent = 'Ingrédients :';
-// // Création du texte descriptif
-// const description = document.createElement('p');
-// description.textContent = 'Ceci est une description de la recette qui donne un aperçu de ce que vous allez cuisiner.';
-// // Ajout du titre, du label et du texte descriptif à la sectionRecettes
-// sectionRecettes.appendChild(titre);
-// sectionRecettes.appendChild(label);
-// sectionRecettes.appendChild(description);
+const sectionRecettes = document.createElement('div');//deuxieme sous division : SECTION RECETTES
+sectionRecettes.textContent = 'Contenu 2';
+sectionRecettes.className = 'section-recettes';
+// Création du titre
+const titre = document.createElement('h2');
+titre.textContent = 'Titre de la Recette';
+// Création du label
+const titreRecette = document.createElement('h3');
+titreRecette.textContent = 'Ingrédients :';
+// Création du texte descriptif
+const description = document.createElement('p');
+description.textContent = 'Ceci est une description de la recette qui donne un aperçu de ce que vous allez cuisiner.';
+// Ajout du titre, du label et du texte descriptif à la sectionRecettes
+sectionRecettes.appendChild(titre);
+sectionRecettes.appendChild(label);
+sectionRecettes.appendChild(description);
 // //====================================================================================================================================
 // //====================================================================================================================================
 // //====================================================================================================================================
@@ -128,7 +128,7 @@ sectionImage.appendChild(time);
 // //====================================================================================================================================
 // // Ajout des sous-divisions à la carte
 containerCard.appendChild(sectionImage);
-// containerCard.appendChild(sectionRecettes);
+containerCard.appendChild(sectionRecettes);
 // containerCard.appendChild(sectionIngredients);
 // //====================================================================================================================================
 // // Fin des trois sous-divisions
