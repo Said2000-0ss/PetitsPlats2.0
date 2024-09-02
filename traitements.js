@@ -31,22 +31,22 @@ console.log(recipes);
     
 //     }
 // }
-// function ParcourirTableauObjetsAvecMoinsDeLignes(){
-//     for (let i = 0; i < recipes.length; i++) {
-//         const recipe = recipes[i];
-//         console.log(`ID: ${recipe.id}` + ` Image: ${recipe.image}` + ` Name: ${recipe.name}` + ` Servings: ${recipe.servings}`);
-//         console.log("Ingredients:");
-//         for (let j = 0; j < recipe.ingredients.length; j++) {
-//             const ingredient = recipe.ingredients[j];
-//             console.log(`  Ingredient: ${ingredient.ingredient}` + `  Quantity: ${ingredient.quantity}`);
-//             if (ingredient.unit) {
-//                 console.log(`  Unit: ${ingredient.unit}`);
-//             }
-//         }
-//          console.log(`Time: ${recipe.time} minutes` + ` Description: ${recipe.description}` + ` Appliance: ${recipe.appliance}` + " Ustensils: " + recipe.ustensils.join(', '));
-//         console.log('===============================================================================================================');
-//     }
-// }
+function ParcourirTableauObjetsAvecMoinsDeLignes(){
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+        console.log(`ID: ${recipe.id}` + ` Image: ${recipe.image}` + ` Name: ${recipe.name}` + ` Servings: ${recipe.servings}`);
+        console.log("Ingredients:");
+        for (let j = 0; j < recipe.ingredients.length; j++) {
+            const ingredient = recipe.ingredients[j];
+            console.log(`  Ingredient: ${ingredient.ingredient}` + `  Quantity: ${ingredient.quantity}`);
+            if (ingredient.unit) {
+                console.log(`  Unit: ${ingredient.unit}`);
+            }
+        }
+         console.log(`Time: ${recipe.time} minutes` + ` Description: ${recipe.description}` + ` Appliance: ${recipe.appliance}` + " Ustensils: " + recipe.ustensils.join(', '));
+        console.log('===============================================================================================================');
+    }
+}
 
 // //=============================================================== CREATION CARTE RECETTE ==============================================================
 // // je creerai par la suite cette carte via une fonction qui prendra  en parametre l'ensemble de ses proprietes
@@ -134,5 +134,5 @@ console.log(recipes);
 // //=====================================================================================================================================================
 
 //======================================================== APPEL DES FONCTIONS ========================================================================
-// ParcourirTableauObjetsAvecMoinsDeLignes();
+ParcourirTableauObjetsAvecMoinsDeLignes();
 // ParcourirTableauObjets();
