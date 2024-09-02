@@ -18,6 +18,45 @@
         <p>==============================================================================================</p>
         <h1>Je suis la div #partieSelect</h1>
         <p>==============================================================================================</p>
+        <form>
+            <label for="fruits">Choisissez un fruit :</label>
+            <select id="fruits" name="fruits">
+                <option value="apple">Pomme</option>
+                <option value="banana">Banane</option>
+                <option value="orange">Orange</option>
+                <option value="grape">Raisin</option>
+            </select>
+
+            <label for="colors">Choisissez une couleur :</label>
+            <select id="colors" name="colors">
+                <option value="red">Rouge</option>
+                <option value="blue">Bleu</option>
+                <option value="green">Vert</option>
+                <option value="yellow">Jaune</option>
+            </select>
+        </form>
+        <p>==========================================</p>
+        <select onchange="location = this.value;">
+            <option value="home.html">Accueil</option>
+            <option value="about.html">À propos</option>
+            <option value="contact.html">Contact</option>
+        </select>
+        <p>==========================================</p>
+        <label for="theme">Choisissez un thème :</label>
+        <select id="theme" name="theme" onchange="changeTheme(this.value);">
+            <option value="light">Clair</option>
+            <option value="dark">Sombre</option>
+        </select>
+        <p>==========================================</p>
+        <label for="sort">Trier par :</label>
+        <select id="sort" name="sort" onchange="sortItems(this.value);">
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="name-asc">Nom (A-Z)</option>
+            <option value="name-desc">Nom (Z-A)</option>
+        </select>
+        <!-- Ici, le menu déroulant peut permettre de trier dynamiquement les éléments affichés en fonction du critère sélectionné. -->
+        <p>==========================================</p>
     </div>
     <div id="partieRecettes">
         <p>==============================================================================================</p>
