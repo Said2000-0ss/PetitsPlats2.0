@@ -52,15 +52,15 @@ function ParcourirTableauObjetsAvecMoinsDeLignes(){
     }
 }
 
-// //=============================================================== CREATION CARTE RECETTE ==============================================================
-// // je creerai par la suite cette carte via une fonction qui prendra  en parametre l'ensemble de ses proprietes
-// // Création de la div principale (carte)
+//=============================================================== CREATION CARTE RECETTE ==============================================================
+// je creerai par la suite cette carte via une fonction qui prendra  en parametre l'ensemble de ses proprietes
+// Création de la div principale (carte)
 const containerCard = document.createElement('div');
 containerCard.className = 'card';
 containerCard.setAttribute("id","Card");
-// //====================================================================================================================================
-// // Création des trois sous-divisions
-// //====================================================================================================================================
+//====================================================================================================================================
+// Création des trois sous-divisions
+//====================================================================================================================================
 const sectionImage = document.createElement('div');//premiere sous division : SECTION IMAGE
 sectionImage.textContent = 'Contenu 1';
 // Création de l'élément image
@@ -92,44 +92,44 @@ description.textContent = 'Ceci est une description de la recette qui donne un a
 sectionRecettes.appendChild(titre);
 sectionRecettes.appendChild(label);
 sectionRecettes.appendChild(description);
-// //====================================================================================================================================
-// //====================================================================================================================================
-// //====================================================================================================================================
-// //Ne pas perdre de vue que Ingredients est un tableau d'objet donc il faudra a nouveau le parcourir avec une boucle for , et creer les elements en fonction
-// //ingredients et quantity
-// // Création de la div sectionIngredients
-// const sectionIngredients = document.createElement('div');//troisieme sous division : SECTION INGREDIENTS
-// sectionIngredients.textContent = 'Contenu 3';
-// sectionIngredients.className = 'section-ingredients';
+//====================================================================================================================================
+//====================================================================================================================================
+//====================================================================================================================================
+//Ne pas perdre de vue que Ingredients est un tableau d'objet donc il faudra a nouveau le parcourir avec une boucle for , et creer les elements en fonction
+//ingredients et quantity
+// Création de la div sectionIngredients
+const sectionIngredients = document.createElement('div');//troisieme sous division : SECTION INGREDIENTS
+sectionIngredients.textContent = 'Contenu 3';
+sectionIngredients.className = 'section-ingredients';
 
-// // Parcours du tableau d'ingrédients
-// for (let j = 0; j < recipe.ingredients.length; j++) {
-//     const ingredient = recipe.ingredients[j];
+// Parcours du tableau d'ingrédients
+for (let j = 0; j < recipe.ingredients.length; j++) {
+    const ingredient = recipe.ingredients[j];
 
-//     // Création du titre pour le nom de l'ingrédient
-//     const ingredientTitle = document.createElement('h3');
-//     ingredientTitle.textContent = ingredient.ingredient;
-//     sectionIngredients.appendChild(ingredientTitle);
+    // Création du titre pour le nom de l'ingrédient
+    const ingredientTitle = document.createElement('h3');
+    ingredientTitle.textContent = ingredient.ingredient;
+    sectionIngredients.appendChild(ingredientTitle);
 
-//     // Création du titre pour la quantité et l'unité
-//     const quantityTitle = document.createElement('h4');
-//     if (ingredient.quantity) {
-//         quantityTitle.textContent = `${ingredient.quantity}`;
-//         if (ingredient.unit) {
-//             quantityTitle.textContent += ` ${ingredient.unit}`;
-//         }
-//     } else {
-//         quantityTitle.textContent = "Quantité non spécifiée";
-//     }
-//     sectionIngredients.appendChild(quantityTitle);
-// }
+    // Création du titre pour la quantité et l'unité
+    const quantityTitle = document.createElement('h4');
+    if (ingredient.quantity) {
+        quantityTitle.textContent = `${ingredient.quantity}`;
+        if (ingredient.unit) {
+            quantityTitle.textContent += ` ${ingredient.unit}`;
+        }
+    } else {
+        quantityTitle.textContent = "Quantité non spécifiée";
+    }
+    sectionIngredients.appendChild(quantityTitle);
+}
 
 
 // //====================================================================================================================================
 // // Ajout des sous-divisions à la carte
 containerCard.appendChild(sectionImage);
 containerCard.appendChild(sectionRecettes);
-// containerCard.appendChild(sectionIngredients);
+containerCard.appendChild(sectionIngredients);
 // //====================================================================================================================================
 // // Fin des trois sous-divisions
 // //====================================================================================================================================
