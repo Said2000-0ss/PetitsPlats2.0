@@ -9,31 +9,32 @@ import { recipes } from './recipesTest.js';
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
 //=====================================================================================================================================================
-function ParcourirTableauObjets(){// je parcoures le tableau d'objet récupéré de la premiere page
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
-        console.log(`ID: ${recipe.id}`);
-        console.log(`Image: ${recipe.image}`);
-        console.log(`Name: ${recipe.name}`);
-        console.log(`Servings: ${recipe.servings}`);
-        console.log("Ingredients:");
-        for (let j = 0; j < recipe.ingredients.length; j++) {//je parcoures le tableau d'objet récupéré du tableau ingredients
-            const ingredient = recipe.ingredients[j];
-            console.log(`  Ingredient: ${ingredient.ingredient}`);
-            console.log(`  Quantity: ${ingredient.quantity}`);
-            if (ingredient.unit) {
-                console.log(`  Unit: ${ingredient.unit}`);
-            }
-        }
+// function ParcourirTableauObjets(){// je parcoures le tableau d'objet récupéré de la premiere page
+//     for (let i = 0; i < recipes.length; i++) {
+//         const recipe = recipes[i];
+//         console.log(`ID: ${recipe.id}`);
+//         console.log(`Image: ${recipe.image}`);
+//         console.log(`Name: ${recipe.name}`);
+//         console.log(`Servings: ${recipe.servings}`);
+//         console.log("Ingredients:");
+//         for (let j = 0; j < recipe.ingredients.length; j++) {//je parcoures le tableau d'objet récupéré du tableau ingredients
+//             const ingredient = recipe.ingredients[j];
+//             console.log(`  Ingredient: ${ingredient.ingredient}`);
+//             console.log(`  Quantity: ${ingredient.quantity}`);
+//             if (ingredient.unit) {
+//                 console.log(`  Unit: ${ingredient.unit}`);
+//             }
+//         }
         
-        console.log(`Time: ${recipe.time} minutes`);
-        console.log(`Description: ${recipe.description}`);
-        console.log(`Appliance: ${recipe.appliance}`);
-        console.log("Ustensils: " + recipe.ustensils.join(', '));
-        console.log('----------------------------');
+//         console.log(`Time: ${recipe.time} minutes`);
+//         console.log(`Description: ${recipe.description}`);
+//         console.log(`Appliance: ${recipe.appliance}`);
+//         console.log("Ustensils: " + recipe.ustensils.join(', '));
+//         console.log('----------------------------');
     
-    }
-}
+//     }
+// }
+//======================================================================================================================================
 function ParcourirTableauObjetsAvecMoinsDeLignes(){
     for (let i = 0; i < recipes.length; i++) {
         const recipe = recipes[i];
@@ -54,9 +55,9 @@ function ParcourirTableauObjetsAvecMoinsDeLignes(){
 // //=============================================================== CREATION CARTE RECETTE ==============================================================
 // // je creerai par la suite cette carte via une fonction qui prendra  en parametre l'ensemble de ses proprietes
 // // Création de la div principale (carte)
-// const containerCard = document.createElement('div');
-// containerCard.className = 'card';
-// // containerCard.setAttribute("id","Card")
+const containerCard = document.createElement('div');
+containerCard.className = 'card';
+containerCard.setAttribute("id","Card")
 // //====================================================================================================================================
 // // Création des trois sous-divisions
 // //====================================================================================================================================
