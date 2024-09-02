@@ -58,6 +58,17 @@ function ParcourirTableauObjetsAvecMoinsDeLignes(){
 const containerCard = document.createElement('div');
 containerCard.className = 'card';
 containerCard.setAttribute("id","Card");
+// containerCard.textContent="je suis said";
+
+// Sélection de la div cible dans le HTML
+// const targetDiv = document.getElementById('mesMedias');
+
+// // Ajout du nouveau div à la div cible
+// if (targetDiv) {
+//     targetDiv.appendChild(containerCard);
+// } else {
+//     console.error('La div avec l\'ID "mesMedias" n\'a pas été trouvée.');
+// }
 //====================================================================================================================================
 // Création des trois sous-divisions
 //====================================================================================================================================
@@ -90,7 +101,7 @@ const description = document.createElement('p');
 description.textContent = 'Ceci est une description de la recette qui donne un aperçu de ce que vous allez cuisiner.';
 // Ajout du titre, du label et du texte descriptif à la sectionRecettes
 sectionRecettes.appendChild(titre);
-sectionRecettes.appendChild(label);
+sectionRecettes.appendChild(titreRecette);
 sectionRecettes.appendChild(description);
 //====================================================================================================================================
 //====================================================================================================================================
@@ -103,26 +114,26 @@ sectionIngredients.textContent = 'Contenu 3';
 sectionIngredients.className = 'section-ingredients';
 
 // Parcours du tableau d'ingrédients
-for (let j = 0; j < recipe.ingredients.length; j++) {
-    const ingredient = recipe.ingredients[j];
+            // for (let j = 0; j < recipe.ingredients.length; j++) {
+            //     const ingredient = recipe.ingredients[j];
 
-    // Création du titre pour le nom de l'ingrédient
-    const ingredientTitle = document.createElement('h3');
-    ingredientTitle.textContent = ingredient.ingredient;
-    sectionIngredients.appendChild(ingredientTitle);
+            //     // Création du titre pour le nom de l'ingrédient
+            //     const ingredientTitle = document.createElement('h3');
+            //     ingredientTitle.textContent = ingredient.ingredient;
+            //     sectionIngredients.appendChild(ingredientTitle);
 
-    // Création du titre pour la quantité et l'unité
-    const quantityTitle = document.createElement('h4');
-    if (ingredient.quantity) {
-        quantityTitle.textContent = `${ingredient.quantity}`;
-        if (ingredient.unit) {
-            quantityTitle.textContent += ` ${ingredient.unit}`;
-        }
-    } else {
-        quantityTitle.textContent = "Quantité non spécifiée";
-    }
-    sectionIngredients.appendChild(quantityTitle);
-}
+            //     // Création du titre pour la quantité et l'unité
+            //     const quantityTitle = document.createElement('h4');
+            //     if (ingredient.quantity) {
+            //         quantityTitle.textContent = `${ingredient.quantity}`;
+            //         if (ingredient.unit) {
+            //             quantityTitle.textContent += ` ${ingredient.unit}`;
+            //         }
+            //     } else {
+            //         quantityTitle.textContent = "Quantité non spécifiée";
+            //     }
+            //     sectionIngredients.appendChild(quantityTitle);
+            // }
 
 
 // //====================================================================================================================================
