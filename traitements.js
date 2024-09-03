@@ -363,12 +363,17 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 // ParcourirTableauObjetsEnModeAffichageNavigateur();
 
     // Récupération de l'élément select
+    const ustensiles="";
+    const ingredients="";
+    const appareils="";
     const ustensilesSelect = document.getElementById('ustensiles');
 
     // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
     ustensilesSelect.addEventListener('change', function() {
         // Affichage de la valeur sélectionnée dans la console
         console.log(ustensilesSelect.value);
+        ustensiles=ustensilesSelect.value;
+        console.log(ustensiles);
     });
     const ingredientsSelect = document.getElementById('ingredients');
 
@@ -376,6 +381,8 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     ingredientsSelect.addEventListener('change', function() {
         // Affichage de la valeur sélectionnée dans la console
         console.log(ingredientsSelect.value);
+        ingredients=ingredientsSelect.value;
+        console.log(ingredients);
     });
     const appareilsSelect = document.getElementById('appareils');
 
@@ -383,4 +390,6 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     appareilsSelect.addEventListener('change', function() {
         // Affichage de la valeur sélectionnée dans la console
         console.log(appareilsSelect.value);
+        appareils=appareilsSelect.value;
+        console.log(appareils);
     });
