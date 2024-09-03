@@ -1,3 +1,7 @@
+body{
+    background-color: #E6E6E6;
+}
+
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE IMAGES
@@ -18,24 +22,26 @@
 
 .search-container {
     position: absolute; /* Pour superposer au-dessus de l'image */
-    top: 50%; /* Positionnement vertical centré */
+    top: 67%; /* Positionnement vertical centré */
     left: 50%; /* Positionnement horizontal centré */
     transform: translate(-50%, -50%); /* Ajustement pour centrer parfaitement */
-    width: 60%; /* Ajustez la largeur du champ de recherche */
+    width: 70%; /* Ajustez la largeur du champ de recherche */
 }
 
 .search-input {
     width: 100%;
+    height:50px;
     padding: 10px 40px 10px 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 25px;
+    /* border-radius: 25px; */
+    border-radius: 6px;
 }
 
 .search-button {
     position: absolute;
     right: 5px;
-    top: 50%;
+    top: 70%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -48,8 +54,22 @@
 .search-button i {
     pointer-events: none; /* Désactive le clic sur l'icône */
 }
+.search-text {
+    text-align: center; /* Centre le texte */
+    font-size: 40px;
+    margin-bottom: 15px; /* Espace entre le texte et l'input */
+    line-height: 1.5; /* Hauteur de ligne pour un espacement entre les lignes */
+    color: rgb(255, 205, 41); /* Couleur du texte */
+}
+
+/* ==================================================== */
 
 
+.search-button .fa-stack {
+    font-size: 18px; /* Ajustez la taille selon vos besoins */
+}
+
+/*====================================================*/
 /* .search-container {
     position: relative;
     width: 80%;
