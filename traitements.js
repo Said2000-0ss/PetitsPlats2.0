@@ -15,7 +15,6 @@ let ingredients="";
 let appareils="";
 //MES VARIABLES PARTIE RECETTES
 
-
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
 //=====================================================================================================================================================
@@ -23,35 +22,23 @@ let appareils="";
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE IMAGES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-// Récupération de l'input et du bouton
-// const searchInput = document.getElementById('searchInput');
-// const searchButton = document.getElementById('searchButton');
-
-// searchButton.addEventListener('click', function() { // Ajout d'un événement 'click' au bouton   
-// const searchValue = searchInput.value;// Récupération de la valeur de l'input
-// console.log(searchValue);// Affichage de la valeur dans la console
-// });
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
-
 // Fonction pour gérer la recherche
 function handleSearch() {
     const searchValue = searchInput.value;
     console.log(searchValue);
 }
-
 // Ajout d'un événement 'click' au bouton
 searchButton.addEventListener('click', function() {   
     handleSearch();
 });
-
 // Ajout d'un événement 'keydown' à l'input pour détecter la touche "Entrée"
 searchInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         handleSearch();
     }
 });
-
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
@@ -73,13 +60,9 @@ appareilsSelect.addEventListener('change', function() {
 appareils=appareilsSelect.value;// console.log(appareilsSelect.value);
 console.log(appareils);
 });
-
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE RECETTES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-
-
 // function ParcourirTableauObjets(){// je parcours le tableau d'objet récupéré de la premiere page
 //     for (let i = 0; i < recipes.length; i++) {
 //         const recipe = recipes[i];

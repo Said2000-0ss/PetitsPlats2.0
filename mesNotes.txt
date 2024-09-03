@@ -1,0 +1,12 @@
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE IMAGES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+// Récupération de l'input et du bouton
+// const searchInput = document.getElementById('searchInput');
+// const searchButton = document.getElementById('searchButton');
+
+// searchButton.addEventListener('click', function() { // Ajout d'un événement 'click' au bouton   
+// const searchValue = searchInput.value;// Récupération de la valeur de l'input
+// console.log(searchValue);// Affichage de la valeur dans la console
+// });
+
