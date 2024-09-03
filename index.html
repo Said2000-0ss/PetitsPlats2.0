@@ -6,62 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon restaurant</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
+    <p>==============================================================================================</p>
+    <h1>Je suis la div #partieImage</h1>
+    <p>==============================================================================================</p>
     <div id="partieImage">
-        <p>==============================================================================================</p>
-        <h1>Je suis la div #partieImage</h1>
-        <p>==============================================================================================</p>
-    </div>
-    <div id="partieSelect">
-        <p>==============================================================================================</p>
-        <h1>Je suis la div #partieSelect</h1>
-        <p>==============================================================================================</p>
-        <form>
-            <label for="fruits">Choisissez un fruit :</label>
-            <select id="fruits" name="fruits">
-                <option value="apple">Pomme</option>
-                <option value="banana">Banane</option>
-                <option value="orange">Orange</option>
-                <option value="grape">Raisin</option>
-            </select>
+        <!-- <img src="Images/Recette01.jpg" alt="">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Rechercher la vérité, elle saute aux yeux...">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div> -->
 
-            <label for="colors">Choisissez une couleur :</label>
-            <select id="colors" name="colors">
-                <option value="red">Rouge</option>
-                <option value="blue">Bleu</option>
-                <option value="green">Vert</option>
-                <option value="yellow">Jaune</option>
-            </select>
-        </form>
-        <p>==========================================</p>
-        <select onchange="location = this.value;">
-            <option value="home.html">Accueil</option>
-            <option value="about.html">À propos</option>
-            <option value="contact.html">Contact</option>
-        </select>
-        <p>==========================================</p>
-        <label for="theme">Choisissez un thème :</label>
-        <select id="theme" name="theme" onchange="changeTheme(this.value);">
-            <option value="light">Clair</option>
-            <option value="dark">Sombre</option>
-        </select>
-        <p>==========================================</p>
-        <label for="sort">Trier par :</label>
-        <select id="sort" name="sort" onchange="sortItems(this.value);">
-            <option value="price-asc">Prix croissant</option>
-            <option value="price-desc">Prix décroissant</option>
-            <option value="name-asc">Nom (A-Z)</option>
-            <option value="name-desc">Nom (Z-A)</option>
-        </select>
-        <!-- Ici, le menu déroulant peut permettre de trier dynamiquement les éléments affichés en fonction du critère sélectionné. -->
-        <p>==========================================</p>
     </div>
+    <p>==============================================================================================</p>
+    <h1>Je suis la div #partieSelect</h1>
+    <p>==============================================================================================</p>
+    <div id="partieSelect">
+
+        <label for="ingredients"></label>
+        <select id="ingredients">
+            <option value="" disabled selected>INGREDIENTS</option> <!-- Option par défaut -->
+            <option value="Chocolat">Chocolat</option>
+            <option value="lait">lait</option>
+            <option value="bonbon">bonbon</option>
+        </select>
+        <label for="appareils"></label>
+        <select id="appareils">
+            <option value="" disabled selected>APPAREILS</option> <!-- Option par défaut -->
+            <option value="appareil1">appareil1</option>
+            <option value="appareil2">appareil2</option>
+            <option value="appareil3">appareil3</option>
+        </select>
+        <!-- <label for="ustensiles">Ustensiles :</label> -->
+        <label for="ustensiles"></label>
+        <select id="ustensiles">
+            <option value="" disabled selected>USTENSILES</option> <!-- Option par défaut -->
+            <option value="casserole">Casserole</option>
+            <option value="cuillere">Cuillère</option>
+            <option value="couteau">Couteau</option>
+        </select>
+
+    </div>
+    <p>==============================================================================================</p>
+    <h1>Je suis la div #partieRecettes</h1>
+    <p>==============================================================================================</p>
     <div id="partieRecettes">
-        <p>==============================================================================================</p>
-        <h1>Je suis la div #partieRecettes</h1>
-        <p>==============================================================================================</p>
+
     </div>
     <!-- LIENS VERS MES FICHIERS JAVASCRIPT -->
     <script type="module" src="recipes.js"></script>

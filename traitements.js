@@ -360,4 +360,27 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 //======================================================== APPEL DES FONCTIONS ========================================================================
 // ParcourirTableauObjetsAvecMoinsDeLignes();
 // ParcourirTableauObjets();
-ParcourirTableauObjetsEnModeAffichageNavigateur();
+// ParcourirTableauObjetsEnModeAffichageNavigateur();
+
+    // Récupération de l'élément select
+    const ustensilesSelect = document.getElementById('ustensiles');
+
+    // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
+    ustensilesSelect.addEventListener('change', function() {
+        // Affichage de la valeur sélectionnée dans la console
+        console.log(ustensilesSelect.value);
+    });
+    const ingredientsSelect = document.getElementById('ingredients');
+
+    // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
+    ingredientsSelect.addEventListener('change', function() {
+        // Affichage de la valeur sélectionnée dans la console
+        console.log(ingredientsSelect.value);
+    });
+    const appareilsSelect = document.getElementById('appareils');
+
+   // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
+    appareilsSelect.addEventListener('change', function() {
+        // Affichage de la valeur sélectionnée dans la console
+        console.log(appareilsSelect.value);
+    });
