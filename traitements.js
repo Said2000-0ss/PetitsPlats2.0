@@ -5,10 +5,81 @@
 import { recipes } from './recipesTest.js';
 
 // console.log(recipes);
+//=====================================================================================================================================================
+//============================================================ MES VARIABLES ==========================================================================
+//=====================================================================================================================================================
+//MES VARIABLES PARTIE IMAGE
+//MES VARIABLES PARTIE SELECT
+let ustensiles="";
+let ingredients="";
+let appareils="";
+//MES VARIABLES PARTIE RECETTES
+
 
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
 //=====================================================================================================================================================
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE IMAGES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+// Récupération de l'input et du bouton
+// const searchInput = document.getElementById('searchInput');
+// const searchButton = document.getElementById('searchButton');
+
+// searchButton.addEventListener('click', function() { // Ajout d'un événement 'click' au bouton   
+// const searchValue = searchInput.value;// Récupération de la valeur de l'input
+// console.log(searchValue);// Affichage de la valeur dans la console
+// });
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+
+// Fonction pour gérer la recherche
+function handleSearch() {
+    const searchValue = searchInput.value;
+    console.log(searchValue);
+}
+
+// Ajout d'un événement 'click' au bouton
+searchButton.addEventListener('click', function() {   
+    handleSearch();
+});
+
+// Ajout d'un événement 'keydown' à l'input pour détecter la touche "Entrée"
+searchInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        handleSearch();
+    }
+});
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
+// Récupération de l'élément selectionnée via des écouteurs d'événements.
+const ustensilesSelect = document.getElementById('ustensiles');
+// Ajout d'un événement qui se déclenche lors d'une modification de la sélection
+ustensilesSelect.addEventListener('change', function() {
+// Affichage de la valeur sélectionnée dans la console : console.log(ustensilesSelect.value);
+ustensiles=ustensilesSelect.value;
+console.log(ustensiles);
+});
+const ingredientsSelect = document.getElementById('ingredients');
+ingredientsSelect.addEventListener('change', function() {
+ingredients=ingredientsSelect.value;// console.log(ingredientsSelect.value);
+console.log(ingredients);
+});
+const appareilsSelect = document.getElementById('appareils');
+appareilsSelect.addEventListener('change', function() {
+appareils=appareilsSelect.value;// console.log(appareilsSelect.value);
+console.log(appareils);
+});
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE RECETTES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
+
 // function ParcourirTableauObjets(){// je parcours le tableau d'objet récupéré de la premiere page
 //     for (let i = 0; i < recipes.length; i++) {
 //         const recipe = recipes[i];
@@ -353,43 +424,16 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 // //====================================================================================================================================
 // // Fin des trois sous-divisions
 // //====================================================================================================================================
-
 // //=====================================================================================================================================================
 // //=====================================================================================================================================================
 
-//======================================================== APPEL DES FONCTIONS ========================================================================
+
+
+
+
+//=====================================================================================================================================================
+//====================================================== APPELS DE FONCTIONS ==========================================================================
+//=====================================================================================================================================================
 // ParcourirTableauObjetsAvecMoinsDeLignes();
 // ParcourirTableauObjets();
 // ParcourirTableauObjetsEnModeAffichageNavigateur();
-
-    // Récupération de l'élément select
-    const ustensiles="";
-    const ingredients="";
-    const appareils="";
-    const ustensilesSelect = document.getElementById('ustensiles');
-
-    // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
-    ustensilesSelect.addEventListener('change', function() {
-        // Affichage de la valeur sélectionnée dans la console
-        console.log(ustensilesSelect.value);
-        ustensiles=ustensilesSelect.value;
-        console.log(ustensiles);
-    });
-    const ingredientsSelect = document.getElementById('ingredients');
-
-    // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
-    ingredientsSelect.addEventListener('change', function() {
-        // Affichage de la valeur sélectionnée dans la console
-        console.log(ingredientsSelect.value);
-        ingredients=ingredientsSelect.value;
-        console.log(ingredients);
-    });
-    const appareilsSelect = document.getElementById('appareils');
-
-   // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
-    appareilsSelect.addEventListener('change', function() {
-        // Affichage de la valeur sélectionnée dans la console
-        console.log(appareilsSelect.value);
-        appareils=appareilsSelect.value;
-        console.log(appareils);
-    });
