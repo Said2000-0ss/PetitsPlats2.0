@@ -140,12 +140,46 @@ opacity: 0px;
 ==========================================================================================================================================================
 */
 select {
-    padding: 8px;
+   
+    /* padding: 8px;
     font-size: 16px;
     border-radius: 4px;
     border: 1px solid #ccc;
-    margin-bottom: 10px;
+    margin-bottom: 0px; */
+    margin-left: 37%;
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    margin-bottom: 0px;
+    font-weight: bold;
 }
+#partieSelect{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 35%;
+   
+}
+#ingredients{
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+#appareils{
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+#ustensiles{
+    grid-column-start: 3;
+    grid-row-start: 1;
+}
+#nbRecettes{
+    grid-column-start: 4;
+    grid-row-start: 1;
+    text-align: right;
+    padding-top: 3%;
+    font-weight: bold;
+
+}
+
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE RECETTES
