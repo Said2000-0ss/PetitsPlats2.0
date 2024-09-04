@@ -316,7 +316,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 
         const time = document.createElement('div');
         time.className = 'text-content';
-        time.textContent = `Time: ${recipe.time} minutes`;
+        time.textContent = `${recipe.time}min`;
 
         sectionImage.appendChild(image);
         sectionImage.appendChild(time);
