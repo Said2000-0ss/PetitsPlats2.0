@@ -232,3 +232,15 @@ select {
     z-index: 1; /* Assure que le texte reste au-dessus de l'image */
 }
 
+/* Styles pour la section recettes */
+.section-recettes h2,
+.section-recettes h3,
+.section-recettes p {
+    margin: 5%; /* Applique une marge de 5% */
+}
+
+/* Styles pour la section ingrédients */
+.section-ingredients h3,
+.section-ingredients h4 {
+    margin: 5%; /* Applique une marge de 5% */
+}

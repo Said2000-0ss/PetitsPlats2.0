@@ -326,7 +326,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
         sectionRecettes.className = 'section-recettes';
 
         const titre = document.createElement('h2');
-        titre.textContent = `Name: ${recipe.name}`;
+        titre.textContent = `${recipe.name}`;
 
         const titreRecette = document.createElement('h3');
         titreRecette.textContent = 'Recette :';
