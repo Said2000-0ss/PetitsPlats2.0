@@ -1,5 +1,6 @@
 body{
     background-color: #E6E6E6;
+    font-family: Arial;
 }
 
 /* 
@@ -12,6 +13,15 @@ body{
     /* width: 1000px; Taille de l'image */
     width: 100%;
     height: 500px; /* Taille de l'image */
+}
+.header-text {
+    position: absolute;
+    top: 39px; /* Espace entre le haut de l'image et le texte */
+    left: 83px; /* Espace entre le côté gauche de l'image et le texte */
+    color: white; /* Couleur du texte en blanc */
+    font-size: 32px; /* Taille du texte */
+    font-weight: bold; /* Rendre le texte en gras */
+    z-index: 10; /* S'assurer que le texte est au-dessus de l'image */
 }
 
 #partieImage img {
@@ -55,6 +65,8 @@ body{
     pointer-events: none; /* Désactive le clic sur l'icône */
 }
 .search-text {
+    letter-spacing: -1px;
+    font-weight: bold;
     text-align: center; /* Centre le texte */
     font-size: 40px;
     margin-bottom: 15px; /* Espace entre le texte et l'input */
