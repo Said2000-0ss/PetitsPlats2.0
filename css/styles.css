@@ -5,6 +5,7 @@ body{
     padding:0;
 }
 
+
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE IMAGES
@@ -152,6 +153,8 @@ select {
     display: grid;
     grid-template-columns: 20% 20% 20% 35%;
    padding-top: 23px;
+   margin-bottom: 4%;
+   margin-left: 6px;
 }
 #ingredients{
     grid-column-start: 1;
@@ -179,32 +182,6 @@ select {
                                                                     PARTIE RECETTES
 ==========================================================================================================================================================
 */
-
-
-#partieRecettes{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-left:8%;
-    margin-right:2%;
-    margin-top:2%; 
-}
-/* .card img{
-    width: 100%;
-    height: 250px; 
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    object-fit: cover;
-} */
-.card{
-    margin-right:10%;
-    background-color: white;
-    border-radius: 24px;
-    margin-bottom: 2%;
-    padding-bottom: 2%;
-}
-
-/* ============================= */
-
 .section-image {
     position: relative;
     width: 100%; /* S'ajuste à la taille du conteneur */
@@ -232,15 +209,85 @@ select {
     z-index: 1; /* Assure que le texte reste au-dessus de l'image */
 }
 
-/* Styles pour la section recettes */
-.section-recettes h2,
-.section-recettes h3,
-.section-recettes p {
-    margin: 5%; /* Applique une marge de 5% */
+#partieRecettes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left:8%;
+    margin-right:2%;
+    margin-top:2%; 
+}
+/* .card img{
+    width: 100%;
+    height: 250px; 
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    object-fit: cover;
+} */
+.card{
+    margin-right:10%;
+    background-color: white;
+    border-radius: 24px;
+    margin-bottom: 2%;
+    padding-bottom: 11%;
 }
 
-/* Styles pour la section ingrédients */
+/* ============================= */
+
+
+
+/* Styles pour la section recettes */
+/* .section-recettes h2,
+.section-recettes h3, */
+/* c'est le titre de la recette */
+.section-recettes h3{  
+    margin-left: 5%; /* Applique une marge de 5% */  
+}
+.section-recettes h4
+ {
+    margin-left: 5%; /* Applique une marge de 5% */
+    color:#E6E6E6;
+}
+
+/* Styles pour la section ingrédients
 .section-ingredients h3,
 .section-ingredients h4 {
     margin: 5%; /* Applique une marge de 5% */
+    /* font-size: medium; */
+
+
+.presentationDiv{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 3%;
+}
+.section-recettes p{
+    font-size: small;
+    margin-left: 5%;
+    margin-right:5%;
+}
+.section-recettes h5{
+    margin:0;
+    padding:0;
+    margin-left: 5%; /* Applique une marge de 5% */ 
+    color:#E6E6E6;
+    
+}
+.ingredient-container h5{
+    /* margin-bottom:0;
+    padding:0; */
+}
+.titleIngredient{
+margin-bottom: 0;
+margin-left:5%;
+/* color:#E6E6E6; */
+}
+.titleQuantity{
+    margin: 0;
+    margin-left:5%;
+    color:#E6E6E6;
+}
+.ingredients{
+    margin-bottom: 0;
+    margin-left:5%;
+    color:#E6E6E6;
 }

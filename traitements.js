@@ -325,11 +325,11 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
         const sectionRecettes = document.createElement('div');
         sectionRecettes.className = 'section-recettes';
 
-        const titre = document.createElement('h2');
+        const titre = document.createElement('h3');
         titre.textContent = `${recipe.name}`;
 
-        const titreRecette = document.createElement('h3');
-        titreRecette.textContent = 'Recette :';
+        const titreRecette = document.createElement('h4');
+        titreRecette.textContent = 'Recette';
 
         const description = document.createElement('p');
         description.textContent = recipe.description;
@@ -342,27 +342,47 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
         const sectionIngredients = document.createElement('div');
         sectionIngredients.className = 'section-ingredients';
 
-        const titreIngredients = document.createElement('h3');
-        titreIngredients.textContent = 'Ingredients :';
+        const titreIngredients = document.createElement('h4');
+        titreIngredients.textContent = 'Ingredients';
+        titreIngredients.className='ingredients';
         sectionIngredients.appendChild(titreIngredients);
+// je commence ici , je cree une div qui me permettra de fair ma mise en forme
+        const presentation=document.createElement('div');
+        presentation.className="presentationDiv";
+        sectionIngredients.appendChild(presentation);
 
         for (let j = 0; j < recipe.ingredients.length; j++) {
             const ingredient = recipe.ingredients[j];
+             // Créer une div pour chaque paire ingrédient + quantité
+    const ingredientContainer = document.createElement('div');
+    ingredientContainer.className = 'ingredient-container';
 
-            const ingredientTitle = document.createElement('h4');
+            const ingredientTitle = document.createElement('h5');
             ingredientTitle.textContent = `${ingredient.ingredient}`;
+            ingredientTitle.className='titleIngredient';
             sectionIngredients.appendChild(ingredientTitle);
 
-            const quantityTitle = document.createElement('h4');
+            const quantityTitle = document.createElement('h5');
+            quantityTitle.className='titleQuantity';
             if (ingredient.quantity) {
                 quantityTitle.textContent = `${ingredient.quantity}`;
                 if (ingredient.unit) {
                     quantityTitle.textContent += ` ${ingredient.unit}`;
                 }
             } else {
-                quantityTitle.textContent = "Quantité non spécifiée";
+                // quantityTitle.textContent = "Quantité non spécifiée";
+                quantityTitle.textContent = "---";
             }
-            sectionIngredients.appendChild(quantityTitle);
+            // sectionIngredients.appendChild(quantityTitle);
+            // Ajouter les éléments dans la div "tuvasyariver"
+    // presentation.appendChild(ingredientTitle);
+    // presentation.appendChild(quantityTitle);
+      // Ajouter les éléments à la div container
+      ingredientContainer.appendChild(ingredientTitle);
+      ingredientContainer.appendChild(quantityTitle);
+  
+      // Ajouter la div container à la div principale "tuvasyariver"
+      presentation.appendChild(ingredientContainer);
         }
 
         // Ajout des sous-divisions à la carte
