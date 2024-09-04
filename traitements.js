@@ -294,8 +294,12 @@ console.log(appareils);
 //             sectionIngredients.appendChild(quantityTitle);
 //         }
 function ParcourirTableauObjetsEnModeAffichageNavigateur() {
+     // Initialiser le compteur à 0
+     let compteur = 0;
     // Sélectionner la div où les cartes seront ajoutées
     const targetDiv = document.getElementById('partieRecettes');
+      // Réinitialiser la div cible (si nécessaire) pour effacer les anciennes cartes
+      targetDiv.innerHTML = '';
 
     // Parcourir le tableau d'objets récupéré
     for (let i = 0; i < recipes.length; i++) {
@@ -393,7 +397,12 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 
         // Ajout de la carte principale à la div cible
         targetDiv.appendChild(containerCard);
+         // Incrémenter le compteur
+         compteur++;
     }
+     // Afficher le total des containerCard créés dans le span avec l'id "nbRecettes"
+     const nbRecettesSpan = document.getElementById('nbRecettes');
+     nbRecettesSpan.textContent = `${compteur} recettes`;
 }
 //*******************************************************************************************************************************************************/
         
