@@ -419,4 +419,4 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 //=====================================================================================================================================================
 // ParcourirTableauObjetsAvecMoinsDeLignes();
 // ParcourirTableauObjets();
-// ParcourirTableauObjetsEnModeAffichageNavigateur();
+ParcourirTableauObjetsEnModeAffichageNavigateur();

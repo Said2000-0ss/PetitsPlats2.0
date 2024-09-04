@@ -140,12 +140,6 @@ opacity: 0px;
 ==========================================================================================================================================================
 */
 select {
-   
-    /* padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 0px; */
     margin-left: 37%;
     padding: 16px;
     font-size: 16px;
@@ -157,7 +151,7 @@ select {
 #partieSelect{
     display: grid;
     grid-template-columns: 20% 20% 20% 35%;
-   
+   padding-top: 23px;
 }
 #ingredients{
     grid-column-start: 1;
