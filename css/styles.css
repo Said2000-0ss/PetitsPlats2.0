@@ -10,6 +10,8 @@ body{
                                                                     PARTIE IMAGES
 ==========================================================================================================================================================
 */
+
+
 #partieImage {
    
     position: relative; /* Permet au contenu à l'intérieur d'être positionné de manière absolue par rapport à ce conteneur */
@@ -17,9 +19,14 @@ body{
     width: 100%;
     height: 600px; /* Taille de l'image */
 }
+#circle{
+    color:white;
+    font-size: 31px; /* Ajustez cette valeur pour réduire la taille de l'icône */
+    margin-left: 10px; /* Pour ajouter un espace entre le texte et l'icône */
+}
 .header-text {
     position: absolute;
-    letter-spacing: -2px;
+    letter-spacing: -0.05em;
     top: 39px; /* Espace entre le haut de l'image et le texte */
     left: 83px; /* Espace entre le côté gauche de l'image et le texte */
     color: white; /* Couleur du texte en blanc */
@@ -54,8 +61,8 @@ body{
 
 .search-button {
     position: absolute;
-    right: 5px;
-    top: 70%;
+    right: -64px;
+    top: 86%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -82,7 +89,7 @@ body{
 
 
 .search-button .fa-stack {
-    font-size: 18px; /* Ajustez la taille selon vos besoins */
+    font-size: 35px; /* Ajustez la taille selon vos besoins */
 }
 
 /*====================================================*/
