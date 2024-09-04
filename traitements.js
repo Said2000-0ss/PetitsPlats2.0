@@ -29,6 +29,7 @@ const searchButton = document.getElementById('searchButton');
 function handleSearch() {
     const searchValue = searchInput.value;
     console.log(searchValue);
+    searchInput.value="";
 }
 // Ajout d'un événement 'click' au bouton
 searchButton.addEventListener('click', function() {   
