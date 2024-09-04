@@ -2,7 +2,8 @@
 // const recipes = require('./recipes');// je récupere le tableau d'objets de la page recipes.js
 
 // import { recipes } from './recipes.js';
-import { recipes } from './recipesTest.js';
+import { recipes } from './recipesTriple.js';
+// import { recipes } from './recipesTest.js';
 
 // console.log(recipes);
 //=====================================================================================================================================================
