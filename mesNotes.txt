@@ -10,3 +10,141 @@
 // console.log(searchValue);// Affichage de la valeur dans la console
 // });
 
+//
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++ Fonctions permettant d'alimenter les differents selects ++++++++++++++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
+
+
+// function alimenterSelects() {
+//     const ustensilesSet = new Set();   // Utiliser un Set pour éviter les doublons
+//     const ingredientsSet = new Set();
+//     const appareilsSet = new Set();
+  
+//     // Vérifier que le tableau recipes est bien défini et non vide
+//     if (!Array.isArray(recipes) || recipes.length === 0) {
+//       console.error("Le tableau recipes est vide ou non défini");
+//       return;
+//     }
+  
+//     // Parcourir les recettes et remplir les sets
+//     recipes.forEach(recipe => {
+//       // Vérifier si ustensiles existe et est un tableau
+//       if (Array.isArray(recipe.ustensiles)) {
+//         recipe.ustensiles.forEach(ustensile => ustensilesSet.add(ustensile));
+//       } else {
+//         console.warn(`Ustensiles non défini pour la recette : ${recipe.name}`);
+//       }
+  
+//       // Vérifier si ingredients existe et est un tableau
+//       if (Array.isArray(recipe.ingredients)) {
+//         recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
+//       } else {
+//         console.warn(`Ingrédients non définis pour la recette : ${recipe.name}`);
+//       }
+  
+//       // Vérifier si appareils existe et est un tableau
+//       if (Array.isArray(recipe.appareils)) {
+//         recipe.appareils.forEach(appareil => appareilsSet.add(appareil));
+//       } else {
+//         console.warn(`Appareils non définis pour la recette : ${recipe.name}`);
+//       }
+//     });
+  
+//     // Fonction pour vider et ajouter des options dans un <select>
+//     function ajouterOptionsDansSelect(selectElement, itemsSet) {
+//       // Garder seulement la première option par défaut
+//       selectElement.innerHTML = '<option value="" disabled selected>' + selectElement.options[0].textContent + '</option>';
+  
+//       // Parcourir chaque élément du set et créer une option dans le <select>
+//       itemsSet.forEach(item => {
+//         const option = document.createElement('option');
+//         option.value = item;
+//         option.textContent = item;
+//         selectElement.appendChild(option);
+//       });
+//     }
+  
+//     // Récupérer les éléments <select> dans le DOM
+//     const ustensilesSelect = document.getElementById('ustensiles');
+//     const ingredientsSelect = document.getElementById('ingredients');
+//     const appareilsSelect = document.getElementById('appareils');
+  
+//     // Appeler la fonction pour chaque <select> avec le set correspondant
+//     ajouterOptionsDansSelect(ustensilesSelect, ustensilesSet);
+//     ajouterOptionsDansSelect(ingredientsSelect, ingredientsSet);
+//     ajouterOptionsDansSelect(appareilsSelect, appareilsSet);
+//   }
+  
+//   // Appel de la fonction après le chargement du DOM
+//   document.addEventListener('DOMContentLoaded', alimenterSelects);
+//   console.log(ustensilesSet);
+//   console.log(ingredientsSet);
+//   console.log(appareilsSet);
+//********************************************************************************************************* */
+// function alimenterSelects() {
+//     const ustensilesSet = new Set();   // Utiliser un Set pour éviter les doublons
+//     const ingredientsSet = new Set();
+//     const appareilsSet = new Set();
+  
+//     // Vérifier que le tableau recipes est bien défini et non vide
+//     if (!Array.isArray(recipes) || recipes.length === 0) {
+//       console.error("Le tableau recipes est vide ou non défini");
+//       return;
+//     }
+  
+//     // Parcourir les recettes et remplir les sets
+//     recipes.forEach(recipe => {
+//       // Vérifier si ustensiles existe et est un tableau
+//       if (Array.isArray(recipe.ustensiles)) {
+//         recipe.ustensiles.forEach(ustensile => ustensilesSet.add(ustensile));
+//       } else {
+//         console.warn(`Ustensiles non définis pour la recette : ${recipe.name}`);
+//       }
+  
+//       // Vérifier si ingredients existe et est un tableau
+//       if (Array.isArray(recipe.ingredients)) {
+//         recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
+//       } else {
+//         console.warn(`Ingrédients non définis pour la recette : ${recipe.name}`);
+//       }
+  
+//       // Vérifier si appareils existe et est une chaîne de caractères ou un tableau
+//       if (Array.isArray(recipe.appareils)) {
+//         recipe.appareils.forEach(appareil => appareilsSet.add(appareil));
+//       } else if (typeof recipe.appareils === 'string') {
+//         appareilsSet.add(recipe.appareils);
+//       } else {
+//         console.warn(`Appareils non définis pour la recette : ${recipe.name}`);
+//       }
+//     });
+  
+//     // Fonction pour vider et ajouter des options dans un <select>
+//     function ajouterOptionsDansSelect(selectElement, itemsSet) {
+//       // Garder seulement la première option par défaut
+//       selectElement.innerHTML = '<option value="" disabled selected>' + selectElement.options[0].textContent + '</option>';
+  
+//       // Parcourir chaque élément du set et créer une option dans le <select>
+//       itemsSet.forEach(item => {
+//         const option = document.createElement('option');
+//         option.value = item;
+//         option.textContent = item;
+//         selectElement.appendChild(option);
+//       });
+//     }
+  
+//     // Récupérer les éléments <select> dans le DOM
+//     const ustensilesSelect = document.getElementById('ustensiles');
+//     const ingredientsSelect = document.getElementById('ingredients');
+//     const appareilsSelect = document.getElementById('appareils');
+  
+//     // Appeler la fonction pour chaque <select> avec le set correspondant
+//     ajouterOptionsDansSelect(ustensilesSelect, ustensilesSet);
+//     ajouterOptionsDansSelect(ingredientsSelect, ingredientsSet);
+//     ajouterOptionsDansSelect(appareilsSelect, appareilsSet);
+//   }
+  
+//   // Appel de la fonction après le chargement du DOM
+//   document.addEventListener('DOMContentLoaded', alimenterSelects);

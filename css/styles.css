@@ -64,7 +64,7 @@ body{
 .search-button {
     position: absolute;
     right: -64px;
-    top: 86%;
+    top: 88%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -281,10 +281,10 @@ select {
     color: #7A7A7A;
     
 }
-.ingredient-container h5{
+/* .ingredient-container h5{
     /* margin-bottom:0;
-    padding:0; */
-}
+    padding:0; *
+} */
 .titleIngredient{
 margin-bottom: 0;
 margin-left:5%;
