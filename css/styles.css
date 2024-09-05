@@ -1,6 +1,6 @@
 body{
     background-color: #E6E6E6;
-    font-family: Arial;
+    font-family: Antom;
     margin:0;
     padding:0;
 }
@@ -34,6 +34,7 @@ body{
     font-size: 37px; /* Taille du texte */
     font-weight: bold; /* Rendre le texte en gras */
     z-index: 10; /* S'assurer que le texte est au-dessus de l'image */
+    
 }
 
 #partieImage img {
@@ -77,13 +78,20 @@ body{
     pointer-events: none; /* Désactive le clic sur l'icône */
 }
 .search-text {
-    letter-spacing: -0.05em;
+    /* letter-spacing: -0.05em;
     font-weight: bold;
-    text-align: center; /* Centre le texte */
+    text-align: center; /* Centre le texte 
     font-size: 40px;
-    margin-bottom: 15px; /* Espace entre le texte et l'input */
-    line-height: 1.5; /* Hauteur de ligne pour un espacement entre les lignes */
-    color: rgb(255, 205, 41); /* Couleur du texte */
+    margin-bottom: 15px; /* Espace entre le texte et l'input 
+    line-height: 1.5;  Hauteur de ligne pour un espacement entre les lignes 
+    color: rgb(255, 205, 41); Couleur du texte */
+    font-family: Anton;
+font-size: 44px;
+font-weight: 400;
+line-height: 66.24px;
+text-align: center;
+color: #FFD15B;
+
 }
 
 /* ==================================================== */
@@ -245,7 +253,8 @@ select {
 .section-recettes h4
  {
     margin-left: 5%; /* Applique une marge de 5% */
-    color:#E6E6E6;
+    color: #7A7A7A;
+    ;
 }
 
 /* Styles pour la section ingrédients
@@ -269,7 +278,7 @@ select {
     margin:0;
     padding:0;
     margin-left: 5%; /* Applique une marge de 5% */ 
-    color:#E6E6E6;
+    color: #7A7A7A;
     
 }
 .ingredient-container h5{
@@ -284,10 +293,10 @@ margin-left:5%;
 .titleQuantity{
     margin: 0;
     margin-left:5%;
-    color:#E6E6E6;
+    color: #7A7A7A;
 }
 .ingredients{
     margin-bottom: 0;
     margin-left:5%;
-    color:#E6E6E6;
+    color: #7A7A7A;
 }
