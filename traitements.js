@@ -601,28 +601,28 @@ function alimenterSelects() {
     });
   
     // Fonction pour vider et ajouter des options dans un <select>
-    function ajouterOptionsDansSelect(selectElement, itemsSet) {
-      // Garder seulement la première option par défaut
-      selectElement.innerHTML = '<option value="" disabled selected hidden>' + selectElement.options[0].textContent + '</option>';
+    // function ajouterOptionsDansSelect(selectElement, itemsSet) {
+    //   // Garder seulement la première option par défaut
+    //   selectElement.innerHTML = '<option value="" disabled selected hidden>' + selectElement.options[0].textContent + '</option>';
   
-      // Parcourir chaque élément du set et créer une option dans le <select>
-      itemsSet.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item;
-        option.textContent = item;
-        selectElement.appendChild(option);
-      });
-    }
+    //   // Parcourir chaque élément du set et créer une option dans le <select>
+    //   itemsSet.forEach(item => {
+    //     const option = document.createElement('option');
+    //     option.value = item;
+    //     option.textContent = item;
+    //     selectElement.appendChild(option);
+    //   });
+    // }
   
     // Récupérer les éléments <select> dans le DOM
-    const ustensilesSelect = document.getElementById('ustensiles');
-    const ingredientsSelect = document.getElementById('ingredients');
-    const appareilsSelect = document.getElementById('appareils');  // Toujours utiliser id appareils dans le HTML
+    // const ustensilesSelect = document.getElementById('ustensiles');
+    // const ingredientsSelect = document.getElementById('ingredients');
+    // const appareilsSelect = document.getElementById('appareils');  // Toujours utiliser id appareils dans le HTML
   
     // Appeler la fonction pour chaque <select> avec le set correspondant
-    ajouterOptionsDansSelect(ustensilesSelect, ustensilesSet);
-    ajouterOptionsDansSelect(ingredientsSelect, ingredientsSet);
-    ajouterOptionsDansSelect(appareilsSelect, appareilsSet);
+    // ajouterOptionsDansSelect(ustensilesSelect, ustensilesSet);
+    // ajouterOptionsDansSelect(ingredientsSelect, ingredientsSet);
+    // ajouterOptionsDansSelect(appareilsSelect, appareilsSet);
   }
 //=====================================================================================================================================================
 //====================================================== APPELS DE FONCTIONS ==========================================================================
