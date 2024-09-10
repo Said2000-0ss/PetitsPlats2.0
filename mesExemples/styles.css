@@ -1,0 +1,154 @@
+body {
+    background-color: grey ;
+    font-family: arial;
+}
+
+
+#containerSelect{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 90%;
+    height: 229px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    background-color: brown;
+    border-radius: 11px;
+    border: 3px solid black;
+    
+}
+    #ingredients{
+      
+        padding-left:3%;
+        background-color: blanchedalmond;
+        padding-top:3%;
+        height: 33px;
+        width: 53%;
+        border-radius: 11px;
+       
+    }
+    #appareils{
+        padding-left: 3%;
+        background-color: blanchedalmond;
+        padding-top: 3%;
+        height: 33px;
+        width: 53%;
+        border-radius: 11px;
+    }
+    #ustensiles{
+        padding-left: 3%;
+        background-color: blanchedalmond;
+        padding-top: 3%;
+        height: 33px;
+        width: 53%;
+        border-radius: 11px;      
+    }
+/* Styles pour cacher et afficher la liste déroulante */
+.hidden {
+    display: none;
+}
+
+#dropdown-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid #ccc; */
+    max-width: 225px;
+    margin-left: -12px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+}
+
+.dropdown-item {
+    padding: 8px;
+    margin-left:7px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.ingredients-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: larger;
+    font-family: arial;
+    /* font-weight: bold; */
+}
+#chevron{
+    color:black;
+    margin-left:77px; 
+}
+
+#dropdown-list{
+    background-color:blanchedalmond ;
+    border:none;
+}
+
+#jeSuisUnInput{
+    margin-left: 6px;
+    margin-top: 10px;
+    width: 69%;
+    border: 1px solid grey;
+    border-radius: 11px;
+    background-color: white;
+    height: 33px;
+    padding-left: 8px;
+}
+
+/* ========================================================================================================================== */
+ /* Styles pour que le bouton soit à l'intérieur de l'input */
+ .input-container {
+    position: relative;
+    width: 250px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding-right: 30px;
+}
+
+button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 36px;
+    margin-top: 10px;
+    color: grey;
+}
+
+#dropdown-list {
+    margin-top: 0px;
+}
+
+.hidden {
+    display: none;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    position: relative;
+    color: black;
+    font-weight: bold;
+    font-family: arial;
+    background-color: blanchedalmond;
+    border-radius:11px;
+}
+
+.result .close {
+    position: absolute;
+    top: 9px;
+    right: 16px;
+    cursor: pointer;
+}

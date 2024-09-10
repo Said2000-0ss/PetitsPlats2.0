@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma div englobante</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="containerSelect">
+        <div id="ingredients">
+            <div id="ingredients-container" class="ingredients-dropdown">
+                <span id="ingredients-text">Ingrédients</span>
+                <i id="chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+
+          
+            <ul id="dropdown-list" class="hidden">
+                <!-- <input id="jeSuisUnInput" type="text"> -->
+                <div class="input-container">
+                    <input id="jeSuisUnInput" type="text" placeholder="Rechercher un nom...">
+                    <button id="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <li class="dropdown-item">Noix de coco</li>
+                <li class="dropdown-item">mangue</li>
+                <li class="dropdown-item">café</li>
+                <li class="dropdown-item">caramel</li>
+            </ul>
+        </div>
+
+        <div id="appareils">
+            <span>Appareils</span>
+            <i  class="fa-solid fa-chevron-down"></i>
+        </div>
+        
+        <div id="ustensiles">
+        <span>Ustensiles</span>
+        <i  class="fa-solid fa-chevron-down"></i>
+        </div>
+     
+    </div>
+    <div id="result-container"></div>
+    <script src="traitements.js"></script>
+</body>
+
+</html>
