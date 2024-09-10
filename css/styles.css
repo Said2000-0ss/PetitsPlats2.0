@@ -162,7 +162,7 @@ select {
     grid-template-columns: 21% 21% 21% 32%;
    padding-top: 23px;
    margin-bottom: 4%;
-   margin-left: 6px;
+   margin-left: 96px;
 }
 #ingredients{
     grid-column-start: 1;
@@ -185,10 +185,7 @@ select {
 
 }
 /* A partir d'icic'est le code que j'ai intégré ========================================================== */
-body {
-    background-color: grey ;
-    font-family: arial;
-}
+
 
 
 #containerSelect{
@@ -209,26 +206,28 @@ body {
         background-color: white;
         padding-top: 3%;
         margin-left: 4%;
-        height: 33px;
+        /* height: 33px; */
+        height: auto;
         width: 75%;
         border-radius: 11px;
+        z-index: 1;
        
     }
     #appareils{
         padding-left: 3%;
-        background-color: blanchedalmond;
+        background-color: red;
         padding-top: 3%;
-        height: 33px;
+        height: 44px;
         width: 53%;
         border-radius: 11px;
     }
     #ustensiles{
         padding-left: 3%;
-        background-color: blanchedalmond;
+        background-color: yellow;
         padding-top: 3%;
-        height: 33px;
+        height: 44px;
         width: 53%;
-        border-radius: 11px;      
+        border-radius: 11px;  
     }
 /* Styles pour cacher et afficher la liste déroulante */
 .hidden {
@@ -241,7 +240,7 @@ body {
     margin: 0;
     /* border: 1px solid #ccc; */
     max-width: 225px;
-    margin-left: -12px;
+    margin-left: -10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 11px;
@@ -279,7 +278,7 @@ body {
 #jeSuisUnInput{
     margin-left: 6px;
     margin-top: 10px;
-    width: 69%;
+    width: 63%;
     border: 1px solid grey;
     /* border-radius: 11px; */
     background-color: white;
@@ -308,7 +307,7 @@ button {
     border: none;
     cursor: pointer;
     padding: 5px;
-    margin-right: 36px;
+    margin-right: 45px;
     margin-top: 10px;
     color: grey;
 }
@@ -329,7 +328,7 @@ button {
     color: black;
     font-weight: bold;
     font-family: arial;
-    background-color: blanchedalmond;
+    background-color: #FFD15B;;
     border-radius:11px;
 }
 
@@ -345,6 +344,7 @@ button {
                                                                     PARTIE RECETTES
 ==========================================================================================================================================================
 */
+
 .section-image {
     position: relative;
     width: 100%; /* S'ajuste à la taille du conteneur */
