@@ -40,12 +40,17 @@
     <div id="partieSelect">
 
         <!--  <label for="ingredients"></label> -->
-        <!-- <select id="ingredients"> -->
-            <!-- <option value="" disabled selected>Ingrédients</option>Option par défaut -->
+        <!-- <select id="ingredients">  -->
+             <!-- <option value="" disabled selected>Ingrédients</option> -->
+             <!-- Option par défaut --> 
             <!-- <option value="Chocolat">Chocolat</option> -->
             <!-- <option value="lait">lait</option> -->
-            <!-- <option value="bonbon">bonbon</option>  -->
-        <!-- </select> --> 
+             <!-- <option value="bonbon">bonbon</option>  -->
+        <!-- </select>  -->
+<!-- ======================================================================================================================================== -->
+<!-- ================================================ LA SELECTION INGREDIENTS ============================================================== -->
+<!-- ======================================================================================================================================== -->         
+
         <!----------------------------------------------------------------------------------------------->
         <!-- je suis l'exemple a ajouter ---------------------------------------------------------------->
         <!----------------------------------------------------------------------------------------------->
@@ -56,7 +61,7 @@
             </div>
 
           
-            <ul id="dropdown-list" class="hidden">
+            <ul id="ingredients-list" class="hidden">
                  <!-- <input id="jeSuisUnInput" type="text"> -->
                 <div class="input-container">
                     <input id="jeSuisUnInput" type="text" placeholder="Rechercher un nom...">
@@ -64,32 +69,55 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
-                <li class="dropdown-item">Noix de coco</li>
+                <!-- <li class="dropdown-item">Noix de coco</li>
                 <li class="dropdown-item">mangue</li>
                 <li class="dropdown-item">café</li>
-                <li class="dropdown-item">caramel</li> 
+                <li class="dropdown-item">caramel</li>  -->
             </ul> 
         </div>
         <!----------------------------------------------------------------------------------------------->
         <!-- je suis la fin de l'exemple à ajouter  ----------------------------------------------------->
         <!----------------------------------------------------------------------------------------------->
-        <label for="appareils"></label>
-        <select id="appareils">
-            <option value="" disabled selected>Appareils</option> <!-- Option par défaut -->
-            <option value="appareil1">appareil1</option>
-            <option value="appareil2">appareil2</option>
-            <option value="appareil3">appareil3</option>
-        </select>
+        <!-- <label for="appareils"></label>-->
+        <!-- <select id="appareils"> -->
+           <!-- <option value="" disabled selected>Appareils</option> --><!-- Option par défaut -->
+            <!-- <option value="appareil1">appareil1</option> -->
+            <!-- <option value="appareil2">appareil2</option> -->
+            <!-- <option value="appareil3">appareil3</option> -->
+        <!-- </select> --> 
         <!-- <label for="ustensiles">Ustensiles :</label> -->
-        <label for="ustensiles"></label>
+<!-- ======================================================================================================================================== -->
+<!-- ================================================ LA SELECTION APPAREILS ================================================================ -->
+<!-- ======================================================================================================================================== -->
+        <div id="appareils">
+            <div id="appareils-container" class="appareils-dropdown">
+                <span id="appareils-text">Appareils</span>
+                <i id="chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+            <ul id="appareils-list" class="hidden">
+            </ul> 
+        </div>
+<!-- ======================================================================================================================================== -->
+<!-- ================================================ LA SELECTION USTENSILES =============================================================== -->
+<!-- ======================================================================================================================================== -->
+        <!-- <label for="ustensiles"></label>
         <select id="ustensiles">
-            <option value="" disabled selected>Ustensiles</option> <!-- Option par défaut -->
-            <option value="casserole">Casserole</option>
+            <option value="" disabled selected>Ustensiles</option>--> <!-- Option par défaut -->
+            <!-- <option value="casserole">Casserole</option>
             <option value="cuillere">Cuillère</option>
             <option value="couteau">Couteau</option>
-        </select>
+        </select> -->
+        <div id="ustensiles">
+            <div id="ustensiles-container" class="ustensiles-dropdown">
+                <span id="ustensiles-text">Ustensiles</span>
+                <i id="chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+            <ul id="ustensiles-list" class="hidden">
+            </ul> 
+        </div>
+
         <span id="nbRecettes"></span> 
-    </div>
+    </div> 
     <!----------------------------------------------------------------------------------------------->
     <!---- je suis la partie de l'exemple ----------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------->

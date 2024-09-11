@@ -44,23 +44,25 @@ searchInput.addEventListener('keydown', function(event) {
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
+
+// const ingredientsSelect = document.getElementById('ingredients');
+// ingredientsSelect.addEventListener('change', function() {
+// ingredients=ingredientsSelect.value;// console.log(ingredientsSelect.value);
+// console.log(ingredients);
+// });
 // Récupération de l'élément selectionnée via des écouteurs d'événements.
+const appareilsSelect = document.getElementById('appareils');
+appareilsSelect.addEventListener('change', function() {
+appareils=appareilsSelect.value;// console.log(appareilsSelect.value);
+console.log(appareils);
+});
+
 const ustensilesSelect = document.getElementById('ustensiles');
 // Ajout d'un événement qui se déclenche lors d'une modification de la sélection
 ustensilesSelect.addEventListener('change', function() {
 // Affichage de la valeur sélectionnée dans la console : console.log(ustensilesSelect.value);
 ustensiles=ustensilesSelect.value;
 console.log(ustensiles);
-});
-const ingredientsSelect = document.getElementById('ingredients');
-ingredientsSelect.addEventListener('change', function() {
-ingredients=ingredientsSelect.value;// console.log(ingredientsSelect.value);
-console.log(ingredients);
-});
-const appareilsSelect = document.getElementById('appareils');
-appareilsSelect.addEventListener('change', function() {
-appareils=appareilsSelect.value;// console.log(appareilsSelect.value);
-console.log(appareils);
 });
 
 //======================================================= A partir d'ici nouveau code intégré ======================================================
@@ -556,6 +558,40 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 // //=====================================================================================================================================================
 // //=====================================================================================================================================================
 
+function alimenterIngredients() {
+  const ingredientsSet = new Set(); // Utiliser un Set pour éviter les doublons
+
+  // Vérifier que le tableau recipes est bien défini et non vide
+  if (!Array.isArray(recipes) || recipes.length === 0) {
+      console.error("Le tableau recipes est vide ou non défini");
+      return;
+  }
+
+  // Parcourir les recettes et remplir le set d'ingrédients
+  recipes.forEach(recipe => {
+      if (Array.isArray(recipe.ingredients)) {
+          recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
+      } else {
+          console.warn(`Ingrédients non définis pour la recette : ${recipe.name}`);
+      }
+  });
+
+  // Récupérer l'élément <ul> par son ID
+  const dropdownList = document.getElementById('dropdown-list');
+
+  // Vider la liste existante, sauf les éléments fixes comme le champ de recherche
+  const inputContainer = document.querySelector('.input-container'); // Sélectionner le conteneur de l'input
+  dropdownList.innerHTML = ''; // Tout vider
+  dropdownList.appendChild(inputContainer); // Réinsérer l'input container
+
+  // Parcourir chaque ingrédient et créer un <li> dans le <ul>
+  ingredientsSet.forEach(ingredient => {
+      const li = document.createElement('li');
+      li.classList.add('dropdown-item'); // Ajoute la classe CSS pour les items
+      li.textContent = ingredient; // Ajouter le nom de l'ingrédient comme texte
+      dropdownList.appendChild(li); // Ajouter chaque <li> dans la liste
+  });
+}
 
 
 
@@ -565,40 +601,40 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
 
 //======================================================================================================
 
-function alimenterSelects() {
-    const ustensilesSet = new Set();   // Utiliser un Set pour éviter les doublons
-    const ingredientsSet = new Set();
-    const appareilsSet = new Set();  // Ce sera maintenant applianceSet
+// function alimenterSelects() {
+//     const ustensilesSet = new Set();   // Utiliser un Set pour éviter les doublons
+//     const ingredientsSet = new Set();
+//     const appareilsSet = new Set();  // Ce sera maintenant applianceSet
   
-    // Vérifier que le tableau recipes est bien défini et non vide
-    if (!Array.isArray(recipes) || recipes.length === 0) {
-      console.error("Le tableau recipes est vide ou non défini");
-      return;
-    }
+//     // Vérifier que le tableau recipes est bien défini et non vide
+//     if (!Array.isArray(recipes) || recipes.length === 0) {
+//       console.error("Le tableau recipes est vide ou non défini");
+//       return;
+//     }
   
-    // Parcourir les recettes et remplir les sets
-    recipes.forEach(recipe => {
-      // Vérifier si ustensils existe et est un tableau
-      if (Array.isArray(recipe.ustensils)) {
-        recipe.ustensils.forEach(ustensile => ustensilesSet.add(ustensile));
-      } else {
-        console.warn(`Ustensils non définis pour la recette : ${recipe.name}`);
-      }
+//     // Parcourir les recettes et remplir les sets
+//     recipes.forEach(recipe => {
+//       // Vérifier si ustensils existe et est un tableau
+//       if (Array.isArray(recipe.ustensils)) {
+//         recipe.ustensils.forEach(ustensile => ustensilesSet.add(ustensile));
+//       } else {
+//         console.warn(`Ustensils non définis pour la recette : ${recipe.name}`);
+//       }
   
-      // Vérifier si ingredients existe et est un tableau
-      if (Array.isArray(recipe.ingredients)) {
-        recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
-      } else {
-        console.warn(`Ingrédients non définis pour la recette : ${recipe.name}`);
-      }
+//       // Vérifier si ingredients existe et est un tableau
+//       if (Array.isArray(recipe.ingredients)) {
+//         recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
+//       } else {
+//         console.warn(`Ingrédients non définis pour la recette : ${recipe.name}`);
+//       }
   
-      // Vérifier si appliance existe et est une chaîne de caractères
-      if (typeof recipe.appliance === 'string') {
-        appareilsSet.add(recipe.appliance);
-      } else {
-        console.warn(`Appliance non défini pour la recette : ${recipe.name}`);
-      }
-    });
+//       // Vérifier si appliance existe et est une chaîne de caractères
+//       if (typeof recipe.appliance === 'string') {
+//         appareilsSet.add(recipe.appliance);
+//       } else {
+//         console.warn(`Appliance non défini pour la recette : ${recipe.name}`);
+//       }
+//     });
   
     // Fonction pour vider et ajouter des options dans un <select>
     // function ajouterOptionsDansSelect(selectElement, itemsSet) {
@@ -623,7 +659,7 @@ function alimenterSelects() {
     // ajouterOptionsDansSelect(ustensilesSelect, ustensilesSet);
     // ajouterOptionsDansSelect(ingredientsSelect, ingredientsSet);
     // ajouterOptionsDansSelect(appareilsSelect, appareilsSet);
-  }
+  // }
 //=====================================================================================================================================================
 //====================================================== APPELS DE FONCTIONS ==========================================================================
 //=====================================================================================================================================================
@@ -631,5 +667,7 @@ function alimenterSelects() {
 // ParcourirTableauObjets();
 ParcourirTableauObjetsEnModeAffichageNavigateur();
   // Appel de la fonction après le chargement du DOM
-  document.addEventListener('DOMContentLoaded', alimenterSelects);
-  
+  // document.addEventListener('DOMContentLoaded', alimenterSelects);
+  document.addEventListener('DOMContentLoaded', () => {
+    alimenterIngredients(); // Appeler la fonction après le chargement du DOM
+});
