@@ -285,10 +285,24 @@ select {
     height: 33px;
     padding-left: 8px;
 }
+/* Cacher les puces des éléments <li>*/
+ul {
+    list-style-type: none; /* Supprime les puces des <li> */
+ } 
+
+/* Couleur de fond jaune au survol d'un <li> */
+/* .dropdown-item:hover {
+    background-color:#FFD15B; /* Fond jaune au survol */
+/* } */ 
+
+/* Cacher les listes déroulantes au départ */
 .hidden {
     display: none;
 }
-
+#ingredients-list{
+    padding:0;
+    margin:0;
+}
 
 /* ========================================================================================================================== */
  /* Styles pour que le bouton soit à l'intérieur de l'input */
@@ -332,7 +346,7 @@ button {
     color: black;
     font-weight: bold;
     font-family: arial;
-    background-color: #FFD15B;;
+    background-color: #FFD15B;
     border-radius:11px;
 }
 
