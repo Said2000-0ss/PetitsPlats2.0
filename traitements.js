@@ -5,6 +5,8 @@ import { recipes } from './recipesTriple.js';
 //============================================================ MES VARIABLES ==========================================================================
 //=====================================================================================================================================================
 //MES VARIABLES PARTIE IMAGE
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
 //MES VARIABLES PARTIE SELECT
 //MES VARIABLES PARTIE RECETTES
 //=====================================================================================================================================================
@@ -14,8 +16,6 @@ import { recipes } from './recipesTriple.js';
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE IMAGES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
 // Fonction pour gérer la recherche
 function handleSearch() {
     const searchValue = searchInput.value;
@@ -35,7 +35,6 @@ searchInput.addEventListener('keydown', function (event) {
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
-
 // Fonction pour alimenter les listes déroulantes avec les données du tableau recipes
 function alimenterListesDeroulantes() {
     // Utilisation de Set pour éviter les doublons
@@ -83,11 +82,6 @@ function alimenterListesDeroulantes() {
     ajouterItemsDansListe(ustensilesListe, ustensilesSet);
 }
 
-// Appel des fonctions lorsque le DOM est chargé
-document.addEventListener('DOMContentLoaded', () => {
-    alimenterListesDeroulantes(); // Alimenter les listes avec les données
-    gererChevronDynamique(); // Ajouter le comportement des chevrons
-});
 // Fonction pour gérer l'affichage de la liste déroulante avec le chevron
 function toggleDropdown() {
     const chevron = document.querySelector('#chevron');
@@ -125,9 +119,6 @@ function alimenterIngredientsListe() {
         ingredientsList.appendChild(li);
     });
 }
-// Appel de la fonction pour alimenter la liste des ingrédients
-alimenterIngredientsListe();
-
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE RECETTES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
@@ -252,7 +243,11 @@ function alimenterIngredients() {
 //=====================================================================================================================================================
 //====================================================== APPELS DE FONCTIONS ==========================================================================
 //=====================================================================================================================================================
+// Appel de la fonction pour alimenter la liste des ingrédients
+alimenterIngredientsListe();
 ParcourirTableauObjetsEnModeAffichageNavigateur();
+// Appel des fonctions lorsque le DOM est chargé
 document.addEventListener('DOMContentLoaded', () => {
     alimenterIngredients(); // Appeler la fonction après le chargement du DOM
+    alimenterListesDeroulantes(); // Alimenter les listes avec les données
 });

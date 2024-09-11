@@ -1,59 +1,71 @@
-body{
+body {
     background-color: #E6E6E6;
     font-family: Antom;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
-
 
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE IMAGES
 ==========================================================================================================================================================
 */
-
-
 #partieImage {
-   
-    position: relative; /* Permet au contenu à l'intérieur d'être positionné de manière absolue par rapport à ce conteneur */
-    /* width: 1000px; Taille de l'image */
+    position: relative;
+    /* Permet au contenu à l'intérieur d'être positionné de manière absolue par rapport à ce conteneur */
     width: 100%;
-    height: 600px; /* Taille de l'image */
+    height: 600px;
+    /* Taille de l'image */
 }
-#circle{
-    color:white;
-    font-size: 31px; /* Ajustez cette valeur pour réduire la taille de l'icône */
-    margin-left: 10px; /* Pour ajouter un espace entre le texte et l'icône */
+
+#circle {
+    color: white;
+    font-size: 31px;
+    /* Ajustez cette valeur pour réduire la taille de l'icône */
+    margin-left: 10px;
+    /* Pour ajouter un espace entre le texte et l'icône */
 }
+
 .header-text {
     position: absolute;
     letter-spacing: -0.05em;
-    top: 39px; /* Espace entre le haut de l'image et le texte */
-    left: 83px; /* Espace entre le côté gauche de l'image et le texte */
-    color: white; /* Couleur du texte en blanc */
-    font-size: 37px; /* Taille du texte */
-    font-weight: bold; /* Rendre le texte en gras */
-    z-index: 10; /* S'assurer que le texte est au-dessus de l'image */
-    
+    top: 39px;
+    /* Espace entre le haut de l'image et le texte */
+    left: 83px;
+    /* Espace entre le côté gauche de l'image et le texte */
+    color: white;
+    /* Couleur du texte en blanc */
+    font-size: 37px;
+    /* Taille du texte */
+    font-weight: bold;
+    /* Rendre le texte en gras */
+    z-index: 10;
+    /* S'assurer que le texte est au-dessus de l'image */
 }
 
 #partieImage img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Pour s'assurer que l'image remplit bien son conteneur */
+    object-fit: cover;
+    /* Pour s'assurer que l'image remplit bien son conteneur */
 }
 
 .search-container {
-    position: absolute; /* Pour superposer au-dessus de l'image */
-    top: 67%; /* Positionnement vertical centré */
-    left: 50%; /* Positionnement horizontal centré */
-    transform: translate(-50%, -50%); /* Ajustement pour centrer parfaitement */
-    width: 70%; /* Ajustez la largeur du champ de recherche */
+    position: absolute;
+    /* Pour superposer au-dessus de l'image */
+    top: 67%;
+    /* Positionnement vertical centré */
+    left: 50%;
+    /* Positionnement horizontal centré */
+    transform: translate(-50%, -50%);
+    /* Ajustement pour centrer parfaitement */
+    width: 70%;
+    /* Ajustez la largeur du champ de recherche */
 }
 
 .search-input {
     width: 100%;
-    height:50px;
+    height: 50px;
     padding: 10px 40px 10px 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -75,73 +87,23 @@ body{
 }
 
 .search-button i {
-    pointer-events: none; /* Désactive le clic sur l'icône */
+    pointer-events: none;
+    /* Désactive le clic sur l'icône */
 }
+
 .search-text {
-    /* letter-spacing: -0.05em;
-    font-weight: bold;
-    text-align: center; /* Centre le texte 
-    font-size: 40px;
-    margin-bottom: 15px; /* Espace entre le texte et l'input 
-    line-height: 1.5;  Hauteur de ligne pour un espacement entre les lignes 
-    color: rgb(255, 205, 41); Couleur du texte */
     font-family: Anton;
-font-size: 44px;
-font-weight: 400;
-line-height: 66.24px;
-text-align: center;
-color: #FFD15B;
-
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 66.24px;
+    text-align: center;
+    color: #FFD15B;
 }
-
-/* ==================================================== */
-
 
 .search-button .fa-stack {
-    font-size: 35px; /* Ajustez la taille selon vos besoins */
+    font-size: 35px;
+    /* Ajustez la taille selon vos besoins */
 }
-
-/*====================================================*/
-/* .search-container {
-    position: relative;
-    width: 80%;
-    /* width:300px; */
-/* } */
-
-/* .search-input {
-    width: 100%;
-    padding: 10px 40px 10px 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-}
-
-.search-button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    color: #555;
-}
-
-.search-button i {
-    pointer-events: none; /* Désactive le clic sur l'icône */
-/* } */
- /* #partieImage img {
-    /* width: 1000px;
-    height: 500px; */
-    /* width: 1440px;
-height: 960px;
-top: -214px;
-gap: 0px;
-opacity: 0px;
-
- } */ 
 
 /* 
 ==========================================================================================================================================================
@@ -157,43 +119,39 @@ select {
     margin-bottom: 0px;
     font-weight: bold;
 }
-#partieSelect{
+
+#partieSelect {
     display: grid;
     grid-template-columns: 21% 21% 21% 32%;
-   padding-top: 23px;
-   margin-bottom: 4%;
-   margin-left: 96px;
+    padding-top: 23px;
+    margin-bottom: 4%;
+    margin-left: 96px;
 }
-#ingredients{
+
+#ingredients {
     grid-column-start: 1;
     grid-row-start: 1;
 }
-#appareils{
+
+#appareils {
     grid-column-start: 2;
     grid-row-start: 1;
 }
-#ustensiles{
+
+#ustensiles {
     grid-column-start: 3;
     grid-row-start: 1;
 }
-#nbRecettes{
+
+#nbRecettes {
     grid-column-start: 4;
     grid-row-start: 1;
     text-align: right;
     padding-top: 3%;
     font-weight: bold;
-
 }
-/* A partir d'icic'est le code que j'ai intégré ========================================================== */
 
-
-
-
-
-
-
-
-#containerSelect{
+#containerSelect {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     width: 90%;
@@ -204,36 +162,37 @@ select {
     background-color: brown;
     border-radius: 11px;
     border: 3px solid black;
-    
+
 }
-    #ingredients{
-        padding-left: 4%;
-        background-color: white;
-        padding-top: 3%;
-        margin-left: 4%;
-        /* height: 33px; */
-        height: auto;
-        width: 75%;
-        border-radius: 11px;
-        z-index: 1;
-       
-    }
-    #appareils{
-        padding-left: 3%;
-        background-color: red;
-        padding-top: 3%;
-        height: 44px;
-        width: 53%;
-        border-radius: 11px;
-    }
-    #ustensiles{
-        padding-left: 3%;
-        background-color: yellow;
-        padding-top: 3%;
-        height: 44px;
-        width: 53%;
-        border-radius: 11px;  
-    }
+
+#ingredients {
+    padding-left: 4%;
+    background-color: white;
+    padding-top: 3%;
+    margin-left: 4%;
+    height: auto;
+    width: 75%;
+    border-radius: 11px;
+    z-index: 1;
+}
+
+#appareils {
+    padding-left: 3%;
+    background-color: red;
+    padding-top: 3%;
+    height: 44px;
+    width: 53%;
+    border-radius: 11px;
+}
+
+#ustensiles {
+    padding-left: 3%;
+    background-color: yellow;
+    padding-top: 3%;
+    height: 44px;
+    width: 53%;
+    border-radius: 11px;
+}
 
 
 #dropdown-list {
@@ -248,28 +207,35 @@ select {
     border-bottom-left-radius: 11px;
     border-bottom-right-radius: 11px;
 }
+
 /* Cacher les puces des éléments <li>*/
 ul {
-    list-style-type: none; /* Supprime les puces des <li> */
- } 
- .dropdown-item {
-    list-style-type: none; /* Supprime la puce des éléments <li> */
+    list-style-type: none;
+    /* Supprime les puces des <li> */
+}
+
+.dropdown-item {
+    list-style-type: none;
+    /* Supprime la puce des éléments <li> */
     padding: 8px;
-    margin-left:7px;
+    margin-left: 7px;
     cursor: pointer;
 }
+
 /* Couleur de fond jaune au survol d'un <li> */
 .dropdown-item:hover {
-    background-color:#FFD15B; /* Fond jaune au survol */
- } 
+    background-color: #FFD15B;
+    /* Fond jaune au survol */
+}
 
 /* Cacher les listes déroulantes au départ */
 .hidden {
     display: none;
 }
-#ingredients-list{
-    padding:0;
-    margin:0;
+
+#ingredients-list {
+    padding: 0;
+    margin: 0;
 }
 
 .ingredients-dropdown {
@@ -280,18 +246,19 @@ ul {
     font-family: arial;
     /* font-weight: bold; */
 }
-#chevron{
-    color:black;
-    margin-left:63px; 
+
+#chevron {
+    color: black;
+    margin-left: 63px;
 }
 
-#dropdown-list{
-    background-color:white ;
-    border:none;
+#dropdown-list {
+    background-color: white;
+    border: none;
 }
 
-#jeSuisUnInput{
-    margin-left: 6px;
+#jeSuisUnInput {
+    margin-left: -4px;
     margin-top: 10px;
     width: 63%;
     border: 1px solid grey;
@@ -300,11 +267,9 @@ ul {
     height: 33px;
     padding-left: 8px;
 }
-
-
 /* ========================================================================================================================== */
- /* Styles pour que le bouton soit à l'intérieur de l'input */
- .input-container {
+/* Styles pour que le bouton soit à l'intérieur de l'input */
+.input-container {
     position: relative;
     width: 250px;
 }
@@ -323,7 +288,7 @@ button {
     border: none;
     cursor: pointer;
     padding: 5px;
-    margin-right: 45px;
+    margin-right: 57px;
     margin-top: 10px;
     color: grey;
 }
@@ -331,8 +296,6 @@ button {
 #dropdown-list {
     margin-top: 0px;
 }
-
-
 
 .result {
     margin-top: 20px;
@@ -343,7 +306,7 @@ button {
     font-weight: bold;
     font-family: arial;
     background-color: #FFD15B;
-    border-radius:11px;
+    border-radius: 11px;
 }
 
 .result .close {
@@ -352,16 +315,15 @@ button {
     right: 16px;
     cursor: pointer;
 }
-
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE RECETTES
 ==========================================================================================================================================================
 */
-
 .section-image {
     position: relative;
-    width: 100%; /* S'ajuste à la taille du conteneur */
+    width: 100%;
+    /* S'ajuste à la taille du conteneur */
 }
 
 .section-image img {
@@ -375,97 +337,88 @@ button {
 
 .text-content {
     position: absolute;
-    top: 10px; /* Ajustez selon votre besoin */
-    right: 10px; /* Ajustez selon votre besoin */
+    top: 10px;
+    /* Ajustez selon votre besoin */
+    right: 10px;
+    /* Ajustez selon votre besoin */
     background-color: rgb(255, 205, 41);
     color: black;
-    padding: 5px 10px; /* Ajoute de l'espace autour du texte */
-    border-radius: 10px; /* Arrondit les coins */
-    font-size: 14px; /* Taille de la police */
-    font-weight: bold; /* Rend le texte en gras */
-    z-index: 1; /* Assure que le texte reste au-dessus de l'image */
+    padding: 5px 10px;
+    /* Ajoute de l'espace autour du texte */
+    border-radius: 10px;
+    /* Arrondit les coins */
+    font-size: 14px;
+    /* Taille de la police */
+    font-weight: bold;
+    /* Rend le texte en gras */
+    z-index: 1;
+    /* Assure que le texte reste au-dessus de l'image */
 }
 
-#partieRecettes{
+#partieRecettes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-left:8%;
-    margin-right:2%;
-    margin-top:2%; 
+    margin-left: 8%;
+    margin-right: 2%;
+    margin-top: 2%;
 }
-/* .card img{
-    width: 100%;
-    height: 250px; 
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    object-fit: cover;
-} */
-.card{
-    margin-right:10%;
+
+.card {
+    margin-right: 10%;
     background-color: white;
     border-radius: 24px;
     margin-bottom: 17%;
     padding-bottom: 11%;
 }
 
-/* ============================= */
-
-
-
-/* Styles pour la section recettes */
-/* .section-recettes h2,
-.section-recettes h3, */
 /* c'est le titre de la recette */
-.section-recettes h3{  
-    margin-left: 5%; /* Applique une marge de 5% */  
+.section-recettes h3 {
+    margin-left: 5%;
+    /* Applique une marge de 5% */
 }
-.section-recettes h4
- {
-    margin-left: 5%; /* Applique une marge de 5% */
+
+.section-recettes h4 {
+    margin-left: 5%;
+    /* Applique une marge de 5% */
     color: #7A7A7A;
     ;
 }
 
-/* Styles pour la section ingrédients
-.section-ingredients h3,
-.section-ingredients h4 {
-    margin: 5%; /* Applique une marge de 5% */
-    /* font-size: medium; */
-
-
-.presentationDiv{
+.presentationDiv {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left: 3%;
 }
-.section-recettes p{
+
+.section-recettes p {
     font-size: small;
     margin-left: 5%;
-    margin-right:5%;
+    margin-right: 5%;
 }
-.section-recettes h5{
-    margin:0;
-    padding:0;
-    margin-left: 5%; /* Applique une marge de 5% */ 
-    color: #7A7A7A;
-    
-}
-/* .ingredient-container h5{
-    /* margin-bottom:0;
-    padding:0; *
-} */
-.titleIngredient{
-margin-bottom: 0;
-margin-left:5%;
-/* color:#E6E6E6; */
-}
-.titleQuantity{
+
+.section-recettes h5 {
     margin: 0;
-    margin-left:5%;
+    padding: 0;
+    margin-left: 5%;
+    /* Applique une marge de 5% */
+    color: #7A7A7A;
+
+}
+
+.titleIngredient {
+    margin-bottom: 0;
+    margin-left: 5%;
+    /* color:#E6E6E6; */
+}
+
+.titleQuantity {
+    margin: 0;
+    margin-left: 5%;
     color: #7A7A7A;
 }
-.ingredients{
+
+.ingredients {
     margin-bottom: 0;
-    margin-left:5%;
+    margin-left: 5%;
     color: #7A7A7A;
 }
