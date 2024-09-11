@@ -291,9 +291,9 @@ ul {
  } 
 
 /* Couleur de fond jaune au survol d'un <li> */
-/* .dropdown-item:hover {
+.dropdown-item:hover {
     background-color:#FFD15B; /* Fond jaune au survol */
-/* } */ 
+ } 
 
 /* Cacher les listes déroulantes au départ */
 .hidden {
