@@ -285,6 +285,10 @@ select {
     height: 33px;
     padding-left: 8px;
 }
+.hidden {
+    display: none;
+}
+
 
 /* ========================================================================================================================== */
  /* Styles pour que le bouton soit à l'intérieur de l'input */

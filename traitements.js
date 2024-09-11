@@ -45,138 +45,109 @@ searchInput.addEventListener('keydown', function(event) {
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
 
-// const ingredientsSelect = document.getElementById('ingredients');
-// ingredientsSelect.addEventListener('change', function() {
-// ingredients=ingredientsSelect.value;// console.log(ingredientsSelect.value);
-// console.log(ingredients);
-// });
-// Récupération de l'élément selectionnée via des écouteurs d'événements.
-const appareilsSelect = document.getElementById('appareils');
-appareilsSelect.addEventListener('change', function() {
-appareils=appareilsSelect.value;// console.log(appareilsSelect.value);
-console.log(appareils);
-});
+// Fonction pour alimenter les listes déroulantes avec les données du tableau recipes
+function alimenterListesDeroulantes() {
+    // Utilisation de Set pour éviter les doublons
+    const ingredientsSet = new Set();
+    const appareilsSet = new Set();
+    const ustensilesSet = new Set();
 
-const ustensilesSelect = document.getElementById('ustensiles');
-// Ajout d'un événement qui se déclenche lors d'une modification de la sélection
-ustensilesSelect.addEventListener('change', function() {
-// Affichage de la valeur sélectionnée dans la console : console.log(ustensilesSelect.value);
-ustensiles=ustensilesSelect.value;
-console.log(ustensiles);
-});
-
-//======================================================= A partir d'ici nouveau code intégré ======================================================
-const chevron = document.getElementById('chevron');
-const dropdownList = document.getElementById('dropdown-list');
-const items = document.querySelectorAll('.dropdown-item');
-
-// Événement pour le clic sur le chevron
-chevron.addEventListener('click', function() {
-    // Toggle la liste déroulante
-    dropdownList.classList.toggle('hidden');
-    
-    // Remplacer le chevron bas par le chevron haut et inversement
-    if (chevron.classList.contains('fa-chevron-down')) {
-        chevron.classList.remove('fa-chevron-down');
-        chevron.classList.add('fa-chevron-up');
-    } else {
-        chevron.classList.remove('fa-chevron-up');
-        chevron.classList.add('fa-chevron-down');
+    // Vérification que le tableau recipes est défini et non vide
+    if (!Array.isArray(recipes) || recipes.length === 0) {
+        console.error("Le tableau recipes est vide ou non défini.");
+        return;
     }
-});
 
-// Événement pour chaque item de la liste
-items.forEach(item => {
-    item.addEventListener('click', function() {
-        console.log(item.textContent);  // Afficher l'item sélectionné dans la console
-        dropdownList.classList.add('hidden'); // Cacher la liste après la sélection
-        chevron.classList.remove('fa-chevron-up'); // Remettre le chevron bas
-        chevron.classList.add('fa-chevron-down');
+    // Parcourir chaque recette dans le tableau recipes
+    recipes.forEach(recipe => {
+        // Ajouter chaque ingrédient du tableau dans le Set ingredientsSet
+        recipe.ingredients.forEach(ingredient => {
+            ingredientsSet.add(ingredient.ingredient);
+        });
+
+        // Ajouter chaque appareil dans le Set appareilsSet
+        appareilsSet.add(recipe.appliance);
+
+        // Ajouter chaque ustensile du tableau dans le Set ustensilesSet
+        recipe.ustensils.forEach(ustensile => {
+            ustensilesSet.add(ustensile);
+        });
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const input = document.getElementById('jeSuisUnInput');
-    const searchButton = document.getElementById('search-button');
-    const dropdownItems = document.querySelectorAll('.dropdown-item');
-    const resultContainer = document.getElementById('result-container');
+    // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
+    function ajouterItemsDansListe(listeElement, itemsSet) {
+        // Vider la liste avant de l'alimenter
+        listeElement.innerHTML = '';
 
-    // Fonction pour chercher les 3 premiers caractères dans la liste des items
-    function searchItems() {
-        const inputValue = input.value.toLowerCase().trim();
-        let found = false;
-
-        if (inputValue.length >= 3) {
-            // Parcourir les items de la liste déroulante
-            for (let i = 0; i < dropdownItems.length; i++) {
-                const itemValue = dropdownItems[i].textContent.toLowerCase();
-                if (itemValue.startsWith(inputValue)) {
-                    showResult(`Vous avez sélectionné : ${itemValue}`);
-              
-                    found = true;
-                    break;
-            
-                }
-            //     closeButton.textContent = 'X';
-            // closeButton.className = 'close';
-            }
-
-            if (!found) {
-                showResult("J'ai pas trouvé, veuillez resaisir le mot clé", true);
-            }
-        }
+        // Ajouter chaque item du Set comme un élément <li> dans la liste
+        itemsSet.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            li.classList.add('dropdown-item'); // Ajout de la classe 'dropdown-item'
+            listeElement.appendChild(li); // Insertion de l'élément dans la liste
+        });
     }
 
-    // Fonction pour afficher le résultat ou le message d'erreur
-    function showResult(text, isError = false) {
-        resultContainer.innerHTML = '';  // Vider le conteneur
-        const resultDiv = document.createElement('div');
-        resultDiv.className = 'result';
-        resultDiv.textContent = text;
-        const closeButton = document.createElement('span');
-            closeButton.textContent = 'X';
-            closeButton.className = 'close'; closeButton.onclick = function() {
-                resultContainer.innerHTML = '';  // Fermer la div
-                effacerInput();//j'ai mis ici effacer le input 
-            };
-            resultDiv.appendChild(closeButton);
+    // Sélectionner les éléments <ul> dans le DOM
+    const ingredientsListe = document.getElementById('ingredients-list');
+    const appareilsListe = document.getElementById('appareils-list');
+    const ustensilesListe = document.getElementById('ustensiles-list');
 
-        // Si c'est une erreur, ajouter le bouton de fermeture
-        if (isError) {
-            const closeButton = document.createElement('span');
-            closeButton.textContent = 'X';
-            closeButton.className = 'close';
-            closeButton.onclick = function() {
-                resultContainer.innerHTML = '';  // Fermer la div
-                effacerInput();//j'ai mis ici effacer le input 
-            };
-            resultDiv.appendChild(closeButton);
-          
-        }
-
-        resultContainer.appendChild(resultDiv);
-    }
-
-    // Événement de clic sur le bouton de recherche
-    searchButton.addEventListener('click', searchItems);
-
-    // Événement pour la touche "Entrée" sur l'input
-    input.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            searchItems();
-        }
-    });
-});
-
-
-function effacerInput(){
-const monInput=document.getElementById("jeSuisUnInput");
-console.log("J'affiche la valeur de l'element : "+monInput);          // Affiche l'élément input
-    console.log("J'affiche la valeur actuelle de l'input : "+monInput.value);    // Affiche la valeur actuelle de l'input
-    monInput.value = "";            // Efface le contenu de l'input
+    // Alimenter les listes avec les éléments correspondants
+    ajouterItemsDansListe(ingredientsListe, ingredientsSet);
+    ajouterItemsDansListe(appareilsListe, appareilsSet);
+    ajouterItemsDansListe(ustensilesListe, ustensilesSet);
 }
-// effacerInput();
-//========================================================= FIN DU NOUVEAU CODE INTEGRE ============================================================
+
+// Fonction pour gérer l'ouverture/fermeture des listes déroulantes et changer l'icône du chevron
+function gererChevronDynamique() {
+    // Récupérer les éléments containers et chevrons
+    const ingredientsContainer = document.getElementById('ingredients-container');
+    const appareilsContainer = document.getElementById('appareils-container');
+    const ustensilesContainer = document.getElementById('ustensiles-container');
+
+    const ingredientsChevron = document.querySelector('#ingredients-container i');
+    const appareilsChevron = document.querySelector('#appareils-container i');
+    const ustensilesChevron = document.querySelector('#ustensiles-container i');
+
+    const ingredientsListe = document.getElementById('ingredients-list');
+    const appareilsListe = document.getElementById('appareils-list');
+    const ustensilesListe = document.getElementById('ustensiles-list');
+
+    // Fonction pour basculer l'affichage et changer le chevron
+    function toggleDropdown(container, list, chevron) {
+        list.classList.toggle('hidden'); // Affiche ou cache la liste
+
+        // Change l'icône du chevron selon l'état de la liste (ouverte ou fermée)
+        if (list.classList.contains('hidden')) {
+            chevron.classList.remove('fa-chevron-up');
+            chevron.classList.add('fa-chevron-down');
+        } else {
+            chevron.classList.remove('fa-chevron-down');
+            chevron.classList.add('fa-chevron-up');
+        }
+    }
+
+    // Ajouter des événements click sur chaque container pour ouvrir/fermer les listes
+    ingredientsContainer.addEventListener('click', () => {
+        toggleDropdown(ingredientsContainer, ingredientsListe, ingredientsChevron);
+    });
+
+    appareilsContainer.addEventListener('click', () => {
+        toggleDropdown(appareilsContainer, appareilsListe, appareilsChevron);
+    });
+
+    ustensilesContainer.addEventListener('click', () => {
+        toggleDropdown(ustensilesContainer, ustensilesListe, ustensilesChevron);
+    });
+}
+
+// Appel des fonctions lorsque le DOM est chargé
+document.addEventListener('DOMContentLoaded', () => {
+    alimenterListesDeroulantes(); // Alimenter les listes avec les données
+    gererChevronDynamique(); // Ajouter le comportement des chevrons
+});
+
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
