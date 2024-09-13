@@ -82,53 +82,6 @@ function alimenterListesDeroulantes() {
     ajouterItemsDansListe(ustensilesListe, ustensilesSet);
 }
 
-// // Fonction pour gérer l'affichage de la liste déroulante avec le chevron
-// function toggleDropdownIngredients() {
-//     const chevron = document.querySelector('#chevron');
-//     const ingredientsContent = document.querySelector('#ingredients-content');
-
-//     // Vérifie si l'élément est caché ou non
-//     if (ingredientsContent.classList.contains('hidden')) {
-//         ingredientsContent.classList.remove('hidden'); // Affiche le contenu
-//         chevron.classList.remove('fa-chevron-down');
-//         chevron.classList.add('fa-chevron-up');
-//     } else {
-//         ingredientsContent.classList.add('hidden'); // Cache le contenu
-//         chevron.classList.remove('fa-chevron-up');
-//         chevron.classList.add('fa-chevron-down');
-//     }
-
-// }
-
-// function toggleDropdownAppareils() {
-//     const chevron = document.querySelector('#chevron');
-//     const appareilsContent= document.querySelector("#appareils");
-//      // Vérifie si l'élément est caché ou non
-//     if (appareilsContent.classList.contains('hidden')) {
-//         appareilsContent.classList.remove('hidden'); // Affiche le contenu
-//         chevron.classList.remove('fa-chevron-down');
-//         chevron.classList.add('fa-chevron-up');
-//     } else {
-//         appareilsContent.classList.add('hidden'); // Cache le contenu
-//         chevron.classList.remove('fa-chevron-up');
-//         chevron.classList.add('fa-chevron-down');
-//     }
-// }
-// function toggleDropdownUstensiles() {
-//     const chevron = document.querySelector('#chevron');
-//     const ustensilesContent= document.querySelector("#ustensiles");
-//     // Vérifie si l'élément est caché ou non
-//     if (ustensilesContent.classList.contains('hidden')) {
-//         ustensilesContent.classList.remove('hidden'); // Affiche le contenu
-//         chevron.classList.remove('fa-chevron-down');
-//         chevron.classList.add('fa-chevron-up');
-//     } else {
-//         ustensilesContent.classList.add('hidden'); // Cache le contenu
-//         chevron.classList.remove('fa-chevron-up');
-//         chevron.classList.add('fa-chevron-down');
-//     }
-// }
-
 // Fonction générique pour gérer l'affichage des listes déroulantes et des chevrons
 function toggleDropdown(contentId, chevronId) {
     const chevron = document.getElementById(chevronId);
@@ -145,8 +98,6 @@ function toggleDropdown(contentId, chevronId) {
         chevron.classList.add('fa-chevron-down');
     }
 }
-// // Attacher l'événement de clic au chevron
-// document.querySelector('#chevron').addEventListener('click', toggleDropdownIngredients);
 // Attacher l'événement de clic à chaque chevron
 document.getElementById('ingredients-container').addEventListener('click', function () {
     toggleDropdown('ingredients-content', 'ingredients-chevron');
@@ -159,9 +110,6 @@ document.getElementById('appareils-container').addEventListener('click', functio
 document.getElementById('ustensiles-container').addEventListener('click', function () {
     toggleDropdown('ustensiles-list', 'ustensiles-chevron');
 });
-
-
-//============================================================ NOUVEAU CODE =====================================================
 
 //===============================================================================================================================
 // Fonction pour alimenter la liste des ingrédients
@@ -274,36 +222,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     nbRecettesSpan.textContent = `${compteur} recettes`;
 }
 
-function alimenterIngredients() {
-    const ingredientsSet = new Set(); // Utiliser un Set pour éviter les doublons
-    // Vérifier que le tableau recipes est bien défini et non vide
-    if (!Array.isArray(recipes) || recipes.length === 0) {
-        console.error("Le tableau recipes est vide ou non défini");
-        return;
-    }
-    // Parcourir les recettes et remplir le set d'ingrédients
-    recipes.forEach(recipe => {
-        if (Array.isArray(recipe.ingredients)) {
-            recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
-        } else {
-            console.warn(`Ingrédients non définis pour la recette : ${recipe.name}`);
-        }
-    });
-    // Récupérer l'élément <ul> par son ID
-    const dropdownList = document.getElementById('dropdown-list');
-    // Vider la liste existante, sauf les éléments fixes comme le champ de recherche
-    const inputContainer = document.querySelector('.input-container'); // Sélectionner le conteneur de l'input
-    dropdownList.innerHTML = ''; // Tout vider
-    dropdownList.appendChild(inputContainer); // Réinsérer l'input container
-    // Parcourir chaque ingrédient et créer un <li> dans le <ul>
-    ingredientsSet.forEach(ingredient => {
-        const li = document.createElement('li');
-        console.log("je suis passé par là");
-        li.classList.add('dropdown-item'); // Ajoute la classe CSS pour les items
-        li.textContent = ingredient; // Ajouter le nom de l'ingrédient comme texte
-        dropdownList.appendChild(li); // Ajouter chaque <li> dans la liste
-    });
-}
+
 //=====================================================================================================================================================
 //====================================================== APPELS DE FONCTIONS ==========================================================================
 //=====================================================================================================================================================

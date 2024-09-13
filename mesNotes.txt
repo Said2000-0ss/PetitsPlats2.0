@@ -213,3 +213,34 @@
 // document.addEventListener('DOMContentLoaded', () => {
 //     alimenterListesDeroulantes(); // Alimenter les listes avec les données
 // });
+
+function alimenterIngredients() {
+//     const ingredientsSet = new Set(); // Utiliser un Set pour éviter les doublons
+//     // Vérifier que le tableau recipes est bien défini et non vide
+//     if (!Array.isArray(recipes) || recipes.length === 0) {
+//         console.error("Le tableau recipes est vide ou non défini");
+//         return;
+//     }
+//     // Parcourir les recettes et remplir le set d'ingrédients
+//     recipes.forEach(recipe => {
+//         if (Array.isArray(recipe.ingredients)) {
+//             recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
+//         } else {
+//             console.warn(`Ingrédients non définis pour la recette : ${recipe.name}`);
+//         }
+//     });
+//     // Récupérer l'élément <ul> par son ID
+//     const dropdownList = document.getElementById('dropdown-list');
+//     // Vider la liste existante, sauf les éléments fixes comme le champ de recherche
+//     const inputContainer = document.querySelector('.input-container'); // Sélectionner le conteneur de l'input
+//     dropdownList.innerHTML = ''; // Tout vider
+//     dropdownList.appendChild(inputContainer); // Réinsérer l'input container
+//     // Parcourir chaque ingrédient et créer un <li> dans le <ul>
+//     ingredientsSet.forEach(ingredient => {
+//         const li = document.createElement('li');
+//         console.log("je suis passé par là");
+//         li.classList.add('dropdown-item'); // Ajoute la classe CSS pour les items
+//         li.textContent = ingredient; // Ajouter le nom de l'ingrédient comme texte
+//         dropdownList.appendChild(li); // Ajouter chaque <li> dans la liste
+//     });
+// }

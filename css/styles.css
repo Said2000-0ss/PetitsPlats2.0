@@ -137,10 +137,28 @@ select {
     grid-column-start: 2;
     grid-row-start: 1;
 }
+#appareils-list {
+    background-color: red;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    width: 104%;
+    margin-left: -4%;
+    padding-left: 0;
+   
+}
 
 #ustensiles {
     grid-column-start: 3;
     grid-row-start: 1;
+}
+
+#ustensiles-list {
+    background-color: yellow;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    width: 104%;
+    margin-left: -4%;
+    padding-left: 0;
 }
 
 #nbRecettes {
@@ -170,7 +188,7 @@ select {
     background-color: white;
     padding-top: 3%;
     margin-left: 4%;
-    height: auto;
+    /* height: auto; */
     width: 75%;
     border-radius: 11px;
     z-index: 1;
@@ -184,6 +202,7 @@ select {
     height: 44px;
     width: 75%;
     border-radius: 11px;
+    z-index: 111;
 }
 .appareils-dropdown{
     display: flex;
@@ -200,6 +219,7 @@ select {
     height: 44px;
     width: 75%;
     border-radius: 11px;
+     z-index: 111;
 }
 .ustensiles-dropdown{
     display:flex;
