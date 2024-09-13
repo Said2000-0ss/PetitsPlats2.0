@@ -10,6 +10,7 @@ const searchButton = document.getElementById('searchButton');
 //MES VARIABLES PARTIE SELECT
 let ingredientClike="";
 let appareilClike="";
+let ustensilesClike=""; 
 //MES VARIABLES PARTIE RECETTES
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
@@ -156,6 +157,19 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Vous avez cliqué sur :", clickedText);
              appareilClike =clickedText;
              console.log(appareilClike);
+        }
+    });
+});
+// Sélectionner tous les éléments li dans la liste avec l'id "ustensiles-list"
+document.addEventListener('DOMContentLoaded', function() {
+    const ustensilsList = document.getElementById('ustensiles-list');
+
+    ustensilsList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+            const clickedText = event.target.textContent;
+            console.log("Vous avez cliqué sur :", clickedText);
+            ustensilesClike=clickedText;
+             console.log(ustensilesClike);
         }
     });
 });
