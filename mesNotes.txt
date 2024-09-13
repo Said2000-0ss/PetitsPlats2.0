@@ -14,10 +14,6 @@
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++ Fonctions permettant d'alimenter les differents selects ++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-
-
-
 // function alimenterSelects() {
 //     const ustensilesSet = new Set();   // Utiliser un Set pour éviter les doublons
 //     const ingredientsSet = new Set();
@@ -148,3 +144,72 @@
   
 //   // Appel de la fonction après le chargement du DOM
 //   document.addEventListener('DOMContentLoaded', alimenterSelects);
+
+// // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
+// function ajouterItemsDansListe(listeElement, itemsSet) {
+//     // Vider la liste avant de l'alimenter
+//     listeElement.innerHTML = '';
+//     // Ajouter chaque item du Set comme un élément <li> dans la liste
+//     itemsSet.forEach(item => {
+//         const li = document.createElement('li');
+//         li.textContent = item;
+//         li.classList.add('dropdown-item'); // Ajout de la classe 'dropdown-item'
+//         listeElement.appendChild(li); // Insertion de l'élément dans la liste
+//     });
+// }
+
+// // Fonction pour alimenter les menus déroulants
+// function alimenterListesDeroulantes() {
+//     // Utilisation de Set pour éviter les doublons
+//     const ingredientsSet = new Set();
+//     const appareilsSet = new Set();
+//     const ustensilesSet = new Set();
+
+//     recipes.forEach(recipe => {
+//         recipe.ingredients.forEach(ingredient => ingredientsSet.add(ingredient.ingredient));
+//         appareilsSet.add(recipe.appliance);
+//         recipe.ustensils.forEach(ustensile => ustensilesSet.add(ustensile));
+//     });
+
+//     const ingredientsListe = document.getElementById('ingredients-list');
+//     const appareilsListe = document.getElementById('appareils-list');
+//     const ustensilesListe = document.getElementById('ustensiles-list');
+
+//     ajouterItemsDansListe(ingredientsListe, ingredientsSet);
+//     ajouterItemsDansListe(appareilsListe, appareilsSet);
+//     ajouterItemsDansListe(ustensilesListe, ustensilesSet);
+// }
+
+// // Fonction pour gérer l'affichage de la liste déroulante avec le chevron
+// function toggleDropdown(chevronSelector, contentSelector) {
+//     const chevron = document.querySelector(chevronSelector);
+//     const content = document.querySelector(contentSelector);
+
+//     if (content.classList.contains('hidden')) {
+//         content.classList.remove('hidden'); // Affiche le contenu
+//         chevron.classList.remove('fa-chevron-down');
+//         chevron.classList.add('fa-chevron-up');
+//     } else {
+//         content.classList.add('hidden'); // Cache le contenu
+//         chevron.classList.remove('fa-chevron-up');
+//         chevron.classList.add('fa-chevron-down');
+//     }
+// }
+
+// // Attacher les événements de clic pour chaque chevron
+// document.querySelector('#chevron-ingredients').addEventListener('click', () => {
+//     toggleDropdown('#chevron-ingredients', '#ingredients-content');
+// });
+
+// document.querySelector('#chevron-appareils').addEventListener('click', () => {
+//     toggleDropdown('#chevron-appareils', '#appareils-content');
+// });
+
+// document.querySelector('#chevron-ustensiles').addEventListener('click', () => {
+//     toggleDropdown('#chevron-ustensiles', '#ustensiles-content');
+// });
+
+// // Appel des fonctions lorsque le DOM est chargé
+// document.addEventListener('DOMContentLoaded', () => {
+//     alimenterListesDeroulantes(); // Alimenter les listes avec les données
+// });

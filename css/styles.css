@@ -177,12 +177,20 @@ select {
 }
 
 #appareils {
+   
     padding-left: 3%;
     background-color: red;
     padding-top: 3%;
     height: 44px;
-    width: 53%;
+    width: 75%;
     border-radius: 11px;
+}
+.appareils-dropdown{
+    display: flex;
+    align-items: center;
+    font-family: arial;
+    font-size: larger;
+    
 }
 
 #ustensiles {
@@ -190,8 +198,14 @@ select {
     background-color: yellow;
     padding-top: 3%;
     height: 44px;
-    width: 53%;
+    width: 75%;
     border-radius: 11px;
+}
+.ustensiles-dropdown{
+    display:flex;
+    align-items: center;
+    font-family: arial;
+    font-size: larger;
 }
 
 
@@ -247,7 +261,7 @@ ul {
     /* font-weight: bold; */
 }
 
-#chevron {
+#ingredients-chevron,#appareils-chevron,#ustensiles-chevron {
     color: black;
     margin-left: 63px;
 }
@@ -267,6 +281,8 @@ ul {
     height: 33px;
     padding-left: 8px;
 }
+
+
 /* ========================================================================================================================== */
 /* Styles pour que le bouton soit à l'intérieur de l'input */
 .input-container {
@@ -404,6 +420,7 @@ button {
     color: #7A7A7A;
 
 }
+
 
 .titleIngredient {
     margin-bottom: 0;

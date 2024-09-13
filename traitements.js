@@ -82,25 +82,88 @@ function alimenterListesDeroulantes() {
     ajouterItemsDansListe(ustensilesListe, ustensilesSet);
 }
 
-// Fonction pour gérer l'affichage de la liste déroulante avec le chevron
-function toggleDropdown() {
-    const chevron = document.querySelector('#chevron');
-    const ingredientsContent = document.querySelector('#ingredients-content');
+// // Fonction pour gérer l'affichage de la liste déroulante avec le chevron
+// function toggleDropdownIngredients() {
+//     const chevron = document.querySelector('#chevron');
+//     const ingredientsContent = document.querySelector('#ingredients-content');
+
+//     // Vérifie si l'élément est caché ou non
+//     if (ingredientsContent.classList.contains('hidden')) {
+//         ingredientsContent.classList.remove('hidden'); // Affiche le contenu
+//         chevron.classList.remove('fa-chevron-down');
+//         chevron.classList.add('fa-chevron-up');
+//     } else {
+//         ingredientsContent.classList.add('hidden'); // Cache le contenu
+//         chevron.classList.remove('fa-chevron-up');
+//         chevron.classList.add('fa-chevron-down');
+//     }
+
+// }
+
+// function toggleDropdownAppareils() {
+//     const chevron = document.querySelector('#chevron');
+//     const appareilsContent= document.querySelector("#appareils");
+//      // Vérifie si l'élément est caché ou non
+//     if (appareilsContent.classList.contains('hidden')) {
+//         appareilsContent.classList.remove('hidden'); // Affiche le contenu
+//         chevron.classList.remove('fa-chevron-down');
+//         chevron.classList.add('fa-chevron-up');
+//     } else {
+//         appareilsContent.classList.add('hidden'); // Cache le contenu
+//         chevron.classList.remove('fa-chevron-up');
+//         chevron.classList.add('fa-chevron-down');
+//     }
+// }
+// function toggleDropdownUstensiles() {
+//     const chevron = document.querySelector('#chevron');
+//     const ustensilesContent= document.querySelector("#ustensiles");
+//     // Vérifie si l'élément est caché ou non
+//     if (ustensilesContent.classList.contains('hidden')) {
+//         ustensilesContent.classList.remove('hidden'); // Affiche le contenu
+//         chevron.classList.remove('fa-chevron-down');
+//         chevron.classList.add('fa-chevron-up');
+//     } else {
+//         ustensilesContent.classList.add('hidden'); // Cache le contenu
+//         chevron.classList.remove('fa-chevron-up');
+//         chevron.classList.add('fa-chevron-down');
+//     }
+// }
+
+// Fonction générique pour gérer l'affichage des listes déroulantes et des chevrons
+function toggleDropdown(contentId, chevronId) {
+    const chevron = document.getElementById(chevronId);
+    const content = document.getElementById(contentId);
 
     // Vérifie si l'élément est caché ou non
-    if (ingredientsContent.classList.contains('hidden')) {
-        ingredientsContent.classList.remove('hidden'); // Affiche le contenu
+    if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden'); // Affiche le contenu
         chevron.classList.remove('fa-chevron-down');
         chevron.classList.add('fa-chevron-up');
     } else {
-        ingredientsContent.classList.add('hidden'); // Cache le contenu
+        content.classList.add('hidden'); // Cache le contenu
         chevron.classList.remove('fa-chevron-up');
         chevron.classList.add('fa-chevron-down');
     }
 }
+// // Attacher l'événement de clic au chevron
+// document.querySelector('#chevron').addEventListener('click', toggleDropdownIngredients);
+// Attacher l'événement de clic à chaque chevron
+document.getElementById('ingredients-container').addEventListener('click', function () {
+    toggleDropdown('ingredients-content', 'ingredients-chevron');
+});
 
-// Attacher l'événement de clic au chevron
-document.querySelector('#chevron').addEventListener('click', toggleDropdown);
+document.getElementById('appareils-container').addEventListener('click', function () {
+    toggleDropdown('appareils-list', 'appareils-chevron');
+});
+
+document.getElementById('ustensiles-container').addEventListener('click', function () {
+    toggleDropdown('ustensiles-list', 'ustensiles-chevron');
+});
+
+
+//============================================================ NOUVEAU CODE =====================================================
+
+//===============================================================================================================================
 // Fonction pour alimenter la liste des ingrédients
 function alimenterIngredientsListe() {
     const ingredientsList = document.querySelector('#ingredients-list');
@@ -235,6 +298,7 @@ function alimenterIngredients() {
     // Parcourir chaque ingrédient et créer un <li> dans le <ul>
     ingredientsSet.forEach(ingredient => {
         const li = document.createElement('li');
+        console.log("je suis passé par là");
         li.classList.add('dropdown-item'); // Ajoute la classe CSS pour les items
         li.textContent = ingredient; // Ajouter le nom de l'ingrédient comme texte
         dropdownList.appendChild(li); // Ajouter chaque <li> dans la liste
@@ -248,6 +312,6 @@ alimenterIngredientsListe();
 ParcourirTableauObjetsEnModeAffichageNavigateur();
 // Appel des fonctions lorsque le DOM est chargé
 document.addEventListener('DOMContentLoaded', () => {
-    alimenterIngredients(); // Appeler la fonction après le chargement du DOM
+    // alimenterIngredients(); // Appeler la fonction après le chargement du DOM
     alimenterListesDeroulantes(); // Alimenter les listes avec les données
 });
