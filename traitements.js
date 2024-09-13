@@ -9,6 +9,7 @@ const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 //MES VARIABLES PARTIE SELECT
 let ingredientClike="";
+let appareilClike="";
 //MES VARIABLES PARTIE RECETTES
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
@@ -142,6 +143,19 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Vous avez cliqué sur :", clickedText);
              ingredientClike =clickedText;
              console.log(ingredientClike);
+        }
+    });
+});
+// Sélectionner tous les éléments li dans la liste avec l'id "appareils-list"
+document.addEventListener('DOMContentLoaded', function() {
+    const appareilsList = document.getElementById('appareils-list');
+
+    appareilsList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+            const clickedText = event.target.textContent;
+            console.log("Vous avez cliqué sur :", clickedText);
+             appareilClike =clickedText;
+             console.log(appareilClike);
         }
     });
 });
