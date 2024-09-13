@@ -8,6 +8,7 @@ import { recipes } from './recipesTriple.js';
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 //MES VARIABLES PARTIE SELECT
+let ingredientClike="";
 //MES VARIABLES PARTIE RECETTES
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
@@ -130,6 +131,22 @@ function alimenterIngredientsListe() {
         ingredientsList.appendChild(li);
     });
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Sélectionner tous les éléments li dans la liste avec l'id "ingredients-list"
+document.addEventListener('DOMContentLoaded', function() {
+    const ingredientsList = document.getElementById('ingredients-list');
+
+    ingredientsList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+            const clickedText = event.target.textContent;
+            console.log("Vous avez cliqué sur :", clickedText);
+             ingredientClike =clickedText;
+             console.log(ingredientClike);
+        }
+    });
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE RECETTES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
@@ -221,7 +238,9 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     const nbRecettesSpan = document.getElementById('nbRecettes');
     nbRecettesSpan.textContent = `${compteur} recettes`;
 }
+//======================================================== c'est ici que je viens d'insérer le code ==================================================
 
+//======================================================== c'est ici que le code vient de s'arreter ===================================================
 
 //=====================================================================================================================================================
 //====================================================== APPELS DE FONCTIONS ==========================================================================

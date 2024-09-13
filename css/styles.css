@@ -110,6 +110,22 @@ body {
                                                                     PARTIE SELECT
 ==========================================================================================================================================================
 */
+
+/* Appliquer un style à la liste déroulante */
+ul {
+    list-style-type: none; /* Supprime les puces des <li> */
+    padding: 0; /* Supprime les marges internes */
+    margin: 0; /* Supprime les marges externes */
+    max-height: 200px; /* Limite la hauteur à environ 6 éléments */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si la liste dépasse 200px */
+    /* border: 1px solid #ccc; Ajoute une bordure pour plus de visibilité */
+}
+
+/* Style des éléments de liste
+li {
+    padding: 10px; /* Ajoute de l'espace autour du texte dans les <li> */
+   /* border-bottom: 1px solid #eee; /* Ajoute une bordure entre les éléments de liste */
+/* }  */
 select {
     margin-left: 37%;
     padding: 16px;
