@@ -1,21 +1,17 @@
-// Importer le tableau d'objets depuis recipes.js
-// const recipes = require('./recipes');// je récupere le tableau d'objets de la page recipes.js
-
 // import { recipes } from './recipes.js';
 import { recipes } from './recipesTriple.js';
 // import { recipes } from './recipesTest.js';
-
-// console.log(recipes);
 //=====================================================================================================================================================
 //============================================================ MES VARIABLES ==========================================================================
 //=====================================================================================================================================================
 //MES VARIABLES PARTIE IMAGE
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
 //MES VARIABLES PARTIE SELECT
-let ustensiles = "";
-let ingredients = "";
-let appareils = "";
+let ingredientClike="";
+let appareilClike="";
+let ustensilesClike=""; 
 //MES VARIABLES PARTIE RECETTES
-
 //=====================================================================================================================================================
 //============================================================ MES FONCTIONS ==========================================================================
 //=====================================================================================================================================================
@@ -23,8 +19,6 @@ let appareils = "";
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE IMAGES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
 // Fonction pour gérer la recherche
 function handleSearch() {
     const searchValue = searchInput.value;
@@ -41,147 +35,256 @@ searchInput.addEventListener('keydown', function (event) {
         handleSearch();
     }
 });
-function filtrerEtAfficherRecettes() {
-    // Récupérer les 3 selects
-    const selectIngredients = document.getElementById('ingredients');
-    const selectAppareils = document.getElementById('appareils');
-    const selectUstensiles = document.getElementById('ustensiles');
-    // Récupérer les valeurs sélectionnées
-    const ingredientChoisi = selectIngredients.value;
-    const appareilChoisi = selectAppareils.value;
-    const ustensileChoisi = selectUstensiles.value;
-    // Sélectionner la div où les cartes seront ajoutées
-    const targetDiv = document.getElementById('partieRecettes');
-    targetDiv.innerHTML = ''; // Effacer les anciennes cartes
-    // Initialiser un compteur pour les recettes
-    let compteur = 0;
-    // Parcourir le tableau des recettes (recipes)
-    for (let i = 0; i < recipes.length; i++) {
-        const recipe = recipes[i];
-        let recetteValide = true;
-        // Vérification des ingrédients
-        if (ingredientChoisi !== "") {
-            let ingredientTrouve = false;
-            for (let j = 0; j < recipe.ingredients.length; j++) {
-                if (recipe.ingredients[j].ingredient === ingredientChoisi) {
-                    ingredientTrouve = true;
-                    break;
-                }
-            }
-            if (!ingredientTrouve) {
-                recetteValide = false; // Invalide si l'ingrédient n'est pas trouvé
-            }
-        }
-        // Vérification de l'appareil
-        if (recetteValide && appareilChoisi !== "") {
-            if (recipe.appliance !== appareilChoisi) {
-                recetteValide = false; // Invalide si l'appareil ne correspond pas
-            }
-        }
-        // Vérification des ustensiles
-        if (recetteValide && ustensileChoisi !== "") {
-            let ustensileTrouve = false;
-            for (let k = 0; k < recipe.ustensils.length; k++) {
-                if (recipe.ustensils[k] === ustensileChoisi) {
-                    ustensileTrouve = true;
-                    break;
-                }
-            }
-            if (!ustensileTrouve) {
-                recetteValide = false; // Invalide si l'ustensile n'est pas trouvé
-            }
-        }
-        // Si la recette est valide, on la construit et l'ajoute à la div
-        if (recetteValide) {
-            // Création de la carte principale
-            const containerCard = document.createElement('div');
-            containerCard.className = 'card';
-            // SECTION IMAGE
-            const sectionImage = document.createElement('div');
-            sectionImage.className = 'section-image';
-            const image = document.createElement('img');
-            image.src = `../images/${recipe.image}`;
-            image.alt = 'Image de la carte';
-            const time = document.createElement('div');
-            time.className = 'text-content';
-            time.textContent = `${recipe.time} min`;
-            sectionImage.appendChild(image);
-            sectionImage.appendChild(time);
-            // SECTION RECETTES
-            const sectionRecettes = document.createElement('div');
-            sectionRecettes.className = 'section-recettes';
-            const titre = document.createElement('h3');
-            titre.textContent = `${recipe.name}`;
-            const titreRecette = document.createElement('h4');
-            titreRecette.textContent = 'Recette';
-            const description = document.createElement('p');
-            description.textContent = recipe.description;
-            sectionRecettes.appendChild(titre);
-            sectionRecettes.appendChild(titreRecette);
-            sectionRecettes.appendChild(description);
-            // SECTION INGREDIENTS
-            const sectionIngredients = document.createElement('div');
-            sectionIngredients.className = 'section-ingredients';
-            const titreIngredients = document.createElement('h4');
-            titreIngredients.textContent = 'Ingrédients';
-            sectionIngredients.appendChild(titreIngredients);
-            const presentation = document.createElement('div');
-            presentation.className = 'presentationDiv';
-            sectionIngredients.appendChild(presentation);
-            for (let j = 0; j < recipe.ingredients.length; j++) {
-                const ingredient = recipe.ingredients[j];
-                const ingredientContainer = document.createElement('div');
-                ingredientContainer.className = 'ingredient-container';
-                const ingredientTitle = document.createElement('h5');
-                ingredientTitle.textContent = ingredient.ingredient;
-                const quantityTitle = document.createElement('h5');
-                if (ingredient.quantity) {
-                    quantityTitle.textContent = ingredient.quantity + (ingredient.unit ? ` ${ingredient.unit}` : '');
-                } else {
-                    quantityTitle.textContent = "---";
-                }
-                ingredientContainer.appendChild(ingredientTitle);
-                ingredientContainer.appendChild(quantityTitle);
-                presentation.appendChild(ingredientContainer);
-            }
-            // Ajout des sections à la carte
-            containerCard.appendChild(sectionImage);
-            containerCard.appendChild(sectionRecettes);
-            containerCard.appendChild(sectionIngredients);
-            // Ajout de la carte principale à la div cible
-            targetDiv.appendChild(containerCard);
-            compteur++;
-        }
-    }
-    // Mise à jour du nombre de recettes affichées
-    const nbRecettesSpan = document.getElementById('nbRecettes');
-    nbRecettesSpan.textContent = `${compteur} recettes`;
-}
-//Appelle cette fonction lorsque l'utilisateur change une sélection dans l'un des <select> :
-document.getElementById('ingredients').addEventListener('change', filtrerEtAfficherRecettes);
-document.getElementById('appareils').addEventListener('change', filtrerEtAfficherRecettes);
-document.getElementById('ustensiles').addEventListener('change', filtrerEtAfficherRecettes);
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
-// Récupération de l'élément selectionnée via des écouteurs d'événements.
-const ustensilesSelect = document.getElementById('ustensiles');
-// Ajout d'un événement qui se déclenche lors d'une modification de la sélection
-ustensilesSelect.addEventListener('change', function () {
-    // Affichage de la valeur sélectionnée dans la console : console.log(ustensilesSelect.value);
-    ustensiles = ustensilesSelect.value;
-    console.log(ustensiles);
+// Fonction pour alimenter les listes déroulantes avec les données du tableau recipes
+function alimenterListesDeroulantes() {
+    // Utilisation de Set pour éviter les doublons
+    const ingredientsSet = new Set();
+    const appareilsSet = new Set();
+    const ustensilesSet = new Set();
+    // Vérification que le tableau recipes est défini et non vide
+    if (!Array.isArray(recipes) || recipes.length === 0) {
+        console.error("Le tableau recipes est vide ou non défini.");
+        return;
+    }
+    // Parcourir chaque recette dans le tableau recipes
+    recipes.forEach(recipe => {
+        // Ajouter chaque ingrédient du tableau dans le Set ingredientsSet
+        recipe.ingredients.forEach(ingredient => {
+            ingredientsSet.add(ingredient.ingredient);
+        });
+        // Ajouter chaque appareil dans le Set appareilsSet
+        appareilsSet.add(recipe.appliance);
+        // Ajouter chaque ustensile du tableau dans le Set ustensilesSet
+        recipe.ustensils.forEach(ustensile => {
+            ustensilesSet.add(ustensile);
+        });
+    });
+
+    // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
+    function ajouterItemsDansListe(listeElement, itemsSet) {
+        // Vider la liste avant de l'alimenter
+        listeElement.innerHTML = '';
+        // Ajouter chaque item du Set comme un élément <li> dans la liste
+        itemsSet.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            li.classList.add('dropdown-item'); // Ajout de la classe 'dropdown-item'
+            listeElement.appendChild(li); // Insertion de l'élément dans la liste
+        });
+    }
+    // Sélectionner les éléments <ul> dans le DOM
+    const ingredientsListe = document.getElementById('ingredients-list');
+    const appareilsListe = document.getElementById('appareils-list');
+    const ustensilesListe = document.getElementById('ustensiles-list');
+    // Alimenter les listes avec les éléments correspondants
+    ajouterItemsDansListe(ingredientsListe, ingredientsSet);
+    ajouterItemsDansListe(appareilsListe, appareilsSet);
+    ajouterItemsDansListe(ustensilesListe, ustensilesSet);
+}
+
+// Fonction générique pour gérer l'affichage des listes déroulantes et des chevrons
+function toggleDropdown(contentId, chevronId) {
+    const chevron = document.getElementById(chevronId);
+    const content = document.getElementById(contentId);
+
+    // Vérifie si l'élément est caché ou non
+    if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden'); // Affiche le contenu
+        chevron.classList.remove('fa-chevron-down');
+        chevron.classList.add('fa-chevron-up');
+    } else {
+        content.classList.add('hidden'); // Cache le contenu
+        chevron.classList.remove('fa-chevron-up');
+        chevron.classList.add('fa-chevron-down');
+        if (contentId=='appareils-list'){
+            console.log("je suis passé par là et je compte vider la liste");
+        }
+        
+    }
+}
+// Attacher l'événement de clic à chaque chevron
+document.getElementById('ingredients-container').addEventListener('click', function () {
+    toggleDropdown('ingredients-content', 'ingredients-chevron');
 });
-const ingredientsSelect = document.getElementById('ingredients');
-ingredientsSelect.addEventListener('change', function () {
-    ingredients = ingredientsSelect.value;// console.log(ingredientsSelect.value);
-    console.log(ingredients);
+
+document.getElementById('appareils-container').addEventListener('click', function () {
+    toggleDropdown('appareils-list', 'appareils-chevron');
+    
+   
 });
-const appareilsSelect = document.getElementById('appareils');
-appareilsSelect.addEventListener('change', function () {
-    appareils = appareilsSelect.value;// console.log(appareilsSelect.value);
-    console.log(appareils);
+
+document.getElementById('ustensiles-container').addEventListener('click', function () {
+    toggleDropdown('ustensiles-list', 'ustensiles-chevron');
 });
+
+//===============================================================================================================================
+// Fonction pour alimenter la liste des ingrédients
+function alimenterIngredientsListe() {
+    const ingredientsList = document.querySelector('#ingredients-list');
+    const ingredientsSet = new Set();
+    // Parcourir le tableau des recettes et alimenter les ingrédients
+    recipes.forEach(recipe => {
+        recipe.ingredients.forEach(ingredient => {
+            ingredientsSet.add(ingredient.ingredient);
+        });
+    });
+    // Créer des éléments <li> pour chaque ingrédient
+    ingredientsSet.forEach(ingredient => {
+        const li = document.createElement('li');
+        li.textContent = ingredient;
+        li.classList.add('dropdown-item');
+        ingredientsList.appendChild(li);
+    });
+}
+//==============================================================
+// function selectionByIngredient(ingredientClike) {
+//     // Parcourir les recettes
+//     recipes.forEach(recipe => {
+//         // Vérifier si l'ingrédient choisi est présent dans la recette
+//         let ingredientFound = recipe.ingredients.some(item => item.ingredient.toLowerCase() === ingredientClike.toLowerCase());
+        
+//         // Si l'ingrédient est trouvé, afficher l'appareil et les ustensiles
+//         if (ingredientFound) {
+//             console.log("Appareil associé :", recipe.appliance);
+//             console.log("Ustensiles associés :", recipe.ustensils);
+//         }
+//     });
+// }
+// function selectionByIngredient(ingredientClike) {
+//     // Vide les listes avant de les remplir
+//     const appareilsList = document.getElementById('appareils-list');
+//     const ustensilesList = document.getElementById('ustensiles-list');
+    
+//     appareilsList.innerHTML = ''; // Vider la liste des appareils
+//     ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
+
+//     // Trouver la recette contenant l'ingrédient cliqué
+//     const foundRecipes = recipes.filter(recipe => {
+//         return recipe.ingredients.some(ingredientObj => 
+//             ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
+//         );
+//     });
+
+//     // Si des recettes ont été trouvées, on affiche les appareils et ustensiles liés
+//     foundRecipes.forEach(recipe => {
+//         console.log('Appareil:', recipe.appliance);
+//         console.log('Ustensiles:', recipe.ustensils);
+
+//         // Ajouter l'appareil à la liste des appareils
+//         const appareilItem = document.createElement('li');
+//         appareilItem.textContent = recipe.appliance;
+//         appareilsList.appendChild(appareilItem);
+
+//         // Ajouter les ustensiles à la liste des ustensiles
+//         recipe.ustensils.forEach(ustensile => {
+//             const ustensileItem = document.createElement('li');
+//             ustensileItem.textContent = ustensile;
+//             ustensilesList.appendChild(ustensileItem);
+//         });
+//     });
+// }
+function selectionByIngredient(ingredientClike) {
+    // Vide les listes avant de les remplir
+    const appareilsList = document.getElementById('appareils-list');
+    const ustensilesList = document.getElementById('ustensiles-list');
+    
+    appareilsList.innerHTML = ''; // Vider la liste des appareils
+    ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
+
+    // Crée des ensembles pour stocker les appareils et ustensiles sans doublons
+    const uniqueAppliances = new Set();
+    const uniqueUstensils = new Set();
+
+    // Trouver les recettes contenant l'ingrédient cliqué
+    const foundRecipes = recipes.filter(recipe => {
+        return recipe.ingredients.some(ingredientObj => 
+            ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
+        );
+    });
+
+    // Si des recettes ont été trouvées, on ajoute les appareils et ustensiles aux ensembles
+    foundRecipes.forEach(recipe => {
+        console.log('Appareil:', recipe.appliance);
+        console.log('Ustensiles:', recipe.ustensils);
+
+        // Ajouter l'appareil à l'ensemble uniqueAppliances
+        uniqueAppliances.add(recipe.appliance);
+
+        // Ajouter chaque ustensile à l'ensemble uniqueUstensils
+        recipe.ustensils.forEach(ustensile => {
+            uniqueUstensils.add(ustensile);
+        });
+    });
+
+    // Remplir la liste des appareils sans doublons
+    uniqueAppliances.forEach(appliance => {
+        const appareilItem = document.createElement('li');
+        appareilItem.textContent = appliance;
+        appareilItem.classList.add('dropdown-item');
+        appareilsList.appendChild(appareilItem);
+    });
+
+    // Remplir la liste des ustensiles sans doublons
+    uniqueUstensils.forEach(ustensile => {
+        const ustensileItem = document.createElement('li');
+        ustensileItem.textContent = ustensile;
+        ustensileItem.classList.add('dropdown-item');
+        ustensilesList.appendChild(ustensileItem);
+    });
+}
+
+//==============================================================
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Sélectionner tous les éléments li dans la liste avec l'id "ingredients-list"
+document.addEventListener('DOMContentLoaded', function() {
+    const ingredientsList = document.getElementById('ingredients-list');
+
+    ingredientsList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+            const clickedText = event.target.textContent;
+            console.log("Vous avez cliqué sur la liste ingredients :", clickedText);
+             ingredientClike =clickedText;
+             console.log("je suis la variable ingredientClike:  "+ingredientClike);
+             selectionByIngredient(ingredientClike);
+             afficherViaIngredient(ingredientClike);
+             const affichageYellow= document.getElementById("affichageChoix");
+             affichageYellow.textContent=ingredientClike;
+        }
+    });
+});
+// Sélectionner tous les éléments li dans la liste avec l'id "appareils-list"
+document.addEventListener('DOMContentLoaded', function() {
+    const appareilsList = document.getElementById('appareils-list');
+
+    appareilsList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+            const clickedText = event.target.textContent;
+            console.log("Vous avez cliqué sur la liste appareils:", clickedText);
+             appareilClike =clickedText;
+             console.log("je suis la variable : appareilClike:  "+appareilClike);
+             afficherViaAppareil(appareilClike)
+        }
+    });
+});
+// Sélectionner tous les éléments li dans la liste avec l'id "ustensiles-list"
+document.addEventListener('DOMContentLoaded', function() {
+    const ustensilsList = document.getElementById('ustensiles-list');
+
+    ustensilsList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+            const clickedText = event.target.textContent;
+            console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
+            ustensilesClike=clickedText;
+             console.log("je suis la variable : ustensilesClike : "+ustensilesClike);
+             afficherViaUstensiles(ustensilesClike); 
+        }
+    });
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE RECETTES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
@@ -192,6 +295,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     const targetDiv = document.getElementById('partieRecettes');
     // Réinitialiser la div cible (si nécessaire) pour effacer les anciennes cartes
     targetDiv.innerHTML = '';
+
     // Parcourir le tableau d'objets récupéré
     for (let i = 0; i < recipes.length; i++) {
         const recipe = recipes[i];
@@ -232,6 +336,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
         const presentation = document.createElement('div');
         presentation.className = "presentationDiv";
         sectionIngredients.appendChild(presentation);
+
         for (let j = 0; j < recipe.ingredients.length; j++) {
             const ingredient = recipe.ingredients[j];
             // Créer une div pour chaque paire ingrédient + quantité
@@ -249,7 +354,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
                     quantityTitle.textContent += ` ${ingredient.unit}`;
                 }
             } else {
-                // quantityTitle.textContent = "Quantité non spécifiée";
+
                 quantityTitle.textContent = "---";
             }
             // Ajouter les éléments à la div container
@@ -258,7 +363,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
             // Ajouter la div container à la div principale "tuvasyariver"
             presentation.appendChild(ingredientContainer);
         }
-        // Ajout des sous-divisions à la carte 
+        // Ajout des sous-divisions à la carte
         containerCard.appendChild(sectionImage);
         containerCard.appendChild(sectionRecettes);
         containerCard.appendChild(sectionIngredients);
@@ -271,11 +376,338 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     const nbRecettesSpan = document.getElementById('nbRecettes');
     nbRecettesSpan.textContent = `${compteur} recettes`;
 }
+
+//c'est ma nouvelle methode d'affichage 
+function afficherViaIngredient(ingredient) {
+    // Initialiser le compteur à 0
+    let compteur = 0;
+    // Sélectionner la div où les cartes seront ajoutées
+    const targetDiv = document.getElementById('partieRecettes');
+
+    // Réinitialiser la div cible pour effacer les anciennes cartes
+    targetDiv.innerHTML = '';
+
+    // Parcourir le tableau d'objets recipes
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+
+        // Vérifier si l'ingrédient est présent dans cette recette
+        const ingredientsList = recipe.ingredients.map(ing => ing.ingredient.toLowerCase());
+        if (!ingredientsList.includes(ingredient.toLowerCase())) {
+            continue; // Sauter la recette si l'ingrédient n'est pas présent
+        }
+
+        // Création de la carte principale
+        const containerCard = document.createElement('div');
+        containerCard.className = 'card';
+
+        // SECTION IMAGE
+        const sectionImage = document.createElement('div');
+        sectionImage.className = 'section-image';
+        const image = document.createElement('img');
+        image.src = `../images/${recipe.image}`;
+        image.alt = 'Image de la carte';
+        const time = document.createElement('div');
+        time.className = 'text-content';
+        time.textContent = `${recipe.time}min`;
+        sectionImage.appendChild(image);
+        sectionImage.appendChild(time);
+
+        // SECTION RECETTES
+        const sectionRecettes = document.createElement('div');
+        sectionRecettes.className = 'section-recettes';
+        const titre = document.createElement('h3');
+        titre.textContent = `${recipe.name}`;
+        const titreRecette = document.createElement('h4');
+        titreRecette.textContent = 'Recette';
+        const description = document.createElement('p');
+        description.textContent = recipe.description;
+        sectionRecettes.appendChild(titre);
+        sectionRecettes.appendChild(titreRecette);
+        sectionRecettes.appendChild(description);
+
+        // SECTION INGREDIENTS
+        const sectionIngredients = document.createElement('div');
+        sectionIngredients.className = 'section-ingredients';
+        const titreIngredients = document.createElement('h4');
+        titreIngredients.textContent = 'Ingredients';
+        titreIngredients.className = 'ingredients';
+        sectionIngredients.appendChild(titreIngredients);
+
+        // je commence ici , je cree une div qui me permettra de faire ma mise en forme
+        const presentation = document.createElement('div');
+        presentation.className = "presentationDiv";
+        sectionIngredients.appendChild(presentation);
+
+        // Parcourir les ingrédients de la recette
+        for (let j = 0; j < recipe.ingredients.length; j++) {
+            const ingredientObj = recipe.ingredients[j];
+
+            // Créer une div pour chaque paire ingrédient + quantité
+            const ingredientContainer = document.createElement('div');
+            ingredientContainer.className = 'ingredient-container';
+            const ingredientTitle = document.createElement('h5');
+            ingredientTitle.textContent = `${ingredientObj.ingredient}`;
+            ingredientTitle.className = 'titleIngredient';
+            sectionIngredients.appendChild(ingredientTitle);
+            const quantityTitle = document.createElement('h5');
+            quantityTitle.className = 'titleQuantity';
+            if (ingredientObj.quantity) {
+                quantityTitle.textContent = `${ingredientObj.quantity}`;
+                if (ingredientObj.unit) {
+                    quantityTitle.textContent += ` ${ingredientObj.unit}`;
+                }
+            } else {
+                quantityTitle.textContent = "---";
+            }
+
+            // Ajouter les éléments à la div container
+            ingredientContainer.appendChild(ingredientTitle);
+            ingredientContainer.appendChild(quantityTitle);
+            // Ajouter la div container à la div principale "presentation"
+            presentation.appendChild(ingredientContainer);
+        }
+
+        // Ajout des sous-divisions à la carte
+        containerCard.appendChild(sectionImage);
+        containerCard.appendChild(sectionRecettes);
+        containerCard.appendChild(sectionIngredients);
+
+        // Ajout de la carte principale à la div cible
+        targetDiv.appendChild(containerCard);
+
+        // Incrémenter le compteur
+        compteur++;
+    }
+
+    // Afficher le total des containerCard créés dans le span avec l'id "nbRecettes"
+    const nbRecettesSpan = document.getElementById('nbRecettes');
+    nbRecettesSpan.textContent = `${compteur} recettes`;
+}
+// function afficherViaAppareil(appliance) {
+//     // Initialiser le compteur à 0
+//     let compteur = 0;
+//     // Sélectionner la div où les cartes seront ajoutées
+//     const targetDiv = document.getElementById('partieRecettes');
+
+//     // Réinitialiser la div cible pour effacer les anciennes cartes
+//     targetDiv.innerHTML = '';
+
+//     // Parcourir le tableau d'objets recipes
+//     for (let i = 0; i < recipes.length; i++) {
+//         const recipe = recipes[i];
+
+//         // Vérifier si l'appareil est présent dans cette recette
+//         if (recipe.appliance.toLowerCase() !== appliance.toLowerCase()) {
+//             continue; // Sauter la recette si l'appareil n'est pas présent
+//         }
+
+//         // Création de la carte principale
+//         const containerCard = document.createElement('div');
+//         containerCard.className = 'card';
+
+//         // SECTION IMAGE
+//         const sectionImage = document.createElement('div');
+//         sectionImage.className = 'section-image';
+//         const image = document.createElement('img');
+//         image.src = `../images/${recipe.image}`;
+//         image.alt = 'Image de la carte';
+//         const time = document.createElement('div');
+//         time.className = 'text-content';
+//         time.textContent = `${recipe.time}min`;
+//         sectionImage.appendChild(image);
+//         sectionImage.appendChild(time);
+
+//         // SECTION RECETTES
+//         const sectionRecettes = document.createElement('div');
+//         sectionRecettes.className = 'section-recettes';
+//         const titre = document.createElement('h3');
+//         titre.textContent = `${recipe.name}`;
+//         const titreRecette = document.createElement('h4');
+//         titreRecette.textContent = 'Recette';
+//         const description = document.createElement('p');
+//         description.textContent = recipe.description;
+//         sectionRecettes.appendChild(titre);
+//         sectionRecettes.appendChild(titreRecette);
+//         sectionRecettes.appendChild(description);
+
+//         // SECTION INGREDIENTS
+//         const sectionIngredients = document.createElement('div');
+//         sectionIngredients.className = 'section-ingredients';
+//         const titreIngredients = document.createElement('h4');
+//         titreIngredients.textContent = 'Ingredients';
+//         titreIngredients.className = 'ingredients';
+//         sectionIngredients.appendChild(titreIngredients);
+
+//         // je commence ici , je cree une div qui me permettra de faire ma mise en forme
+//         const presentation = document.createElement('div');
+//         presentation.className = "presentationDiv";
+//         sectionIngredients.appendChild(presentation);
+
+//         // Parcourir les ingrédients de la recette
+//         for (let j = 0; j < recipe.ingredients.length; j++) {
+//             const ingredientObj = recipe.ingredients[j];
+
+//             // Créer une div pour chaque paire ingrédient + quantité
+//             const ingredientContainer = document.createElement('div');
+//             ingredientContainer.className = 'ingredient-container';
+//             const ingredientTitle = document.createElement('h5');
+//             ingredientTitle.textContent = `${ingredientObj.ingredient}`;
+//             ingredientTitle.className = 'titleIngredient';
+//             sectionIngredients.appendChild(ingredientTitle);
+//             const quantityTitle = document.createElement('h5');
+//             quantityTitle.className = 'titleQuantity';
+//             if (ingredientObj.quantity) {
+//                 quantityTitle.textContent = `${ingredientObj.quantity}`;
+//                 if (ingredientObj.unit) {
+//                     quantityTitle.textContent += ` ${ingredientObj.unit}`;
+//                 }
+//             } else {
+//                 quantityTitle.textContent = "---";
+//             }
+
+//             // Ajouter les éléments à la div container
+//             ingredientContainer.appendChild(ingredientTitle);
+//             ingredientContainer.appendChild(quantityTitle);
+//             // Ajouter la div container à la div principale "presentation"
+//             presentation.appendChild(ingredientContainer);
+//         }
+
+//         // Ajout des sous-divisions à la carte
+//         containerCard.appendChild(sectionImage);
+//         containerCard.appendChild(sectionRecettes);
+//         containerCard.appendChild(sectionIngredients);
+
+//         // Ajout de la carte principale à la div cible
+//         targetDiv.appendChild(containerCard);
+
+//         // Incrémenter le compteur
+//         compteur++;
+//     }
+
+//     // Afficher le total des containerCard créés dans le span avec l'id "nbRecettes"
+//     const nbRecettesSpan = document.getElementById('nbRecettes');
+//     nbRecettesSpan.textContent = `${compteur} recettes`;
+// }
+// function afficherViaUstensiles(ustensile) {
+//     // Initialiser le compteur à 0
+//     let compteur = 0;
+//     // Sélectionner la div où les cartes seront ajoutées
+//     const targetDiv = document.getElementById('partieRecettes');
+
+//     // Réinitialiser la div cible pour effacer les anciennes cartes
+//     targetDiv.innerHTML = '';
+
+//     // Parcourir le tableau d'objets recipes
+//     for (let i = 0; i < recipes.length; i++) {
+//         const recipe = recipes[i];
+
+//         // Vérifier si l'ustensile est présent dans cette recette
+//         if (!recipe.ustensils.map(u => u.toLowerCase()).includes(ustensile.toLowerCase())) {
+//             continue; // Sauter la recette si l'ustensile n'est pas présent
+//         }
+
+//         // Création de la carte principale
+//         const containerCard = document.createElement('div');
+//         containerCard.className = 'card';
+
+//         // SECTION IMAGE
+//         const sectionImage = document.createElement('div');
+//         sectionImage.className = 'section-image';
+//         const image = document.createElement('img');
+//         image.src = `../images/${recipe.image}`;
+//         image.alt = 'Image de la carte';
+//         const time = document.createElement('div');
+//         time.className = 'text-content';
+//         time.textContent = `${recipe.time}min`;
+//         sectionImage.appendChild(image);
+//         sectionImage.appendChild(time);
+
+//         // SECTION RECETTES
+//         const sectionRecettes = document.createElement('div');
+//         sectionRecettes.className = 'section-recettes';
+//         const titre = document.createElement('h3');
+//         titre.textContent = `${recipe.name}`;
+//         const titreRecette = document.createElement('h4');
+//         titreRecette.textContent = 'Recette';
+//         const description = document.createElement('p');
+//         description.textContent = recipe.description;
+//         sectionRecettes.appendChild(titre);
+//         sectionRecettes.appendChild(titreRecette);
+//         sectionRecettes.appendChild(description);
+
+//         // SECTION INGREDIENTS
+//         const sectionIngredients = document.createElement('div');
+//         sectionIngredients.className = 'section-ingredients';
+//         const titreIngredients = document.createElement('h4');
+//         titreIngredients.textContent = 'Ingredients';
+//         titreIngredients.className = 'ingredients';
+//         sectionIngredients.appendChild(titreIngredients);
+
+//         // je commence ici , je cree une div qui me permettra de faire ma mise en forme
+//         const presentation = document.createElement('div');
+//         presentation.className = "presentationDiv";
+//         sectionIngredients.appendChild(presentation);
+
+//         // Parcourir les ingrédients de la recette
+//         for (let j = 0; j < recipe.ingredients.length; j++) {
+//             const ingredientObj = recipe.ingredients[j];
+
+//             // Créer une div pour chaque paire ingrédient + quantité
+//             const ingredientContainer = document.createElement('div');
+//             ingredientContainer.className = 'ingredient-container';
+//             const ingredientTitle = document.createElement('h5');
+//             ingredientTitle.textContent = `${ingredientObj.ingredient}`;
+//             ingredientTitle.className = 'titleIngredient';
+//             sectionIngredients.appendChild(ingredientTitle);
+//             const quantityTitle = document.createElement('h5');
+//             quantityTitle.className = 'titleQuantity';
+//             if (ingredientObj.quantity) {
+//                 quantityTitle.textContent = `${ingredientObj.quantity}`;
+//                 if (ingredientObj.unit) {
+//                     quantityTitle.textContent += ` ${ingredientObj.unit}`;
+//                 }
+//             } else {
+//                 quantityTitle.textContent = "---";
+//             }
+
+//             // Ajouter les éléments à la div container
+//             ingredientContainer.appendChild(ingredientTitle);
+//             ingredientContainer.appendChild(quantityTitle);
+//             // Ajouter la div container à la div principale "presentation"
+//             presentation.appendChild(ingredientContainer);
+//         }
+
+//         // Ajout des sous-divisions à la carte
+//         containerCard.appendChild(sectionImage);
+//         containerCard.appendChild(sectionRecettes);
+//         containerCard.appendChild(sectionIngredients);
+
+//         // Ajout de la carte principale à la div cible
+//         targetDiv.appendChild(containerCard);
+
+//         // Incrémenter le compteur
+//         compteur++;
+//     }
+
+//     // Afficher le total des containerCard créés dans le span avec l'id "nbRecettes"
+//     const nbRecettesSpan = document.getElementById('nbRecettes');
+//     nbRecettesSpan.textContent = `${compteur} recettes`;
+// } 
+
+
+//======================================================== c'est ici que je viens d'insérer le code ==================================================
+
+//======================================================== c'est ici que le code vient de s'arreter ===================================================
+
 //=====================================================================================================================================================
 //====================================================== APPELS DE FONCTIONS ==========================================================================
 //=====================================================================================================================================================
-// ParcourirTableauObjetsAvecMoinsDeLignes();
-// ParcourirTableauObjets();
+// Appel de la fonction pour alimenter la liste des ingrédients
+alimenterIngredientsListe();
 ParcourirTableauObjetsEnModeAffichageNavigateur();
-// Appel de la fonction après le chargement du DOM
-// document.addEventListener('DOMContentLoaded', alimenterSelects);
+// Appel des fonctions lorsque le DOM est chargé
+document.addEventListener('DOMContentLoaded', () => {
+    // alimenterIngredients(); // Appeler la fonction après le chargement du DOM
+    alimenterListesDeroulantes(); // Alimenter les listes avec les données
+});

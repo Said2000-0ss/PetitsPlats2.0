@@ -17,7 +17,9 @@
   
     <div id="partieImage">
         <div class="header-text"> LES PETITS PLATS 
-            <i id="circle" class="fa-regular fa-circle"></i></div>
+            <!-- <i id="circle" class="fa-regular fa-circle"></i></div> -->
+             <i id="circle" class="fa-solid fa-record-vinyl"></i></div>
+           
         <img src="Images/Maskgroup.png" alt="">
         <div class="search-container">
            
@@ -37,30 +39,99 @@
     <p>==============================================================================================</p> -->
     <div id="partieSelect">
 
-        <label for="ingredients"></label>
-        <select id="ingredients">
-            <option value="" disabled selected>Ingrédients</option> <!-- Option par défaut -->
-            <option value="Chocolat">Chocolat</option>
-            <option value="lait">lait</option>
-            <option value="bonbon">bonbon</option>
-        </select>
-        <label for="appareils"></label>
-        <select id="appareils">
-            <option value="" disabled selected>Appareils</option> <!-- Option par défaut -->
-            <option value="appareil1">appareil1</option>
-            <option value="appareil2">appareil2</option>
-            <option value="appareil3">appareil3</option>
-        </select>
+        <!--  <label for="ingredients"></label> -->
+        <!-- <select id="ingredients">  -->
+             <!-- <option value="" disabled selected>Ingrédients</option> -->
+             <!-- Option par défaut --> 
+            <!-- <option value="Chocolat">Chocolat</option> -->
+            <!-- <option value="lait">lait</option> -->
+             <!-- <option value="bonbon">bonbon</option>  -->
+        <!-- </select>  -->
+<!-- ======================================================================================================================================== -->
+<!-- ================================================ LA SELECTION INGREDIENTS ============================================================== -->
+<!-- ======================================================================================================================================== -->         
+
+        <!----------------------------------------------------------------------------------------------->
+        <!-- je suis l'exemple a ajouter ---------------------------------------------------------------->
+        <!----------------------------------------------------------------------------------------------->
+        <div id="ingredients">
+            <div id="ingredients-container" class="ingredients-dropdown">
+                <span id="ingredients-text">Ingrédients</span>
+                <i id="ingredients-chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+        
+            <!-- Contenu caché par défaut -->
+            <div id="ingredients-content" class="hidden">
+                <!-- Champ de recherche (input-container) -->
+                <div class="input-container">
+                    <input id="jeSuisUnInput" type="text" placeholder="Rechercher un nom...">
+                    <button id="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div id="affichageChoix">
+                </div>
+                <!-- Liste déroulante des ingrédients -->
+                <ul id="ingredients-list">
+                    <!-- Les éléments <li> seront ajoutés dynamiquement ici -->
+                </ul>
+            </div>
+        </div>
+        
+        <!----------------------------------------------------------------------------------------------->
+        <!-- je suis la fin de l'exemple à ajouter  ----------------------------------------------------->
+        <!----------------------------------------------------------------------------------------------->
+        <!-- <label for="appareils"></label>-->
+        <!-- <select id="appareils"> -->
+           <!-- <option value="" disabled selected>Appareils</option> --><!-- Option par défaut -->
+            <!-- <option value="appareil1">appareil1</option> -->
+            <!-- <option value="appareil2">appareil2</option> -->
+            <!-- <option value="appareil3">appareil3</option> -->
+        <!-- </select> --> 
         <!-- <label for="ustensiles">Ustensiles :</label> -->
-        <label for="ustensiles"></label>
+<!-- ======================================================================================================================================== -->
+<!-- ================================================ LA SELECTION APPAREILS ================================================================ -->
+<!-- ======================================================================================================================================== -->
+        <div id="appareils">
+            <div id="appareils-container" class="appareils-dropdown">
+                <span id="appareils-text">Appareils</span>
+                <i id="appareils-chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+            <ul id="appareils-list" class="hidden dropdown-list">
+            </ul> 
+        </div> <!-- Ingredients Dropdown -->
+       
+        
+    
+<!-- ======================================================================================================================================== -->
+<!-- ================================================ LA SELECTION USTENSILES =============================================================== -->
+<!-- ======================================================================================================================================== -->
+        <!-- <label for="ustensiles"></label>
         <select id="ustensiles">
-            <option value="" disabled selected>Ustensiles</option> <!-- Option par défaut -->
-            <option value="casserole">Casserole</option>
+            <option value="" disabled selected>Ustensiles</option>--> <!-- Option par défaut -->
+            <!-- <option value="casserole">Casserole</option>
             <option value="cuillere">Cuillère</option>
             <option value="couteau">Couteau</option>
-        </select>
-        <span id="nbRecettes"></span>
-    </div>
+        </select> -->
+        <div id="ustensiles">
+            <div id="ustensiles-container" class="ustensiles-dropdown">
+                <span id="ustensiles-text">Ustensiles</span>
+                <i id="ustensiles-chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+            <ul id="ustensiles-list" class="hidden dropdown-list">
+            </ul> 
+        </div>
+
+        <span id="nbRecettes"></span> 
+    </div> 
+    <!----------------------------------------------------------------------------------------------->
+    <!---- je suis la partie de l'exemple ----------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <div id="result-container"></div>
+    <!----------------------------------------------------------------------------------------------->
+    <!------ je suis la fin de la partie de l'exemple ----------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+
     <!-- <p>==============================================================================================</p>
     <h1>Je suis la div #partieRecettes</h1>
     <p>==============================================================================================</p> -->
