@@ -108,6 +108,8 @@ function toggleDropdown(contentId, chevronId) {
 // Attacher l'événement de clic à chaque chevron
 document.getElementById('ingredients-container').addEventListener('click', function () {
     toggleDropdown('ingredients-content', 'ingredients-chevron');
+    const affichageDiv= document.getElementById("affichageChoix");
+    affichageDiv.textContent="";
 });
 
 document.getElementById('appareils-container').addEventListener('click', function () {
