@@ -317,7 +317,9 @@ ul {
     height: 33px;
     padding-left: 8px;
 }
-
+#affichageChoix{
+    background-color: #FFD15B;
+}
 
 /* ========================================================================================================================== */
 /* Styles pour que le bouton soit à l'intérieur de l'input */
