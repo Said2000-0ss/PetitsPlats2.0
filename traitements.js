@@ -277,6 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
             ustensilesClike=clickedText;
              console.log("je suis la variable : ustensilesClike : "+ustensilesClike);
+             afficherViaUstensiles(ustensilesClike); 
         }
     });
 });
@@ -497,6 +498,111 @@ function afficherViaAppareil(appliance) {
         // Vérifier si l'appareil est présent dans cette recette
         if (recipe.appliance.toLowerCase() !== appliance.toLowerCase()) {
             continue; // Sauter la recette si l'appareil n'est pas présent
+        }
+
+        // Création de la carte principale
+        const containerCard = document.createElement('div');
+        containerCard.className = 'card';
+
+        // SECTION IMAGE
+        const sectionImage = document.createElement('div');
+        sectionImage.className = 'section-image';
+        const image = document.createElement('img');
+        image.src = `../images/${recipe.image}`;
+        image.alt = 'Image de la carte';
+        const time = document.createElement('div');
+        time.className = 'text-content';
+        time.textContent = `${recipe.time}min`;
+        sectionImage.appendChild(image);
+        sectionImage.appendChild(time);
+
+        // SECTION RECETTES
+        const sectionRecettes = document.createElement('div');
+        sectionRecettes.className = 'section-recettes';
+        const titre = document.createElement('h3');
+        titre.textContent = `${recipe.name}`;
+        const titreRecette = document.createElement('h4');
+        titreRecette.textContent = 'Recette';
+        const description = document.createElement('p');
+        description.textContent = recipe.description;
+        sectionRecettes.appendChild(titre);
+        sectionRecettes.appendChild(titreRecette);
+        sectionRecettes.appendChild(description);
+
+        // SECTION INGREDIENTS
+        const sectionIngredients = document.createElement('div');
+        sectionIngredients.className = 'section-ingredients';
+        const titreIngredients = document.createElement('h4');
+        titreIngredients.textContent = 'Ingredients';
+        titreIngredients.className = 'ingredients';
+        sectionIngredients.appendChild(titreIngredients);
+
+        // je commence ici , je cree une div qui me permettra de faire ma mise en forme
+        const presentation = document.createElement('div');
+        presentation.className = "presentationDiv";
+        sectionIngredients.appendChild(presentation);
+
+        // Parcourir les ingrédients de la recette
+        for (let j = 0; j < recipe.ingredients.length; j++) {
+            const ingredientObj = recipe.ingredients[j];
+
+            // Créer une div pour chaque paire ingrédient + quantité
+            const ingredientContainer = document.createElement('div');
+            ingredientContainer.className = 'ingredient-container';
+            const ingredientTitle = document.createElement('h5');
+            ingredientTitle.textContent = `${ingredientObj.ingredient}`;
+            ingredientTitle.className = 'titleIngredient';
+            sectionIngredients.appendChild(ingredientTitle);
+            const quantityTitle = document.createElement('h5');
+            quantityTitle.className = 'titleQuantity';
+            if (ingredientObj.quantity) {
+                quantityTitle.textContent = `${ingredientObj.quantity}`;
+                if (ingredientObj.unit) {
+                    quantityTitle.textContent += ` ${ingredientObj.unit}`;
+                }
+            } else {
+                quantityTitle.textContent = "---";
+            }
+
+            // Ajouter les éléments à la div container
+            ingredientContainer.appendChild(ingredientTitle);
+            ingredientContainer.appendChild(quantityTitle);
+            // Ajouter la div container à la div principale "presentation"
+            presentation.appendChild(ingredientContainer);
+        }
+
+        // Ajout des sous-divisions à la carte
+        containerCard.appendChild(sectionImage);
+        containerCard.appendChild(sectionRecettes);
+        containerCard.appendChild(sectionIngredients);
+
+        // Ajout de la carte principale à la div cible
+        targetDiv.appendChild(containerCard);
+
+        // Incrémenter le compteur
+        compteur++;
+    }
+
+    // Afficher le total des containerCard créés dans le span avec l'id "nbRecettes"
+    const nbRecettesSpan = document.getElementById('nbRecettes');
+    nbRecettesSpan.textContent = `${compteur} recettes`;
+}
+function afficherViaUstensiles(ustensile) {
+    // Initialiser le compteur à 0
+    let compteur = 0;
+    // Sélectionner la div où les cartes seront ajoutées
+    const targetDiv = document.getElementById('partieRecettes');
+
+    // Réinitialiser la div cible pour effacer les anciennes cartes
+    targetDiv.innerHTML = '';
+
+    // Parcourir le tableau d'objets recipes
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+
+        // Vérifier si l'ustensile est présent dans cette recette
+        if (!recipe.ustensils.map(u => u.toLowerCase()).includes(ustensile.toLowerCase())) {
+            continue; // Sauter la recette si l'ustensile n'est pas présent
         }
 
         // Création de la carte principale
