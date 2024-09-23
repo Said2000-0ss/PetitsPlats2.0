@@ -694,6 +694,107 @@ function afficherViaUstensiles(ustensile) {
     const nbRecettesSpan = document.getElementById('nbRecettes');
     nbRecettesSpan.textContent = `${compteur} recettes`;
 } 
+function afficherRecettesFiltrees(ingredients, appliance, ustensile) {
+    let compteur = 0;
+    const targetDiv = document.getElementById('partieRecettes');
+    targetDiv.innerHTML = '';  // Réinitialiser la div cible
+
+    // Parcourir les recettes et appliquer les filtres
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+
+        // Vérification des conditions
+        const matchIngredient = !ingredients || recipe.ingredients.some(ing => ing.ingredient.toLowerCase() === ingredients.toLowerCase());
+        const matchAppliance = !appliance || recipe.appliance.toLowerCase() === appliance.toLowerCase();
+        const matchUstensile = !ustensile || recipe.ustensils.includes(ustensile.toLowerCase());
+
+        // Si la recette correspond aux critères
+        if (matchIngredient && matchAppliance && matchUstensile) {
+            // Création de la carte principale
+            const containerCard = document.createElement('div');
+            containerCard.className = 'card';
+
+            // SECTION IMAGE
+            const sectionImage = document.createElement('div');
+            sectionImage.className = 'section-image';
+            const image = document.createElement('img');
+            image.src = `../images/${recipe.image}`;
+            image.alt = 'Image de la carte';
+            const time = document.createElement('div');
+            time.className = 'text-content';
+            time.textContent = `${recipe.time}min`;
+            sectionImage.appendChild(image);
+            sectionImage.appendChild(time);
+
+            // SECTION RECETTES
+            const sectionRecettes = document.createElement('div');
+            sectionRecettes.className = 'section-recettes';
+            const titre = document.createElement('h3');
+            titre.textContent = `${recipe.name}`;
+            const titreRecette = document.createElement('h4');
+            titreRecette.textContent = 'Recette';
+            const description = document.createElement('p');
+            description.textContent = recipe.description;
+            sectionRecettes.appendChild(titre);
+            sectionRecettes.appendChild(titreRecette);
+            sectionRecettes.appendChild(description);
+
+            // SECTION INGREDIENTS
+            const sectionIngredients = document.createElement('div');
+            sectionIngredients.className = 'section-ingredients';
+            const titreIngredients = document.createElement('h4');
+            titreIngredients.textContent = 'Ingredients';
+            titreIngredients.className = 'ingredients';
+            sectionIngredients.appendChild(titreIngredients);
+
+            const presentation = document.createElement('div');
+            presentation.className = 'presentationDiv';
+            sectionIngredients.appendChild(presentation);
+
+            // Ajout des ingrédients à la carte
+            for (let j = 0; j < recipe.ingredients.length; j++) {
+                const ingredient = recipe.ingredients[j];
+                const ingredientContainer = document.createElement('div');
+                ingredientContainer.className = 'ingredient-container';
+                const ingredientTitle = document.createElement('h5');
+                ingredientTitle.textContent = `${ingredient.ingredient}`;
+                ingredientTitle.className = 'titleIngredient';
+                const quantityTitle = document.createElement('h5');
+                quantityTitle.className = 'titleQuantity';
+                if (ingredient.quantity) {
+                    quantityTitle.textContent = `${ingredient.quantity}`;
+                    if (ingredient.unit) {
+                        quantityTitle.textContent += ` ${ingredient.unit}`;
+                    }
+                } else {
+                    quantityTitle.textContent = '---';
+                }
+                ingredientContainer.appendChild(ingredientTitle);
+                ingredientContainer.appendChild(quantityTitle);
+                presentation.appendChild(ingredientContainer);
+            }
+
+            // Ajouter les sous-divisions à la carte
+            containerCard.appendChild(sectionImage);
+            containerCard.appendChild(sectionRecettes);
+            containerCard.appendChild(sectionIngredients);
+
+            // Ajouter la carte principale à la div cible
+            targetDiv.appendChild(containerCard);
+
+            // Incrémenter le compteur
+            compteur++;
+        }
+    }
+
+    // Mettre à jour le compteur de recettes
+    const nbRecettesSpan = document.getElementById('nbRecettes');
+    nbRecettesSpan.textContent = `${compteur} recettes trouvées`;
+}
+// afficherRecettesFiltrees('poulet', 'four', 'spatule');  // Filtre par les trois paramètres
+// afficherRecettesFiltrees('poulet', null, 'spatule');    // Filtre par ingrédient et ustensile
+// afficherRecettesFiltrees(null, 'four', null);           // Filtre uniquement par appareil
+
 
 
 //======================================================== c'est ici que je viens d'insérer le code ==================================================
