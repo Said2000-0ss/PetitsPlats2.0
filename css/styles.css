@@ -310,7 +310,7 @@ ul {
 #jeSuisUnInput {
     margin-left: -4px;
     margin-top: 10px;
-    width: 63%;
+    width: 57%;
     border: 1px solid grey;
     /* border-radius: 11px; */
     background-color: white;
@@ -340,7 +340,7 @@ button {
     border: none;
     cursor: pointer;
     padding: 5px;
-    margin-right: 57px;
+    margin-right: 70px;
     margin-top: 10px;
     color: grey;
 }

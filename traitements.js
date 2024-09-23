@@ -133,6 +133,102 @@ function alimenterIngredientsListe() {
         ingredientsList.appendChild(li);
     });
 }
+//==============================================================
+function selectionByIngredient(ingredientClike) {
+    // Parcourir les recettes
+    recipes.forEach(recipe => {
+        // Vérifier si l'ingrédient choisi est présent dans la recette
+        let ingredientFound = recipe.ingredients.some(item => item.ingredient.toLowerCase() === ingredientClike.toLowerCase());
+        
+        // Si l'ingrédient est trouvé, afficher l'appareil et les ustensiles
+        if (ingredientFound) {
+            console.log("Appareil associé :", recipe.appliance);
+            console.log("Ustensiles associés :", recipe.ustensils);
+        }
+    });
+}
+// function selectionByIngredient(ingredientClike) {
+//     // Vide les listes avant de les remplir
+//     const appareilsList = document.getElementById('appareils-list');
+//     const ustensilesList = document.getElementById('ustensiles-list');
+    
+//     appareilsList.innerHTML = ''; // Vider la liste des appareils
+//     ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
+
+//     // Trouver la recette contenant l'ingrédient cliqué
+//     const foundRecipes = recipes.filter(recipe => {
+//         return recipe.ingredients.some(ingredientObj => 
+//             ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
+//         );
+//     });
+
+//     // Si des recettes ont été trouvées, on affiche les appareils et ustensiles liés
+//     foundRecipes.forEach(recipe => {
+//         console.log('Appareil:', recipe.appliance);
+//         console.log('Ustensiles:', recipe.ustensils);
+
+//         // Ajouter l'appareil à la liste des appareils
+//         const appareilItem = document.createElement('li');
+//         appareilItem.textContent = recipe.appliance;
+//         appareilsList.appendChild(appareilItem);
+
+//         // Ajouter les ustensiles à la liste des ustensiles
+//         recipe.ustensils.forEach(ustensile => {
+//             const ustensileItem = document.createElement('li');
+//             ustensileItem.textContent = ustensile;
+//             ustensilesList.appendChild(ustensileItem);
+//         });
+//     });
+// }
+// function selectionByIngredient(ingredientClike) {
+//     // Vide les listes avant de les remplir
+//     const appareilsList = document.getElementById('appareils-list');
+//     const ustensilesList = document.getElementById('ustensiles-list');
+    
+//     appareilsList.innerHTML = ''; // Vider la liste des appareils
+//     ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
+
+//     // Crée des ensembles pour stocker les appareils et ustensiles sans doublons
+//     const uniqueAppliances = new Set();
+//     const uniqueUstensils = new Set();
+
+//     // Trouver les recettes contenant l'ingrédient cliqué
+//     const foundRecipes = recipes.filter(recipe => {
+//         return recipe.ingredients.some(ingredientObj => 
+//             ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
+//         );
+//     });
+
+//     // Si des recettes ont été trouvées, on ajoute les appareils et ustensiles aux ensembles
+//     foundRecipes.forEach(recipe => {
+//         console.log('Appareil:', recipe.appliance);
+//         console.log('Ustensiles:', recipe.ustensils);
+
+//         // Ajouter l'appareil à l'ensemble uniqueAppliances
+//         uniqueAppliances.add(recipe.appliance);
+
+//         // Ajouter chaque ustensile à l'ensemble uniqueUstensils
+//         recipe.ustensils.forEach(ustensile => {
+//             uniqueUstensils.add(ustensile);
+//         });
+//     });
+
+//     // Remplir la liste des appareils sans doublons
+//     uniqueAppliances.forEach(appliance => {
+//         const appareilItem = document.createElement('li');
+//         appareilItem.textContent = appliance;
+//         appareilsList.appendChild(appareilItem);
+//     });
+
+//     // Remplir la liste des ustensiles sans doublons
+//     uniqueUstensils.forEach(ustensile => {
+//         const ustensileItem = document.createElement('li');
+//         ustensileItem.textContent = ustensile;
+//         ustensilesList.appendChild(ustensileItem);
+//     });
+// }
+
+//==============================================================
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Sélectionner tous les éléments li dans la liste avec l'id "ingredients-list"
 document.addEventListener('DOMContentLoaded', function() {
@@ -141,9 +237,10 @@ document.addEventListener('DOMContentLoaded', function() {
     ingredientsList.addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
-            console.log("Vous avez cliqué sur :", clickedText);
+            console.log("Vous avez cliqué sur la liste ingredients :", clickedText);
              ingredientClike =clickedText;
-             console.log(ingredientClike);
+             console.log("je suis la variable ingredientClike:  "+ingredientClike);
+             selectionByIngredient(ingredientClike)
         }
     });
 });
@@ -154,9 +251,9 @@ document.addEventListener('DOMContentLoaded', function() {
     appareilsList.addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
-            console.log("Vous avez cliqué sur :", clickedText);
+            console.log("Vous avez cliqué sur la liste appareils:", clickedText);
              appareilClike =clickedText;
-             console.log(appareilClike);
+             console.log("je suis la variable : appareilClike:  "+appareilClike);
         }
     });
 });
@@ -167,9 +264,9 @@ document.addEventListener('DOMContentLoaded', function() {
     ustensilsList.addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
-            console.log("Vous avez cliqué sur :", clickedText);
+            console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
             ustensilesClike=clickedText;
-             console.log(ustensilesClike);
+             console.log("je suis la variable : ustensilesClike : "+ustensilesClike);
         }
     });
 });
