@@ -134,52 +134,52 @@ function alimenterIngredientsListe() {
     });
 }
 //==============================================================
-function selectionByIngredient(ingredientClike) {
-    // Parcourir les recettes
-    recipes.forEach(recipe => {
-        // Vérifier si l'ingrédient choisi est présent dans la recette
-        let ingredientFound = recipe.ingredients.some(item => item.ingredient.toLowerCase() === ingredientClike.toLowerCase());
-        
-        // Si l'ingrédient est trouvé, afficher l'appareil et les ustensiles
-        if (ingredientFound) {
-            console.log("Appareil associé :", recipe.appliance);
-            console.log("Ustensiles associés :", recipe.ustensils);
-        }
-    });
-}
 // function selectionByIngredient(ingredientClike) {
-//     // Vide les listes avant de les remplir
-//     const appareilsList = document.getElementById('appareils-list');
-//     const ustensilesList = document.getElementById('ustensiles-list');
-    
-//     appareilsList.innerHTML = ''; // Vider la liste des appareils
-//     ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
-
-//     // Trouver la recette contenant l'ingrédient cliqué
-//     const foundRecipes = recipes.filter(recipe => {
-//         return recipe.ingredients.some(ingredientObj => 
-//             ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
-//         );
-//     });
-
-//     // Si des recettes ont été trouvées, on affiche les appareils et ustensiles liés
-//     foundRecipes.forEach(recipe => {
-//         console.log('Appareil:', recipe.appliance);
-//         console.log('Ustensiles:', recipe.ustensils);
-
-//         // Ajouter l'appareil à la liste des appareils
-//         const appareilItem = document.createElement('li');
-//         appareilItem.textContent = recipe.appliance;
-//         appareilsList.appendChild(appareilItem);
-
-//         // Ajouter les ustensiles à la liste des ustensiles
-//         recipe.ustensils.forEach(ustensile => {
-//             const ustensileItem = document.createElement('li');
-//             ustensileItem.textContent = ustensile;
-//             ustensilesList.appendChild(ustensileItem);
-//         });
+//     // Parcourir les recettes
+//     recipes.forEach(recipe => {
+//         // Vérifier si l'ingrédient choisi est présent dans la recette
+//         let ingredientFound = recipe.ingredients.some(item => item.ingredient.toLowerCase() === ingredientClike.toLowerCase());
+        
+//         // Si l'ingrédient est trouvé, afficher l'appareil et les ustensiles
+//         if (ingredientFound) {
+//             console.log("Appareil associé :", recipe.appliance);
+//             console.log("Ustensiles associés :", recipe.ustensils);
+//         }
 //     });
 // }
+function selectionByIngredient(ingredientClike) {
+    // Vide les listes avant de les remplir
+    const appareilsList = document.getElementById('appareils-list');
+    const ustensilesList = document.getElementById('ustensiles-list');
+    
+    appareilsList.innerHTML = ''; // Vider la liste des appareils
+    ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
+
+    // Trouver la recette contenant l'ingrédient cliqué
+    const foundRecipes = recipes.filter(recipe => {
+        return recipe.ingredients.some(ingredientObj => 
+            ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
+        );
+    });
+
+    // Si des recettes ont été trouvées, on affiche les appareils et ustensiles liés
+    foundRecipes.forEach(recipe => {
+        console.log('Appareil:', recipe.appliance);
+        console.log('Ustensiles:', recipe.ustensils);
+
+        // Ajouter l'appareil à la liste des appareils
+        const appareilItem = document.createElement('li');
+        appareilItem.textContent = recipe.appliance;
+        appareilsList.appendChild(appareilItem);
+
+        // Ajouter les ustensiles à la liste des ustensiles
+        recipe.ustensils.forEach(ustensile => {
+            const ustensileItem = document.createElement('li');
+            ustensileItem.textContent = ustensile;
+            ustensilesList.appendChild(ustensileItem);
+        });
+    });
+}
 // function selectionByIngredient(ingredientClike) {
 //     // Vide les listes avant de les remplir
 //     const appareilsList = document.getElementById('appareils-list');
