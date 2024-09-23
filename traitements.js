@@ -99,6 +99,10 @@ function toggleDropdown(contentId, chevronId) {
         content.classList.add('hidden'); // Cache le contenu
         chevron.classList.remove('fa-chevron-up');
         chevron.classList.add('fa-chevron-down');
+        if (contentId=='appareils-list'){
+            console.log("je suis passé par là et je compte vider la liste");
+        }
+        
     }
 }
 // Attacher l'événement de clic à chaque chevron
@@ -108,6 +112,8 @@ document.getElementById('ingredients-container').addEventListener('click', funct
 
 document.getElementById('appareils-container').addEventListener('click', function () {
     toggleDropdown('appareils-list', 'appareils-chevron');
+    
+   
 });
 
 document.getElementById('ustensiles-container').addEventListener('click', function () {
@@ -217,6 +223,7 @@ function selectionByIngredient(ingredientClike) {
     uniqueAppliances.forEach(appliance => {
         const appareilItem = document.createElement('li');
         appareilItem.textContent = appliance;
+        appareilItem.classList.add('dropdown-item');
         appareilsList.appendChild(appareilItem);
     });
 
@@ -224,6 +231,7 @@ function selectionByIngredient(ingredientClike) {
     uniqueUstensils.forEach(ustensile => {
         const ustensileItem = document.createElement('li');
         ustensileItem.textContent = ustensile;
+        ustensileItem.classList.add('dropdown-item');
         ustensilesList.appendChild(ustensileItem);
     });
 }
