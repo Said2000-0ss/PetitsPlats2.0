@@ -147,39 +147,6 @@ function alimenterIngredientsListe() {
 //         }
 //     });
 // }
-function selectionByIngredient(ingredientClike) {
-    // Vide les listes avant de les remplir
-    const appareilsList = document.getElementById('appareils-list');
-    const ustensilesList = document.getElementById('ustensiles-list');
-    
-    appareilsList.innerHTML = ''; // Vider la liste des appareils
-    ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
-
-    // Trouver la recette contenant l'ingrédient cliqué
-    const foundRecipes = recipes.filter(recipe => {
-        return recipe.ingredients.some(ingredientObj => 
-            ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
-        );
-    });
-
-    // Si des recettes ont été trouvées, on affiche les appareils et ustensiles liés
-    foundRecipes.forEach(recipe => {
-        console.log('Appareil:', recipe.appliance);
-        console.log('Ustensiles:', recipe.ustensils);
-
-        // Ajouter l'appareil à la liste des appareils
-        const appareilItem = document.createElement('li');
-        appareilItem.textContent = recipe.appliance;
-        appareilsList.appendChild(appareilItem);
-
-        // Ajouter les ustensiles à la liste des ustensiles
-        recipe.ustensils.forEach(ustensile => {
-            const ustensileItem = document.createElement('li');
-            ustensileItem.textContent = ustensile;
-            ustensilesList.appendChild(ustensileItem);
-        });
-    });
-}
 // function selectionByIngredient(ingredientClike) {
 //     // Vide les listes avant de les remplir
 //     const appareilsList = document.getElementById('appareils-list');
@@ -188,45 +155,78 @@ function selectionByIngredient(ingredientClike) {
 //     appareilsList.innerHTML = ''; // Vider la liste des appareils
 //     ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
 
-//     // Crée des ensembles pour stocker les appareils et ustensiles sans doublons
-//     const uniqueAppliances = new Set();
-//     const uniqueUstensils = new Set();
-
-//     // Trouver les recettes contenant l'ingrédient cliqué
+//     // Trouver la recette contenant l'ingrédient cliqué
 //     const foundRecipes = recipes.filter(recipe => {
 //         return recipe.ingredients.some(ingredientObj => 
 //             ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
 //         );
 //     });
 
-//     // Si des recettes ont été trouvées, on ajoute les appareils et ustensiles aux ensembles
+//     // Si des recettes ont été trouvées, on affiche les appareils et ustensiles liés
 //     foundRecipes.forEach(recipe => {
 //         console.log('Appareil:', recipe.appliance);
 //         console.log('Ustensiles:', recipe.ustensils);
 
-//         // Ajouter l'appareil à l'ensemble uniqueAppliances
-//         uniqueAppliances.add(recipe.appliance);
+//         // Ajouter l'appareil à la liste des appareils
+//         const appareilItem = document.createElement('li');
+//         appareilItem.textContent = recipe.appliance;
+//         appareilsList.appendChild(appareilItem);
 
-//         // Ajouter chaque ustensile à l'ensemble uniqueUstensils
+//         // Ajouter les ustensiles à la liste des ustensiles
 //         recipe.ustensils.forEach(ustensile => {
-//             uniqueUstensils.add(ustensile);
+//             const ustensileItem = document.createElement('li');
+//             ustensileItem.textContent = ustensile;
+//             ustensilesList.appendChild(ustensileItem);
 //         });
 //     });
-
-//     // Remplir la liste des appareils sans doublons
-//     uniqueAppliances.forEach(appliance => {
-//         const appareilItem = document.createElement('li');
-//         appareilItem.textContent = appliance;
-//         appareilsList.appendChild(appareilItem);
-//     });
-
-//     // Remplir la liste des ustensiles sans doublons
-//     uniqueUstensils.forEach(ustensile => {
-//         const ustensileItem = document.createElement('li');
-//         ustensileItem.textContent = ustensile;
-//         ustensilesList.appendChild(ustensileItem);
-//     });
 // }
+function selectionByIngredient(ingredientClike) {
+    // Vide les listes avant de les remplir
+    const appareilsList = document.getElementById('appareils-list');
+    const ustensilesList = document.getElementById('ustensiles-list');
+    
+    appareilsList.innerHTML = ''; // Vider la liste des appareils
+    ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
+
+    // Crée des ensembles pour stocker les appareils et ustensiles sans doublons
+    const uniqueAppliances = new Set();
+    const uniqueUstensils = new Set();
+
+    // Trouver les recettes contenant l'ingrédient cliqué
+    const foundRecipes = recipes.filter(recipe => {
+        return recipe.ingredients.some(ingredientObj => 
+            ingredientObj.ingredient.toLowerCase() === ingredientClike.toLowerCase()
+        );
+    });
+
+    // Si des recettes ont été trouvées, on ajoute les appareils et ustensiles aux ensembles
+    foundRecipes.forEach(recipe => {
+        console.log('Appareil:', recipe.appliance);
+        console.log('Ustensiles:', recipe.ustensils);
+
+        // Ajouter l'appareil à l'ensemble uniqueAppliances
+        uniqueAppliances.add(recipe.appliance);
+
+        // Ajouter chaque ustensile à l'ensemble uniqueUstensils
+        recipe.ustensils.forEach(ustensile => {
+            uniqueUstensils.add(ustensile);
+        });
+    });
+
+    // Remplir la liste des appareils sans doublons
+    uniqueAppliances.forEach(appliance => {
+        const appareilItem = document.createElement('li');
+        appareilItem.textContent = appliance;
+        appareilsList.appendChild(appareilItem);
+    });
+
+    // Remplir la liste des ustensiles sans doublons
+    uniqueUstensils.forEach(ustensile => {
+        const ustensileItem = document.createElement('li');
+        ustensileItem.textContent = ustensile;
+        ustensilesList.appendChild(ustensileItem);
+    });
+}
 
 //==============================================================
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
