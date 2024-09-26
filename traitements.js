@@ -1,5 +1,5 @@
-// import { recipes } from './recipes.js';
-import { recipes } from './recipesTriple.js';
+import { recipes } from './recipes.js';
+// import { recipes } from './recipesTriple.js';
 // import { recipes } from './recipesTest.js';
 //=====================================================================================================================================================
 //============================================================ MES VARIABLES ==========================================================================
@@ -23,18 +23,42 @@ let ustensilesClike="";
 function handleSearch() {
     const searchValue = searchInput.value;
     console.log(searchValue);
-    rechercheViaGrandeBarre(searchValue); 
-    searchInput.value = "";
+    // rechercheViaGrandeBarre(searchValue); 
+    // Si la chaîne contient 3 lettres ou plus, lance la recherche
+    if (searchValue.length >= 3) {
+        rechercheViaGrandeBarre(searchValue);  // Appelle la fonction de recherche
+    }
+    // searchInput.value = "";
 }
 // Ajout d'un événement 'click' au bouton
 searchButton.addEventListener('click', function () {
-    handleSearch();
+
+    // handleSearch();
+    const searchValue = searchInput.value;
+    rechercheViaGrandeBarre(searchValue); 
+    searchInput.value = "";
 });
 // Ajout d'un événement 'keydown' à l'input pour détecter la touche "Entrée"
 searchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-        handleSearch();
+        // handleSearch();
+        const searchValue = searchInput.value;
+        rechercheViaGrandeBarre(searchValue); 
+        searchInput.value = "";
     }
+});
+// Sélectionne la barre de recherche par son ID
+// const barreDeRecherche = document.getElementById('idDeTaBarreDeRecherche'); 
+
+// Ajoute un événement input ou keyup sur la barre de recherche
+searchInput.addEventListener('input', function() {
+    // const mots = event.target.value; // Récupère la valeur saisie
+
+    // // Si la chaîne contient 3 lettres ou plus, lance la recherche
+    // if (mots.length >= 3) {
+    //     rechercheViaGrandeBarre(mots);  // Appelle la fonction de recherche
+    // }
+    handleSearch();
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
