@@ -104,7 +104,16 @@ body {
     font-size: 35px;
     /* Ajustez la taille selon vos besoins */
 }
-
+#croix{
+    position: absolute;
+    right: 74px;
+    top: 89%;
+    transform: translateY(-50%);
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: red;
+    }
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE SELECT
