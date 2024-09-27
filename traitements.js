@@ -60,6 +60,25 @@ searchInput.addEventListener('input', function() {
     // }
     handleSearch();
 });
+//====================================================================================
+
+// Sélectionne l'élément croix par son ID
+const croix = document.getElementById('croix');
+
+// Ajoute un écouteur d'événements au clic sur la croix
+croix.addEventListener('click', function() {
+    // Efface la barre de recherche
+    searchInput.value = '';
+
+    // Réinitialise la page : tu peux appeler une fonction pour afficher toutes les recettes
+    ParcourirTableauObjetsEnModeAffichageNavigateur() // Cette fonction devra afficher toutes les recettes
+
+    // // Tu peux aussi effacer les résultats de recherche spécifiques si nécessaire
+    // const targetDiv = document.getElementById('partieRecettes');
+    // targetDiv.innerHTML = '';  // Réinitialise le contenu
+});
+
+
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
