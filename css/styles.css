@@ -75,8 +75,8 @@ body {
 
 .search-button {
     position: absolute;
-    right: -89px;
-    top: 79%;
+    right: -125px;
+    top: 83%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -105,9 +105,11 @@ body {
     /* Ajustez la taille selon vos besoins */
 }
 #croix{
+    display: none;
+    color: grey;
     position: absolute;
-    right: 74px;
-    top: 89%;
+    right: 34px;
+    top: 90%;
     transform: translateY(-50%);
     padding: 5px;
     cursor: pointer;

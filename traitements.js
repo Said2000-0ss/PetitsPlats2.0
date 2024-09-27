@@ -7,6 +7,8 @@ import { recipes } from './recipes.js';
 //MES VARIABLES PARTIE IMAGE
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
+// Sélectionne l'élément croix par son ID
+const croix = document.getElementById('croix');
 //MES VARIABLES PARTIE SELECT
 let ingredientClike="";
 let appareilClike="";
@@ -27,6 +29,10 @@ function handleSearch() {
     // Si la chaîne contient 3 lettres ou plus, lance la recherche
     if (searchValue.length >= 3) {
         rechercheViaGrandeBarre(searchValue);  // Appelle la fonction de recherche
+         // Mettre la croix en display: block si elle n'est pas visible
+    croix.style.display = 'block';
+    }else{
+        ParcourirTableauObjetsEnModeAffichageNavigateur() // Cette fonction devra afficher toutes les recettes
     }
     // searchInput.value = "";
 }
@@ -62,8 +68,7 @@ searchInput.addEventListener('input', function() {
 });
 //====================================================================================
 
-// Sélectionne l'élément croix par son ID
-const croix = document.getElementById('croix');
+
 
 // Ajoute un écouteur d'événements au clic sur la croix
 croix.addEventListener('click', function() {
@@ -76,6 +81,7 @@ croix.addEventListener('click', function() {
     // // Tu peux aussi effacer les résultats de recherche spécifiques si nécessaire
     // const targetDiv = document.getElementById('partieRecettes');
     // targetDiv.innerHTML = '';  // Réinitialise le contenu
+    croix.style.display = 'none';
 });
 
 
