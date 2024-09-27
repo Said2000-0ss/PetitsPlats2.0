@@ -33,6 +33,7 @@ function handleSearch() {
     croix.style.display = 'block';
     }else{
         ParcourirTableauObjetsEnModeAffichageNavigateur() // Cette fonction devra afficher toutes les recettes
+        croix.style.display = 'none';
     }
     // searchInput.value = "";
 }
@@ -439,6 +440,56 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+document.getElementById('jeSuisUnInput').addEventListener('input', function () {
+    const inputText = this.value.trim().toLowerCase();
+    const affichageChoix = document.getElementById('affichageChoix');
+    const ingredientsList = document.getElementById('ingredients-list'); // Assurez-vous que cette liste a le bon ID
+
+    // Afficher le texte saisi dans la div affichageChoix
+    affichageChoix.textContent = inputText;
+
+    // Si le texte a 3 lettres ou plus, on filtre la liste des ingrédients
+    if (inputText.length >= 3) {
+        // On vide la liste des ingrédients avant de la remplir avec les résultats filtrés
+        ingredientsList.innerHTML = '';
+
+        // Créer un ensemble pour s'assurer qu'il n'y a pas de doublons
+        const uniqueIngredients = new Set();
+
+        // Filtrer les ingrédients qui contiennent le texte saisi
+        const filteredIngredients = recipes.filter(recipe => {
+            return recipe.ingredients.some(ing => 
+                ing.ingredient.toLowerCase().includes(inputText)
+            );
+        });
+
+        // Afficher les ingrédients filtrés dans la liste déroulante
+        filteredIngredients.forEach(recipe => {
+            recipe.ingredients.forEach(ingredientObj => {
+                if (ingredientObj.ingredient.toLowerCase().includes(inputText)) {
+                    // Vérifier si l'ingrédient est déjà dans l'ensemble
+                    if (!uniqueIngredients.has(ingredientObj.ingredient.toLowerCase())) {
+                        uniqueIngredients.add(ingredientObj.ingredient.toLowerCase());
+
+                        const li = document.createElement('li');
+                        li.textContent = ingredientObj.ingredient;
+
+                        // Ajouter un écouteur d'événement de clic pour chaque <li>
+                        li.addEventListener('click', function () {
+                            affichageChoix.textContent = li.textContent;
+                        });
+
+                        ingredientsList.appendChild(li);
+                    }
+                }
+            });
+        });
+    } else {
+        // Si le texte est inférieur à 3 lettres, on réinitialise la liste des ingrédients
+        ingredientsList.innerHTML = ''; // Réinitialiser ou afficher la liste complète
+    }
+});
+
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE RECETTES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
