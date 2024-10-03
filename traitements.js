@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
              selectionByIngredient(ingredientClike);
              afficherViaIngredient(ingredientClike);
              const affichageYellow= document.getElementById("affichageChoix");
-             affichageYellow.textContent=ingredientClike;
+             affichageYellow.textContent=ingredientClike+"ccc";//============================ c'est ici que je suis ===================================
         }
     });
 });
@@ -445,11 +445,8 @@ document.getElementById('jeSuisUnInput').addEventListener('input', function () {
     const affichageChoix = document.getElementById('affichageChoix');
     const ingredientsList = document.getElementById('ingredients-list'); // Assurez-vous que cette liste a le bon ID
 
-    // Afficher le texte saisi dans la div affichageChoix
-    affichageChoix.textContent = inputText;
-
     // Si le texte a 3 lettres ou plus, on filtre la liste des ingrédients
-    if (inputText.length >= 3) {
+    if (inputText.length >= 1) {
         // On vide la liste des ingrédients avant de la remplir avec les résultats filtrés
         ingredientsList.innerHTML = '';
 
@@ -476,7 +473,14 @@ document.getElementById('jeSuisUnInput').addEventListener('input', function () {
 
                         // Ajouter un écouteur d'événement de clic pour chaque <li>
                         li.addEventListener('click', function () {
-                            affichageChoix.textContent = li.textContent;
+                            // Afficher l'ingrédient sélectionné dans "affichageChoix"
+                            affichageChoix.innerHTML = `A${li.textContent} <span class="close">X</span>`;
+                            affichageChoix.style.display = 'block';
+                            ingredientsList.innerHTML = ''; // Vider la liste filtrée
+                            attachCloseEvent(); // Attacher l'événement de la croix
+
+                            // Debug : Vérifie si la croix est bien ajoutée
+                            console.log('Cross added: ', document.querySelector('#affichageChoix .close'));
                         });
 
                         ingredientsList.appendChild(li);
@@ -489,6 +493,48 @@ document.getElementById('jeSuisUnInput').addEventListener('input', function () {
         ingredientsList.innerHTML = ''; // Réinitialiser ou afficher la liste complète
     }
 });
+
+// Fonction pour attacher l'événement de clic sur la croix
+function attachCloseEvent() {
+    const closeBtn = document.querySelector('#affichageChoix .close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            document.getElementById('affichageChoix').style.display = 'none'; // Cacher la div
+            document.getElementById('jeSuisUnInput').value = ''; // Réinitialiser l'input
+            displayFullIngredientsList(); // Réafficher l'intégralité de la liste des ingrédients
+        });
+    }
+}
+
+// Fonction pour réafficher l'intégralité de la liste des ingrédients
+function displayFullIngredientsList() {
+    const ingredientsList = document.getElementById('ingredients-list');
+    ingredientsList.innerHTML = ''; // Vider d'abord la liste
+    const uniqueIngredients = new Set();
+
+    // Afficher tous les ingrédients à nouveau
+    recipes.forEach(recipe => {
+        recipe.ingredients.forEach(ingredientObj => {
+            if (!uniqueIngredients.has(ingredientObj.ingredient.toLowerCase())) {
+                uniqueIngredients.add(ingredientObj.ingredient.toLowerCase());
+
+                const li = document.createElement('li');
+                li.textContent = ingredientObj.ingredient;
+
+                // Ajouter un écouteur d'événement de clic pour chaque <li>
+                li.addEventListener('click', function () {
+                    affichageChoix.innerHTML = `B${li.textContent} <span class="close">X</span>`;
+                    affichageChoix.style.display = 'block';
+                    ingredientsList.innerHTML = ''; // Vider la liste
+                    attachCloseEvent(); // Attacher l'événement de la croix
+                });
+
+                ingredientsList.appendChild(li);
+            }
+        });
+    });
+}
+
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

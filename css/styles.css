@@ -76,13 +76,13 @@ body {
 .search-button {
     position: absolute;
     right: -125px;
-    top: 83%;
+    top: 79%;
     transform: translateY(-50%);
     background: none;
     border: none;
     padding: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 18px; 
     color: #555;
 }
 
@@ -120,7 +120,17 @@ body {
                                                                     PARTIE SELECT
 ==========================================================================================================================================================
 */
-
+/* #affichageChoix .close {
+    cursor: pointer;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+} */
+.close {
+    cursor: pointer;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;}
 /* Appliquer un style à la liste déroulante */
 ul {
     list-style-type: none; /* Supprime les puces des <li> */
