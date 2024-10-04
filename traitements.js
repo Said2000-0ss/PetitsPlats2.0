@@ -452,6 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
              afficherViaUstensiles(ustensilesClike); 
             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
              const affichageChoixUstensiles=document.getElementById("affichageChoixUstensiles");
+             selectByUstensiles(ustensilesClike);
              affichageChoixUstensiles.textContent=ustensilesClike;
              afficherRecettesFiltrees(null, null, ustensilesClike) ;
              
