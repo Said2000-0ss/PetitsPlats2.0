@@ -154,6 +154,8 @@ function toggleDropdown(contentId, chevronId) {
         chevron.classList.add('fa-chevron-down');
         if (contentId=='appareils-list'){
             console.log("je suis passé par là et je compte vider la liste");
+            const affichageChoixDiv= document.getElementById("affichageChoixAppareils");
+            affichageChoixDiv.textContent="";
         }
         
     }
@@ -161,7 +163,7 @@ function toggleDropdown(contentId, chevronId) {
 // Attacher l'événement de clic à chaque chevron
 document.getElementById('ingredients-container').addEventListener('click', function () {
     toggleDropdown('ingredients-content', 'ingredients-chevron');
-    const affichageDiv= document.getElementById("affichageChoix");
+    const affichageDiv= document.getElementById("affichageChoixIngredients");
     affichageDiv.textContent="";
 });
 
@@ -406,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
              console.log("je suis la variable ingredientClike:  "+ingredientClike);
              selectionByIngredient(ingredientClike);
              afficherViaIngredient(ingredientClike);
-             const affichageYellow= document.getElementById("affichageChoix");
+             const affichageYellow= document.getElementById("affichageChoixIngredients");
              affichageYellow.textContent=ingredientClike+"ccc";//============================ c'est ici que je suis ===================================
         }
     });
@@ -418,10 +420,13 @@ document.addEventListener('DOMContentLoaded', function() {
     appareilsList.addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
+            
             console.log("Vous avez cliqué sur la liste appareils:", clickedText);
              appareilClike =clickedText;
              console.log("je suis la variable : appareilClike:  "+appareilClike);
              afficherViaAppareil(appareilClike)
+             const affichageChoixDiv= document.getElementById("affichageChoixAppareils");
+             affichageChoixDiv.textContent=appareilClike;
         }
     });
 });
@@ -432,6 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ustensilsList.addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
+            // const affichageChoixUstensiles=document.getElementById("affichageChoixUstensiles")
             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
             ustensilesClike=clickedText;
              console.log("je suis la variable : ustensilesClike : "+ustensilesClike);
@@ -442,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.getElementById('jeSuisUnInput').addEventListener('input', function () {
     const inputText = this.value.trim().toLowerCase();
-    const affichageChoix = document.getElementById('affichageChoix');
+    const affichageChoix = document.getElementById('affichageChoixIngredients');
     const ingredientsList = document.getElementById('ingredients-list'); // Assurez-vous que cette liste a le bon ID
 
     // Si le texte a 3 lettres ou plus, on filtre la liste des ingrédients
@@ -496,10 +502,10 @@ document.getElementById('jeSuisUnInput').addEventListener('input', function () {
 
 // Fonction pour attacher l'événement de clic sur la croix
 function attachCloseEvent() {
-    const closeBtn = document.querySelector('#affichageChoix .close');
+    const closeBtn = document.querySelector('#affichageChoixIngredients .close');
     if (closeBtn) {
         closeBtn.addEventListener('click', function () {
-            document.getElementById('affichageChoix').style.display = 'none'; // Cacher la div
+            document.getElementById('affichageChoixIngredients').style.display = 'none'; // Cacher la div
             document.getElementById('jeSuisUnInput').value = ''; // Réinitialiser l'input
             displayFullIngredientsList(); // Réafficher l'intégralité de la liste des ingrédients
         });
@@ -946,6 +952,12 @@ function afficherViaUstensiles(ustensile) {
     const nbRecettesSpan = document.getElementById('nbRecettes');
     nbRecettesSpan.textContent = `${compteur} recettes`;
 } 
+
+//========================================================================================================
+//========================================================================================================
+
+//========================================================================================================
+//========================================================================================================
 function afficherRecettesFiltrees(ingredients, appliance, ustensile) {
     let compteur = 0;
     const targetDiv = document.getElementById('partieRecettes');
@@ -1043,6 +1055,10 @@ function afficherRecettesFiltrees(ingredients, appliance, ustensile) {
     const nbRecettesSpan = document.getElementById('nbRecettes');
     nbRecettesSpan.textContent = `${compteur} recettes trouvées`;
 }
+
+//========================================================================================================
+
+//========================================================================================================
 // afficherRecettesFiltrees('poulet', 'four', 'spatule');  // Filtre par les trois paramètres
 // afficherRecettesFiltrees('poulet', null, 'spatule');    // Filtre par ingrédient et ustensile
 // afficherRecettesFiltrees(null, 'four', null);           // Filtre uniquement par appareil

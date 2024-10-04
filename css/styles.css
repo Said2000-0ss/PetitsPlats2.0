@@ -174,7 +174,8 @@ select {
     grid-row-start: 1;
 }
 #appareils-list {
-    background-color: red;
+    /* background-color: red; */
+    background-color: white;
     border-bottom-left-radius: 11px;
     border-bottom-right-radius: 11px;
     width: 104%;
@@ -189,7 +190,8 @@ select {
 }
 
 #ustensiles-list {
-    background-color: yellow;
+    /* background-color: yellow; */
+    background-color: white;
     border-bottom-left-radius: 11px;
     border-bottom-right-radius: 11px;
     width: 104%;
@@ -233,7 +235,8 @@ select {
 #appareils {
    
     padding-left: 3%;
-    background-color: red;
+    /* background-color: red; */
+    background-color: white;
     padding-top: 3%;
     height: 44px;
     width: 75%;
@@ -250,7 +253,8 @@ select {
 
 #ustensiles {
     padding-left: 3%;
-    background-color: yellow;
+    /* background-color: yellow; */
+    background-color: white;
     padding-top: 3%;
     height: 44px;
     width: 75%;
@@ -337,9 +341,16 @@ ul {
     height: 33px;
     padding-left: 8px;
 }
-#affichageChoix{
+#affichageChoixIngredients{
     background-color: #FFD15B;
 }
+#affichageChoixAppareils{
+    background-color: #FFD15B;
+}
+#affichageChoixUstensiles{
+    background-color: #FFD15B;
+}
+
 
 /* ========================================================================================================================== */
 /* Styles pour que le bouton soit à l'intérieur de l'input */
