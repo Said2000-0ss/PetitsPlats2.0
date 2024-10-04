@@ -437,11 +437,13 @@ document.addEventListener('DOMContentLoaded', function() {
     ustensilsList.addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
-            // const affichageChoixUstensiles=document.getElementById("affichageChoixUstensiles")
-            console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
+            
             ustensilesClike=clickedText;
              console.log("je suis la variable : ustensilesClike : "+ustensilesClike);
              afficherViaUstensiles(ustensilesClike); 
+            console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
+             const affichageChoixUstensiles=document.getElementById("affichageChoixUstensiles");
+             affichageChoixUstensiles.textContent=ustensilesClike;
         }
     });
 });
