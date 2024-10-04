@@ -432,7 +432,9 @@ document.addEventListener('DOMContentLoaded', function() {
              afficherViaAppareil(appareilClike)
              const affichageChoixDiv= document.getElementById("affichageChoixAppareils");
              affichageChoixDiv.textContent=appareilClike;
+             selectByAppareils(appareilClike);
              afficherRecettesFiltrees(null, appareilClike, null);
+
 
         }
     });
