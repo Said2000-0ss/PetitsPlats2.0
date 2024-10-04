@@ -157,6 +157,11 @@ function toggleDropdown(contentId, chevronId) {
             const affichageChoixDiv= document.getElementById("affichageChoixAppareils");
             affichageChoixDiv.textContent="";
         }
+        if (contentId=='ustensiles-list'){
+            console.log("je suis passé par là et je compte vider la liste");
+            const affichageChoixDiv= document.getElementById("affichageChoixUstensiles");
+            affichageChoixDiv.textContent="";
+        }
         
     }
 }
