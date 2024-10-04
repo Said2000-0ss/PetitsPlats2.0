@@ -451,6 +451,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
              const affichageChoixUstensiles=document.getElementById("affichageChoixUstensiles");
              affichageChoixUstensiles.textContent=ustensilesClike;
+             afficherRecettesFiltrees(null, null, ustensilesClike) ;
+             
         }
     });
 });
@@ -1065,7 +1067,98 @@ function afficherRecettesFiltrees(ingredients, appliance, ustensile) {
     nbRecettesSpan.textContent = `${compteur} recettes trouvées`;
 }
 
+
 //========================================================================================================
+function selectByAppareils(appareilClick) {
+    // Vide les listes avant de les remplir
+    const ingredientsList = document.getElementById('ingredients-list');
+    const ustensilesList = document.getElementById('ustensiles-list');
+
+    ingredientsList.innerHTML = ''; // Vider la liste des ingrédients
+    ustensilesList.innerHTML = ''; // Vider la liste des ustensiles
+
+    // Crée des ensembles pour stocker les ingrédients et ustensiles sans doublons
+    const uniqueIngredients = new Set();
+    const uniqueUstensils = new Set();
+
+    // Trouver les recettes contenant l'appareil cliqué
+    const foundRecipes = recipes.filter(recipe => {
+        return recipe.appliance.toLowerCase() === appareilClick.toLowerCase();
+    });
+
+    // Si des recettes ont été trouvées, on ajoute les ingrédients et ustensiles aux ensembles
+    foundRecipes.forEach(recipe => {
+        // Ajouter chaque ingrédient à l'ensemble uniqueIngredients
+        recipe.ingredients.forEach(ingredientObj => {
+            uniqueIngredients.add(ingredientObj.ingredient);
+        });
+
+        // Ajouter chaque ustensile à l'ensemble uniqueUstensils
+        recipe.ustensils.forEach(ustensile => {
+            uniqueUstensils.add(ustensile);
+        });
+    });
+
+    // Remplir la liste des ingrédients sans doublons
+    uniqueIngredients.forEach(ingredient => {
+        const ingredientItem = document.createElement('li');
+        ingredientItem.textContent = ingredient;
+        ingredientItem.classList.add('dropdown-item');
+        ingredientsList.appendChild(ingredientItem);
+    });
+
+    // Remplir la liste des ustensiles sans doublons
+    uniqueUstensils.forEach(ustensile => {
+        const ustensileItem = document.createElement('li');
+        ustensileItem.textContent = ustensile;
+        ustensileItem.classList.add('dropdown-item');
+        ustensilesList.appendChild(ustensileItem);
+    });
+}
+// function selectByUstensiles(ustensileClick) {
+//     // Vide les listes avant de les remplir
+//     const ingredientsList = document.getElementById('ingredients-list');
+//     const appareilsList = document.getElementById('appareils-list');
+
+//     ingredientsList.innerHTML = ''; // Vider la liste des ingrédients
+//     appareilsList.innerHTML = ''; // Vider la liste des appareils
+
+//     // Crée des ensembles pour stocker les ingrédients et appareils sans doublons
+//     const uniqueIngredients = new Set();
+//     const uniqueAppliances = new Set();
+
+//     // Trouver les recettes contenant l'ustensile cliqué
+//     const foundRecipes = recipes.filter(recipe => {
+//         return recipe.ustensils.includes(ustensileClick.toLowerCase());
+//     });
+
+//     // Si des recettes ont été trouvées, on ajoute les ingrédients et appareils aux ensembles
+//     foundRecipes.forEach(recipe => {
+//         // Ajouter chaque ingrédient à l'ensemble uniqueIngredients
+//         recipe.ingredients.forEach(ingredientObj => {
+//             uniqueIngredients.add(ingredientObj.ingredient);
+//         });
+
+//         // Ajouter l'appareil à l'ensemble uniqueAppliances
+//         uniqueAppliances.add(recipe.appliance);
+//     });
+
+//     // Remplir la liste des ingrédients sans doublons
+//     uniqueIngredients.forEach(ingredient => {
+//         const ingredientItem = document.createElement('li');
+//         ingredientItem.textContent = ingredient;
+//         ingredientItem.classList.add('dropdown-item');
+//         ingredientsList.appendChild(ingredientItem);
+//     });
+
+//     // Remplir la liste des appareils sans doublons
+//     uniqueAppliances.forEach(appareil => {
+//         const appareilItem = document.createElement('li');
+//         appareilItem.textContent = appareil;
+//         appareilItem.classList.add('dropdown-item');
+//         appareilsList.appendChild(appareilItem);
+//     });
+// }
 
 //========================================================================================================
 // afficherRecettesFiltrees('poulet', 'four', 'spatule');  // Filtre par les trois paramètres
