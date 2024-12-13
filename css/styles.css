@@ -75,7 +75,7 @@ body {
 
 .search-button {
     position: absolute;
-    right: -125px;
+    right: -29%;
     top: 79%;
     transform: translateY(-50%);
     background: none;
@@ -84,6 +84,7 @@ body {
     cursor: pointer;
     font-size: 18px; 
     color: #555;
+  
 }
 
 .search-button i {
@@ -101,8 +102,13 @@ body {
 }
 
 .search-button .fa-stack {
-    font-size: 35px;
-    /* Ajustez la taille selon vos besoins */
+        font-size: 35px;
+        padding-top: 5px;
+}
+
+#croixResultatIngredients{
+    display:none;
+    /* color:#FFD15B;; */
 }
 #croix{
     display: none;
@@ -176,8 +182,8 @@ select {
 #appareils-list {
     /* background-color: red; */
     background-color: white;
-    border-bottom-left-radius: 11px;
-    border-bottom-right-radius: 11px;
+    /* border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px; */
     width: 104%;
     margin-left: -4%;
     padding-left: 0;
@@ -192,8 +198,8 @@ select {
 #ustensiles-list {
     /* background-color: yellow; */
     background-color: white;
-    border-bottom-left-radius: 11px;
-    border-bottom-right-radius: 11px;
+    /* border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px; */
     width: 104%;
     margin-left: -4%;
     padding-left: 0;
@@ -222,15 +228,33 @@ select {
 }
 
 #ingredients {
-    padding-left: 4%;
+    /* padding-left: 4%; */
     background-color: white;
     padding-top: 3%;
-    margin-left: 4%;
+    /* margin-left: 4%; */
     /* height: auto; */
     width: 75%;
     border-radius: 11px;
     z-index: 1;
 }
+#containerChoix {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+
+#croixIngredients {
+    position: absolute;
+    right: 0;
+  
+        margin-right: 21px;
+  
+    display: none; /* Cacher la croix par défaut */
+    cursor: pointer; /* Curseur en forme de main pour indiquer que c'est cliquable */
+}
+
 
 #appareils {
    
@@ -238,7 +262,7 @@ select {
     /* background-color: red; */
     background-color: white;
     padding-top: 3%;
-    height: 44px;
+    /* height: 44px; */
     width: 75%;
     border-radius: 11px;
     z-index: 111;
@@ -250,17 +274,50 @@ select {
     font-size: larger;
     
 }
+#containerChoixAppareils {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#affichageChoixAppareils {
+    padding-right: 20px; /* Espace pour éviter que le texte ne passe sous la croix */
+}
+
+#croixAppareils {
+    position: absolute;
+    right: 0;
+    margin-right: 21px;
+    display: none; /* Cacher la croix par défaut */
+    cursor: pointer;
+}
+
 
 #ustensiles {
     padding-left: 3%;
     /* background-color: yellow; */
     background-color: white;
     padding-top: 3%;
-    height: 44px;
+    /* height: 44px; */
     width: 75%;
     border-radius: 11px;
      z-index: 111;
 }
+#containerChoixUstensiles {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+#croixUstensiles {
+    position: absolute;
+    right: 0;
+    margin-right: 21px;
+    display: none; /* Cacher la croix par défaut */
+    cursor: pointer;
+}
+
 .ustensiles-dropdown{
     display:flex;
     align-items: center;
@@ -292,7 +349,7 @@ ul {
     list-style-type: none;
     /* Supprime la puce des éléments <li> */
     padding: 8px;
-    margin-left: 7px;
+    /* margin-left: 7px; */
     cursor: pointer;
 }
 
@@ -316,14 +373,16 @@ ul {
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-left: 8px;
     font-size: larger;
     font-family: arial;
     /* font-weight: bold; */
+    padding-bottom:12px;
 }
 
 #ingredients-chevron,#appareils-chevron,#ustensiles-chevron {
     color: black;
-    margin-left: 63px;
+    margin-left: 33%;
 }
 
 #dropdown-list {
@@ -331,24 +390,72 @@ ul {
     border: none;
 }
 
-#jeSuisUnInput {
-    margin-left: -4px;
-    margin-top: 10px;
-    width: 57%;
+#inputIngredients {
+    margin-left: 8px;
+    margin-top: 0px;
+    width: 56%;
     border: 1px solid grey;
     /* border-radius: 11px; */
     background-color: white;
     height: 33px;
     padding-left: 8px;
 }
+#inputAppareils{
+    margin-left: -4px;
+    margin-top: 10px;
+    width: 62%;
+    border: 1px solid grey;
+    /* border-radius: 11px; */
+    background-color: white;
+    height: 33px;
+    padding-left: 8px;
+}
+#inputUstensiles{
+    margin-left: -4px;
+    margin-top: 10px;
+    width: 62%;
+    border: 1px solid grey;
+    /* border-radius: 11px; */
+    background-color: white;
+    height: 33px;
+    padding-left: 8px;
+}
+
 #affichageChoixIngredients{
     background-color: #FFD15B;
+    /* margin-left: 16px; */
+    /* padding: 8px; */
+    /* margin-left: 7px; */
+    width: 100%;
+    padding-right: 20px; /* Espace pour éviter que le texte ne passe sous la croix */
+    padding-left: 12px;
+    
+     
+    
+    
+}
+#croixGrandeBarre{
+    position: absolute;
+    display:none;
+    font-weight: bold;
+    color: grey;
+    padding-left: 69em;
+   
+margin-top: -43px;
 }
 #affichageChoixAppareils{
     background-color: #FFD15B;
+    margin-left: 16px;
+    /* padding: 8px; */
+    margin-left: 7px;
+    width:82%;
 }
 #affichageChoixUstensiles{
     background-color: #FFD15B;
+    margin-left: 16px;
+    /* padding: 8px; */
+    margin-left: 7px;
+    width:100%;
 }
 
 
@@ -359,6 +466,9 @@ ul {
     width: 250px;
 }
 
+.yellow-background {
+    background-color: #FFD15B;
+}
 input[type="text"] {
     width: 100%;
     padding-right: 30px;
@@ -372,9 +482,10 @@ button {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
-    margin-right: 70px;
-    margin-top: 10px;
+    /* padding: 5px; */
+    padding-left: 15px;
+    margin-right: 25%;
+    margin-top: 7px;
     color: grey;
 }
 
@@ -400,6 +511,45 @@ button {
     right: 16px;
     cursor: pointer;
 }
+
+/* ============================================================= */
+#AffichageChoix {
+    display: grid;
+    grid-template-columns: 21% 21% 21% 32%;
+    padding-top: 23px;
+    margin-bottom: 4%;
+    margin-left: 96px;
+}
+#result-container {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    width: 50%;
+    border-radius: 21px;
+    /* background-color: #FFD15B; */
+    padding-left: 10px;
+}
+/* #result-container-bis {
+
+    grid-column-start: 1;
+    grid-row-start: 2;
+    width: 50%;
+    /* background-color: #FFD15B; */
+/* } */ 
+#result-container-appareils {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    /* background-color: #FFD15B; */
+    border-radius: 12px;
+    width: 71%;
+  
+}
+
+#result-container-ustensiles {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    /* background-color: #FFD15B; */
+}
+
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE RECETTES
