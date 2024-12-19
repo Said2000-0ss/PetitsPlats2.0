@@ -490,10 +490,10 @@ document.getElementById('croixIngredients').addEventListener('click', () => {// 
     const affichageResultat = document.getElementById("result-container");
     affichageResultat.textContent = ingredientClike;
     console.log("croix 2")
-    const croixIngredientsResultat = document.getElementById('croixResultatIngredients');
-    croixIngredientsResultat.style.display='block';
+    // const croixIngredientsResultat = document.getElementById('croixResultatIngredients');
+    // croixIngredientsResultat.style.display='block';
    
-    croixIngredients.style.display = 'none'; // Cache la croix
+    // croixIngredients.style.display = 'none'; // Cache la croix
     // Ajouter la classe CSS qui définit le fond jaune
 affichageResultat.classList.add("yellow-background");
     verifierEtAfficherRecettes();
@@ -503,14 +503,14 @@ inputIngredients.value = '';
     const affichageResutatBis = document.getElementById("result-container-bis");
             affichageResutatBis.textContent = "";
 });
-document.getElementById('croixResultatIngredients').addEventListener('click', () => {// Fonction pour masquer la croix lorsqu'on clique sur la croix elle-même
-    const croixIngredients = document.getElementById('croixResultatIngredients');
-    const affichageChoixIngredients = document.getElementById('result-container');
-    croixIngredients.style.display = 'none'; // Cache la croix
-    affichageChoixIngredients.innerHTML = ''; // Efface le contenu affiché
-    affichageChoixIngredients.style.backgroundColor = '';
+// document.getElementById('croixResultatIngredients').addEventListener('click', () => {// Fonction pour masquer la croix lorsqu'on clique sur la croix elle-même
+//     const croixIngredients = document.getElementById('croixResultatIngredients');
+//     const affichageChoixIngredients = document.getElementById('result-container');
+//     croixIngredients.style.display = 'none'; // Cache la croix
+//     affichageChoixIngredients.innerHTML = ''; // Efface le contenu affiché
+//     affichageChoixIngredients.style.backgroundColor = '';
    
-});
+// });
 
 function afficherCroixAppareils() {// Fonction pour afficher la croix lorsqu'un élément est cliqué dans affichageChoixAppareils
     const croixAppareils = document.getElementById('croixAppareils');
