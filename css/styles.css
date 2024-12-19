@@ -523,6 +523,7 @@ button {
 }
 #result-container {
     width: 100%;
+    background-color: #FFD15B;
 }
 #result-container-appareils {
     width: 100%;
