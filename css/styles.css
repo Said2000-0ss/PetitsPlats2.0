@@ -512,8 +512,6 @@ button {
     cursor: pointer;
 }
 
-/* ============================================================= */
-/* nouveau code  */
 #AffichageChoix {
     display: flex;
     flex-direction: column;
@@ -523,19 +521,16 @@ button {
     margin-left: 96px;
     width: 15%;
 }
-
 #result-container {
     width: 100%;
 }
-
 #result-container-appareils {
     width: 100%;
 }
-
 #result-container-ustensiles {
     width: 100%; 
+    background-color: #FFD15B;
 }
-
 
 /* 
 ==========================================================================================================================================================
