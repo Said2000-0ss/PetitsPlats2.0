@@ -529,13 +529,11 @@ button {
 }
 
 #result-container-appareils {
-    width: 71%;
-    border-radius: 12px;
-    margin-bottom: 10px; /* Ajout d'un espace entre les éléments */
+    width: 100%;
 }
 
 #result-container-ustensiles {
-    width: 100%; /* Ou ajustez à la largeur souhaitée */
+    width: 50%; 
     margin-bottom: 10px; /* Ajout d'un espace entre les éléments */
 }
 
