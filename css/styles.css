@@ -526,6 +526,7 @@ button {
 }
 #result-container-appareils {
     width: 100%;
+    background-color: #FFD15B;
 }
 #result-container-ustensiles {
     width: 100%; 
