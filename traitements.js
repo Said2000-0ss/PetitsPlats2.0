@@ -617,10 +617,67 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("je suis la variable : ustensilesClike : " + ustensilesClike); //  afficherViaUstensiles(ustensilesClike); 
             //  afficherRecettesFiltrees(null,null,ustensilesClike)
             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
-            const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
-            selectByUstensiles(ustensilesClike);
-            affichageChoixUstensiles.textContent = ustensilesClike;
-            afficherCroixUstensiles();
+//============================= MON ANCIEN CODE ==================================================================================================            
+            // const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+            // selectByUstensiles(ustensilesClike);
+            // affichageChoixUstensiles.textContent = ustensilesClike;
+            // afficherCroixUstensiles();
+//================================== MON NOUVEAU CODE ============================================================================================
+//             const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+
+// // Vérifier si ustensilesClike est vide avant de procéder
+// if (ustensilesClike.length === 0) {
+  
+//     selectByUstensiles(ustensilesClike);
+//     affichageChoixUstensiles.textContent = ustensilesClike;
+//     afficherCroixUstensiles();
+//     console.log("***ENTREEE DE LA BOUCLE je suis passé par là");
+// } else {
+//     // Si ustensilesClike n'est pas vide, ne rien faire
+   
+//     console.log("***SORTIE DE BOUCLE je suis passé par là,ustensilesClike n'est pas vide, aucune action effectuée.", ustensilesClike);
+//     // selectByUstensiles(ustensilesClike);
+//     // affichageChoixUstensiles.textContent = ustensilesClike;
+//     // afficherCroixUstensiles();
+// }
+
+//================================== MON NOUVEAU CODE avec mes tests ==========================================================================
+const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+
+// Vérifier si ustensilesClike est vide avant de procéder
+if (ustensilesClike.length === 0) {
+  
+    // selectByUstensiles(ustensilesClike);
+    // affichageChoixUstensiles.textContent = ustensilesClike;
+    // afficherCroixUstensiles();
+    console.log("***ENTREEE DE LA BOUCLE je suis passé par là");
+} else {
+    // Si ustensilesClike n'est pas vide, ne rien faire
+    
+    console.log("***SORTIE DE BOUCLE je suis passé par là, ustensilesClike n'est pas vide, aucune action effectuée.", ustensilesClike);
+    selectByUstensiles(ustensilesClike);
+    affichageChoixUstensiles.textContent = ustensilesClike;
+    afficherCroixUstensiles();
+    //ustensilesClike=[];// est censé initialiser le tableau
+    
+}
+//====================================FIN DE MON ANCIEN CODE ==================================================================================
+//================================== NOUVEAU CODE VERSIONNE PAR CHATGPT =======================================================================
+// const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+
+// // Vérifier si ustensilesClike est défini et est un tableau vide
+// if (Array.isArray(ustensilesClike) && ustensilesClike.length === 0) {
+//     // Si le tableau est vide, on peut procéder
+//     selectByUstensiles(ustensilesClike);
+//     affichageChoixUstensiles.textContent = ustensilesClike;
+//     afficherCroixUstensiles();
+// } else {
+//     // Si ustensilesClike n'est pas vide, on ne fait rien
+//     console.log("ustensilesClike n'est pas vide, aucune action effectuée.");
+// }
+//=============================================================================================================================================
+
+
             const containerAffichageUstensiles = document.getElementById("result-container-ustensiles");
             const span2 = document.createElement("span");
             let span= document.createElement("span")
