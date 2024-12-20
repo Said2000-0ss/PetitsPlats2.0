@@ -571,41 +571,102 @@ function filtrerUstensilesListe() {// Fonction pour filtrer les ustensiles en fo
 alimenterUstensilesListe();// Initialiser la liste des ustensiles et l'événement de filtrage
 document.querySelector('#inputUstensiles').addEventListener('input', filtrerUstensilesListe);
 // Sélectionner tous les éléments li dans la liste avec l'id "appareils-list"
+// document.addEventListener('DOMContentLoaded', function () {
+//     const appareilsList = document.getElementById('appareils-list');
+//     appareilsList.addEventListener('click', function (event) {
+//         if (event.target.tagName === 'LI') {
+//             const clickedText = event.target.textContent;
+//             console.log("Vous avez cliqué sur la liste appareils:", clickedText);
+//             appareilClike = [];
+//             appareilClike.push(clickedText.toLowerCase());
+//             console.log("je suis la variable : appareilClike:  " + appareilClike);   //  afficherViaAppareil(appareilClike)
+//           //  afficherRecettesFiltrees(null,appareilClike,null)
+//             const affichageChoixDiv = document.getElementById("affichageChoixAppareils");
+//             affichageChoixDiv.textContent = appareilClike;
+//             const affichageResultatAppareils = document.getElementById("result-container-appareils");
+//             // affichageResultatAppareils.innerHTML+=`<span class="yellow-background">${appareilClike}</span>`; // selectByAppareils(appareilClike);
+//             let span= document.createElement("span")
+//             span.classList.add("yellow-background");
+//             span.textContent=appareilClike + " x";
+
+//             affichageResultatAppareils.appendChild(span);
+//             span.addEventListener('click', function (event) {
+//                 span.remove();
+//                 affichageChoixAppareils.textContent="";
+//                 const index = appareilClike.indexOf(clickedText.toLowerCase());
+//                 if (index > -1) {
+//                     appareilClike.splice(index, 1);
+//                     verifierEtAfficherRecettes();
+//                 }
+
+//             });
+//             // afficherCroixAppareils();
+//             verifierEtAfficherRecettes(); //  afficherRecettesFiltrees(null, appareilClike, null);
+//             alimenterIngredientsListe();
+//         }
+//     });
+// });
 document.addEventListener('DOMContentLoaded', function () {
     const appareilsList = document.getElementById('appareils-list');
     appareilsList.addEventListener('click', function (event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
             console.log("Vous avez cliqué sur la liste appareils:", clickedText);
-            appareilClike = [];
-            appareilClike.push(clickedText.toLowerCase());
-            console.log("je suis la variable : appareilClike:  " + appareilClike);   //  afficherViaAppareil(appareilClike)
-          //  afficherRecettesFiltrees(null,appareilClike,null)
+
+            // Réinitialiser appareilClike et ajouter le nouvel appareil
+            appareilClike = [clickedText.toLowerCase()];
+            console.log("je suis la variable : appareilClike:  " + appareilClike);
+
+            // 1. Affichage dans 'affichageChoixAppareils' (remplacer le contenu précédent)
             const affichageChoixDiv = document.getElementById("affichageChoixAppareils");
-            affichageChoixDiv.textContent = appareilClike;
+            affichageChoixDiv.innerHTML = ''; // Effacer le contenu précédent
+
+            // Créer l'élément à afficher avec la croix
+            const span = document.createElement("span");
+            span.textContent = appareilClike[0]; // Afficher le texte de l'appareil sélectionné
+
+            // Créer la croix pour la suppression
+            const cross = document.createElement("span");
+            cross.textContent = " ✖"; // La croix de suppression
+            cross.style.cursor = "pointer"; // Changer le curseur pour montrer que c'est cliquable
+
+            // Ajouter la croix à l'élément span
+            span.appendChild(cross);
+            affichageChoixDiv.appendChild(span);
+
+            // 2. Affichage dans 'result-container-appareils' (remplacer le contenu précédent)
             const affichageResultatAppareils = document.getElementById("result-container-appareils");
-            // affichageResultatAppareils.innerHTML+=`<span class="yellow-background">${appareilClike}</span>`; // selectByAppareils(appareilClike);
-            let span= document.createElement("span")
-            span.classList.add("yellow-background");
-            span.textContent=appareilClike + " x";
+            affichageResultatAppareils.innerHTML = ''; // Effacer le contenu précédent
 
-            affichageResultatAppareils.appendChild(span);
-            span.addEventListener('click', function (event) {
-                span.remove();
-                affichageChoixAppareils.textContent="";
-                const index = appareilClike.indexOf(clickedText.toLowerCase());
-                if (index > -1) {
-                    appareilClike.splice(index, 1);
-                    verifierEtAfficherRecettes();
-                }
+            // Créer un nouvel élément à afficher dans cette div
+            const span2 = document.createElement("span");
+            span2.classList.add("yellow-background");
+            span2.textContent = appareilClike[0] + " x"; // Afficher l'appareil sélectionné avec un 'x'
 
-            });
-            // afficherCroixAppareils();
-            verifierEtAfficherRecettes(); //  afficherRecettesFiltrees(null, appareilClike, null);
+            // Ajouter l'élément à affichageResultatAppareils
+            affichageResultatAppareils.appendChild(span2);
+
+            // Ajouter un événement pour supprimer les deux divs quand on clique sur la croix
+            function clearBothDivs() {
+                affichageChoixAppareils.innerHTML = ''; // Effacer affichageChoixAppareils
+                affichageResultatAppareils.innerHTML = ''; // Effacer result-container-appareils
+                appareilClike = []; // Réinitialiser appareilClike
+                verifierEtAfficherRecettes(); // Mettre à jour les recettes
+            }
+
+            // Ajouter l'événement de suppression pour la croix dans 'affichageChoixAppareils'
+            cross.addEventListener('click', clearBothDivs);
+
+            // Ajouter un événement de suppression pour 'result-container-appareils' si c'est la croix de ce container
+            span2.addEventListener('click', clearBothDivs);
+
+            // Mettre à jour les recettes ou autres actions
+            verifierEtAfficherRecettes();
             alimenterIngredientsListe();
         }
     });
 });
+
 
 // Sélectionner tous les éléments li dans la liste avec l'id "ustensiles-list"
 // document.addEventListener('DOMContentLoaded', function () {
