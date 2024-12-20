@@ -608,107 +608,177 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Sélectionner tous les éléments li dans la liste avec l'id "ustensiles-list"
+// document.addEventListener('DOMContentLoaded', function () {
+//     const ustensilsList = document.getElementById('ustensiles-list');
+//     ustensilsList.addEventListener('click', function (event) {
+//         if (event.target.tagName === 'LI') {
+//             const clickedText = event.target.textContent;
+//             ustensilesClike.push(clickedText.toLowerCase());
+//             console.log("je suis la variable : ustensilesClike : " + ustensilesClike); //  afficherViaUstensiles(ustensilesClike); 
+//             //  afficherRecettesFiltrees(null,null,ustensilesClike)
+//             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
+// //============================= MON ANCIEN CODE ==================================================================================================            
+//             // const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+//             // selectByUstensiles(ustensilesClike);
+//             // affichageChoixUstensiles.textContent = ustensilesClike;
+//             // afficherCroixUstensiles();
+// //================================== MON NOUVEAU CODE ============================================================================================
+// //             const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+
+// // // Vérifier si ustensilesClike est vide avant de procéder
+// // if (ustensilesClike.length === 0) {
+  
+// //     selectByUstensiles(ustensilesClike);
+// //     affichageChoixUstensiles.textContent = ustensilesClike;
+// //     afficherCroixUstensiles();
+// //     console.log("***ENTREEE DE LA BOUCLE je suis passé par là");
+// // } else {
+// //     // Si ustensilesClike n'est pas vide, ne rien faire
+   
+// //     console.log("***SORTIE DE BOUCLE je suis passé par là,ustensilesClike n'est pas vide, aucune action effectuée.", ustensilesClike);
+// //     // selectByUstensiles(ustensilesClike);
+// //     // affichageChoixUstensiles.textContent = ustensilesClike;
+// //     // afficherCroixUstensiles();
+// // }
+
+// //================================== MON NOUVEAU CODE avec mes tests ==========================================================================
+// const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+
+// // Vérifier si ustensilesClike est vide avant de procéder
+// if (ustensilesClike.length === 0) {
+  
+//     // selectByUstensiles(ustensilesClike);
+//     // affichageChoixUstensiles.textContent = ustensilesClike;
+//     // afficherCroixUstensiles();
+//     console.log("***ENTREEE DE LA BOUCLE je suis passé par là");
+// } else {
+//     // Si ustensilesClike n'est pas vide, ne rien faire
+    
+//     console.log("***SORTIE DE BOUCLE je suis passé par là, ustensilesClike n'est pas vide, aucune action effectuée.", ustensilesClike);
+//     selectByUstensiles(ustensilesClike);
+//     affichageChoixUstensiles.textContent = ustensilesClike;
+//     afficherCroixUstensiles();
+//     //ustensilesClike=[];// est censé initialiser le tableau
+    
+// }
+// //====================================FIN DE MON ANCIEN CODE ==================================================================================
+// //================================== NOUVEAU CODE VERSIONNE PAR CHATGPT =======================================================================
+// // const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+
+// // // Vérifier si ustensilesClike est défini et est un tableau vide
+// // if (Array.isArray(ustensilesClike) && ustensilesClike.length === 0) {
+// //     // Si le tableau est vide, on peut procéder
+// //     selectByUstensiles(ustensilesClike);
+// //     affichageChoixUstensiles.textContent = ustensilesClike;
+// //     afficherCroixUstensiles();
+// // } else {
+// //     // Si ustensilesClike n'est pas vide, on ne fait rien
+// //     console.log("ustensilesClike n'est pas vide, aucune action effectuée.");
+// // }
+// //=============================================================================================================================================
+
+
+//             const containerAffichageUstensiles = document.getElementById("result-container-ustensiles");
+//             const span2 = document.createElement("span");
+//             let span= document.createElement("span")
+//             span2.classList.add("yellow-background");
+//             span.textContent=ustensilesClike + " x";
+//             // const br = document.createElement("br");
+//             span2.appendChild(span);
+//             // div.appendChild(br);
+//             containerAffichageUstensiles.appendChild(span2);
+
+
+           
+//             span2.addEventListener('click', function (event) {
+//                 // span.remove();
+//                 span2.remove();
+//                 const index = ustensilesClike.indexOf(clickedText.toLowerCase());
+//                 if (index > -1) {
+//                    ustensilesClike.splice(index, 1);
+//                     verifierEtAfficherRecettes();
+//                 }
+//             });
+//  //=======================
+
+//  //=======================
+//             verifierEtAfficherRecettes();
+//             alimenterIngredientsListe();
+//             // afficherRecettesFiltrees(null, null, ustensilesClike) ;   
+//         }
+//     });
+// });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function () {
     const ustensilsList = document.getElementById('ustensiles-list');
     ustensilsList.addEventListener('click', function (event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
-            ustensilesClike.push(clickedText.toLowerCase());
-            console.log("je suis la variable : ustensilesClike : " + ustensilesClike); //  afficherViaUstensiles(ustensilesClike); 
-            //  afficherRecettesFiltrees(null,null,ustensilesClike)
+
+            // Mettre à jour ustensilesClike avec un seul élément
+            ustensilesClike = [clickedText.toLowerCase()];
+            console.log("je suis la variable : ustensilesClike : " + ustensilesClike); 
+
             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
-//============================= MON ANCIEN CODE ==================================================================================================            
-            // const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
-            // selectByUstensiles(ustensilesClike);
-            // affichageChoixUstensiles.textContent = ustensilesClike;
-            // afficherCroixUstensiles();
-//================================== MON NOUVEAU CODE ============================================================================================
-//             const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
 
-// // Vérifier si ustensilesClike est vide avant de procéder
-// if (ustensilesClike.length === 0) {
-  
-//     selectByUstensiles(ustensilesClike);
-//     affichageChoixUstensiles.textContent = ustensilesClike;
-//     afficherCroixUstensiles();
-//     console.log("***ENTREEE DE LA BOUCLE je suis passé par là");
-// } else {
-//     // Si ustensilesClike n'est pas vide, ne rien faire
-   
-//     console.log("***SORTIE DE BOUCLE je suis passé par là,ustensilesClike n'est pas vide, aucune action effectuée.", ustensilesClike);
-//     // selectByUstensiles(ustensilesClike);
-//     // affichageChoixUstensiles.textContent = ustensilesClike;
-//     // afficherCroixUstensiles();
-// }
+            // 1. Affichage dans 'affichageChoixUstensiles' (remplacer l'ancien contenu)
+            const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
 
-//================================== MON NOUVEAU CODE avec mes tests ==========================================================================
-const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+            // Effacer tout contenu précédent dans affichageChoixUstensiles
+            affichageChoixUstensiles.innerHTML = '';
 
-// Vérifier si ustensilesClike est vide avant de procéder
-if (ustensilesClike.length === 0) {
-  
-    // selectByUstensiles(ustensilesClike);
-    // affichageChoixUstensiles.textContent = ustensilesClike;
-    // afficherCroixUstensiles();
-    console.log("***ENTREEE DE LA BOUCLE je suis passé par là");
-} else {
-    // Si ustensilesClike n'est pas vide, ne rien faire
-    
-    console.log("***SORTIE DE BOUCLE je suis passé par là, ustensilesClike n'est pas vide, aucune action effectuée.", ustensilesClike);
-    selectByUstensiles(ustensilesClike);
-    affichageChoixUstensiles.textContent = ustensilesClike;
-    afficherCroixUstensiles();
-    //ustensilesClike=[];// est censé initialiser le tableau
-    
-}
-//====================================FIN DE MON ANCIEN CODE ==================================================================================
-//================================== NOUVEAU CODE VERSIONNE PAR CHATGPT =======================================================================
-// const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+            // Créer un nouvel élément pour afficher l'ustensile avec la croix
+            const span = document.createElement("span");
+            span.textContent = ustensilesClike[0]; // Afficher l'ustensile cliqué
 
-// // Vérifier si ustensilesClike est défini et est un tableau vide
-// if (Array.isArray(ustensilesClike) && ustensilesClike.length === 0) {
-//     // Si le tableau est vide, on peut procéder
-//     selectByUstensiles(ustensilesClike);
-//     affichageChoixUstensiles.textContent = ustensilesClike;
-//     afficherCroixUstensiles();
-// } else {
-//     // Si ustensilesClike n'est pas vide, on ne fait rien
-//     console.log("ustensilesClike n'est pas vide, aucune action effectuée.");
-// }
-//=============================================================================================================================================
+            const cross = document.createElement("span");
+            cross.textContent = " ✖"; // La croix de suppression
+            cross.style.cursor = "pointer"; // Changer le curseur pour montrer que c'est cliquable
 
+            // Ajouter la croix au span
+            span.appendChild(cross);
+            affichageChoixUstensiles.appendChild(span);
 
+            // 2. Affichage dans 'result-container-ustensiles' (remplacer l'ancien contenu)
             const containerAffichageUstensiles = document.getElementById("result-container-ustensiles");
+
+            // Effacer tout contenu précédent dans result-container-ustensiles
+            containerAffichageUstensiles.innerHTML = '';
+
+            // Créer un nouvel élément à afficher dans cette div
             const span2 = document.createElement("span");
-            let span= document.createElement("span")
             span2.classList.add("yellow-background");
-            span.textContent=ustensilesClike + " x";
-            // const br = document.createElement("br");
-            span2.appendChild(span);
-            // div.appendChild(br);
+            const spanText = document.createElement("span");
+            spanText.textContent = ustensilesClike[0] + " x"; // Afficher l'ustensile sélectionné avec un 'x'
+
+            // Ajouter l'élément au container
+            span2.appendChild(spanText);
             containerAffichageUstensiles.appendChild(span2);
 
+            // Ajouter un événement pour supprimer les deux divs quand on clique sur la croix
+            function clearBothDivs() {
+                affichageChoixUstensiles.innerHTML = '';  // Effacer affichageChoixUstensiles
+                containerAffichageUstensiles.innerHTML = '';  // Effacer result-container-ustensiles
+                ustensilesClike = [];  // Réinitialiser le tableau
+                verifierEtAfficherRecettes();  // Mettre à jour les recettes
+            }
 
-           
-            span2.addEventListener('click', function (event) {
-                // span.remove();
-                span2.remove();
-                const index = ustensilesClike.indexOf(clickedText.toLowerCase());
-                if (index > -1) {
-                   ustensilesClike.splice(index, 1);
-                    verifierEtAfficherRecettes();
-                }
-            });
- //=======================
+            // Ajouter un événement de suppression pour la croix dans 'affichageChoixUstensiles'
+            cross.addEventListener('click', clearBothDivs);
 
- //=======================
+            // Ajouter un événement de suppression pour 'result-container-ustensiles' si c'est la croix de ce container
+            span2.addEventListener('click', clearBothDivs);
+
+            // Mettre à jour les recettes ou autres actions
             verifierEtAfficherRecettes();
             alimenterIngredientsListe();
-            // afficherRecettesFiltrees(null, null, ustensilesClike) ;   
         }
     });
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 document.getElementById('inputIngredients').addEventListener('input', function () {
     const inputText = this.value.trim().toLowerCase();
     const affichageChoix = document.getElementById('affichageChoixIngredients');

@@ -180,10 +180,7 @@ select {
     grid-row-start: 1;
 }
 #appareils-list {
-    /* background-color: red; */
     background-color: white;
-    /* border-bottom-left-radius: 11px;
-    border-bottom-right-radius: 11px; */
     width: 104%;
     margin-left: -4%;
     padding-left: 0;
@@ -196,13 +193,11 @@ select {
 }
 
 #ustensiles-list {
-    /* background-color: yellow; */
     background-color: white;
-    /* border-bottom-left-radius: 11px;
-    border-bottom-right-radius: 11px; */
     width: 104%;
     margin-left: -4%;
     padding-left: 0;
+    border-bottom-left-radius: 10px;
 }
 
 #nbRecettes {
@@ -228,11 +223,8 @@ select {
 }
 
 #ingredients {
-    /* padding-left: 4%; */
     background-color: white;
     padding-top: 3%;
-    /* margin-left: 4%; */
-    /* height: auto; */
     width: 75%;
     border-radius: 11px;
     z-index: 1;
@@ -248,21 +240,16 @@ select {
 #croixIngredients {
     position: absolute;
     right: 0;
-  
-        margin-right: 21px;
-  
+    margin-right: 21px;
     display: none; /* Cacher la croix par défaut */
     cursor: pointer; /* Curseur en forme de main pour indiquer que c'est cliquable */
 }
 
 
 #appareils {
-   
     padding-left: 3%;
-    /* background-color: red; */
     background-color: white;
     padding-top: 3%;
-    /* height: 44px; */
     width: 75%;
     border-radius: 11px;
     z-index: 111;
@@ -295,10 +282,8 @@ select {
 
 #ustensiles {
     padding-left: 3%;
-    /* background-color: yellow; */
     background-color: white;
     padding-top: 3%;
-    /* height: 44px; */
     width: 75%;
     border-radius: 11px;
      z-index: 111;
@@ -330,7 +315,6 @@ select {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    /* border: 1px solid #ccc; */
     max-width: 225px;
     margin-left: -10px;
     border-top-left-radius: 0;
