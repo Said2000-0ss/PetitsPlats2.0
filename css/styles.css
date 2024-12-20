@@ -184,6 +184,7 @@ select {
     width: 104%;
     margin-left: -4%;
     padding-left: 0;
+    border-bottom-left-radius: 10px;
    
 }
 
