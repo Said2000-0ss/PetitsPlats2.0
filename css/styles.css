@@ -87,6 +87,10 @@ body {
   
 }
 
+#ingredients-list li {
+    padding: 8px;
+}
+
 .search-button i {
     pointer-events: none;
     /* Désactive le clic sur l'icône */
@@ -187,6 +191,40 @@ select {
     border-bottom-left-radius: 10px;
    
 }
+/* Appliquer un style spécifique à la croix */
+.delete-cross {
+    color: black; 
+    font-size: 16px; /* Taille de la croix */
+    margin-left: 10px; /* Espacement entre le texte et la croix */
+    cursor: pointer; /* Indiquer que la croix est cliquable */
+    display: inline-block;
+    vertical-align: middle; /* Aligne la croix verticalement avec le texte */
+}
+.delete-cross:hover {
+    color: brown; /* Nouvelle couleur au survol */
+    /* Ajoute d'autres effets si nécessaire */
+    transform: scale(1.2); /* Par exemple, un effet de zoom */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transition douce */
+}
+
+/* Appliquer un style pour le conteneur de chaque élément avec Flexbox */
+.ingredient-container {
+    display: flex;
+    align-items: center; /* Aligne le texte et la croix verticalement au centre */
+    /* margin-bottom: 10px; Ajoute un peu d'espace entre les éléments */
+    justify-content: space-between; /* Place la croix à droite et le texte à gauche */
+}
+
+.yellow-background {
+ 
+    padding-left: 5px;
+   
+    flex-grow: 1; /* Permet au texte de prendre toute la place disponible */
+    text-align: left; /* Assure que le texte est aligné à gauche */
+}
+
+
+
 
 #ustensiles {
     grid-column-start: 3;
@@ -617,8 +655,9 @@ button {
 }
 
 .titleQuantity {
-    margin: 0;
-    margin-left: 5%;
+    padding-top: 10%;
+    padding-right: 9%;
+    margin-left: 9%;
     color: #7A7A7A;
 }
 
