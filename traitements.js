@@ -134,62 +134,131 @@ console.log("je suis ustensilesSet", ustensilesSet)
     ajouterItemsDansListe(ustensilesListe, ustensilesSet);
 }
 
-function toggleDropdown(contentId, chevronId) {// Fonction générique pour gérer l'affichage des listes déroulantes et des chevrons
+// function toggleDropdown(contentId, chevronId) {// Fonction générique pour gérer l'affichage des listes déroulantes et des chevrons
+//     const chevron = document.getElementById(chevronId);
+//     const content = document.getElementById(contentId);
+//     // Vérifie si l'élément est caché ou non
+//     if (content.classList.contains('hidden')) {
+//         content.classList.remove('hidden'); // Affiche le contenu
+//         chevron.classList.remove('fa-chevron-down');
+//         chevron.classList.add('fa-chevron-up');
+//         console.log("je suis passé par la fonction toggle()")
+//     } else {
+//         content.classList.add('hidden'); // Cache le contenu
+//         chevron.classList.remove('fa-chevron-up');
+//         chevron.classList.add('fa-chevron-down');
+//         if (contentId == 'ingredients-list') {
+//             console.log("je suis passé par là et je compte vider la liste ingredients-list");
+//             const affichageChoixDiv = document.getElementById("affichageChoixIngredients");
+//             affichageChoixDiv.textContent = "";
+//         }
+//         if (contentId == 'appareils-list') {
+//             console.log("je suis passé par là et je compte vider la liste appareils-list");
+//             const affichageChoixDiv = document.getElementById("affichageChoixAppareils");
+//             affichageChoixDiv.textContent = "";
+//         }
+//         if (contentId == 'ustensiles-list') {
+//             console.log("je suis passé par là et je compte vider la liste ustensiles-list");
+//             const affichageChoixDiv = document.getElementById("affichageChoixUstensiles");
+//             affichageChoixDiv.textContent = "";
+//         }
+
+//     }
+// }
+// // Attacher l'événement de clic à chaque chevron
+// document.getElementById('ingredients-container').addEventListener('click', function () {
+//     // toggleDropdown('ingredients-list', 'ingredients-chevron');
+//     //  toggleDropdown('ingredients-container', 'ingredients-chevron');
+//     toggleDropdown('ingredients-content', 'ingredients-chevron');
+//     const affichageDiv = document.getElementById("affichageChoixIngredients");
+//     affichageDiv.textContent = "";
+//     document.getElementById('inputIngredients').value = ''; // Réinitialiser l'input
+//     console.log("je suis passé par le chevron ingredient")
+// });
+
+// document.getElementById('appareils-container').addEventListener('click', function () {
+//     toggleDropdown('appareils-content', 'appareils-chevron');
+//     const affichageDiv = document.getElementById("affichageChoixAppareils");
+//     affichageDiv.textContent = "";
+//     document.getElementById('inputAppareils').value = ''; // Réinitialiser l'input
+// });
+
+// document.getElementById('ustensiles-container').addEventListener('click', function () {
+//     toggleDropdown('ustensiles-content', 'ustensiles-chevron');
+//     const affichageDiv = document.getElementById("affichageChoixUstensiles");
+//     affichageDiv.textContent = "";
+//     document.getElementById('inputUstensiles').value = ''; // Réinitialiser l'input
+// });
+
+//=======================================================================================================
+function toggleDropdown(contentId, chevronId, syncContentIds = []) {
     const chevron = document.getElementById(chevronId);
     const content = document.getElementById(contentId);
-    // Vérifie si l'élément est caché ou non
+
+    // Si la section est fermée
     if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden'); // Affiche le contenu
+        // Affiche cette section
+        content.classList.remove('hidden');
         chevron.classList.remove('fa-chevron-down');
         chevron.classList.add('fa-chevron-up');
-        console.log("je suis passé par la fonction toggle()")
+        
+        // Ouvre aussi les autres sections spécifiées (sync)
+        syncContentIds.forEach(syncContentId => {
+            const syncContent = document.getElementById(syncContentId);
+            if (syncContent) {
+                syncContent.classList.remove('hidden');
+                const syncChevron = document.getElementById(`${syncContentId.replace('content', 'chevron')}`);
+                if (syncChevron) {
+                    syncChevron.classList.remove('fa-chevron-down');
+                    syncChevron.classList.add('fa-chevron-up');
+                }
+            }
+        });
+
+        console.log(`${contentId} ouvert`);
+
     } else {
-        content.classList.add('hidden'); // Cache le contenu
+        // Si la section est déjà ouverte, la fermer
+        content.classList.add('hidden');
         chevron.classList.remove('fa-chevron-up');
         chevron.classList.add('fa-chevron-down');
-        if (contentId == 'ingredients-list') {
-            console.log("je suis passé par là et je compte vider la liste ingredients-list");
-            const affichageChoixDiv = document.getElementById("affichageChoixIngredients");
-            affichageChoixDiv.textContent = "";
-        }
-        if (contentId == 'appareils-list') {
-            console.log("je suis passé par là et je compte vider la liste appareils-list");
-            const affichageChoixDiv = document.getElementById("affichageChoixAppareils");
-            affichageChoixDiv.textContent = "";
-        }
-        if (contentId == 'ustensiles-list') {
-            console.log("je suis passé par là et je compte vider la liste ustensiles-list");
-            const affichageChoixDiv = document.getElementById("affichageChoixUstensiles");
-            affichageChoixDiv.textContent = "";
-        }
 
+        console.log(`${contentId} fermé`);
+
+        // Réinitialiser les champs et les affichages lorsque la section se ferme
+        const affichageChoixDiv = document.getElementById(`affichageChoix${capitalizeFirstLetter(contentId.split('-')[0])}`);
+        if (affichageChoixDiv) {
+            affichageChoixDiv.textContent = ''; // Efface le contenu
+            const inputField = document.getElementById(`input${capitalizeFirstLetter(contentId.split('-')[0])}`);
+            if (inputField) {
+                inputField.value = ''; // Réinitialise l'input
+            }
+        }
     }
 }
+
+// Fonction utilitaire pour capitaliser la première lettre
+function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Attacher l'événement de clic à chaque chevron
 document.getElementById('ingredients-container').addEventListener('click', function () {
-    // toggleDropdown('ingredients-list', 'ingredients-chevron');
-    //  toggleDropdown('ingredients-container', 'ingredients-chevron');
-    toggleDropdown('ingredients-content', 'ingredients-chevron');
-    const affichageDiv = document.getElementById("affichageChoixIngredients");
-    affichageDiv.textContent = "";
-    document.getElementById('inputIngredients').value = ''; // Réinitialiser l'input
-    console.log("je suis passé par le chevron ingredient")
+    toggleDropdown('ingredients-content', 'ingredients-chevron', ['appareils-content', 'ustensiles-content']); // Ouvre aussi appareils et ustensiles
 });
 
 document.getElementById('appareils-container').addEventListener('click', function () {
-    toggleDropdown('appareils-content', 'appareils-chevron');
-    const affichageDiv = document.getElementById("affichageChoixAppareils");
-    affichageDiv.textContent = "";
-    document.getElementById('inputAppareils').value = ''; // Réinitialiser l'input
+    toggleDropdown('appareils-content', 'appareils-chevron', ['ingredients-content', 'ustensiles-content']); // Ouvre aussi ingredients et ustensiles
 });
 
 document.getElementById('ustensiles-container').addEventListener('click', function () {
-    toggleDropdown('ustensiles-content', 'ustensiles-chevron');
-    const affichageDiv = document.getElementById("affichageChoixUstensiles");
-    affichageDiv.textContent = "";
-    document.getElementById('inputUstensiles').value = ''; // Réinitialiser l'input
+    toggleDropdown('ustensiles-content', 'ustensiles-chevron', ['ingredients-content', 'appareils-content']); // Ouvre aussi ingredients et appareils
 });
 
+
+
+
+//========================================================================================================
 
 
 
