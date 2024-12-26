@@ -446,6 +446,7 @@ ul {
 
 #affichageChoixIngredients{
     background-color: #FFD15B;
+    font-weight: bold;
     /* margin-left: 16px; */
     /* padding: 8px; */
     /* margin-left: 7px; */
@@ -468,6 +469,7 @@ margin-top: -43px;
 }
 #affichageChoixAppareils{
     background-color: #FFD15B;
+    font-weight: bold;
     /* margin-left: 16px; */
     /* padding: 8px; */
     /* margin-left: 7px;
@@ -481,6 +483,7 @@ margin-top: -43px;
 #affichageChoixUstensiles{
     background-color: #FFD15B;
     padding-left: 7px;
+    font-weight: bold;
     /* margin-left: 16px; */
     /* padding: 8px; */
     margin-left: -8px;
@@ -691,3 +694,4 @@ button {
 #affichageChoixIngredients span span i{
     padding-left:20%;
 }
+
