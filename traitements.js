@@ -372,8 +372,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Créer la croix pour la suppression
             const crossChoix = document.createElement("span");
-            crossChoix.textContent = " ✖";
-            crossChoix.classList.add("delete-cross"); // Ajouter la classe pour le style
+            // crossChoix.textContent = " ✖";
+            // crossChoix.classList.add("delete-cross"); // Ajouter la classe pour le style
+            // Créer un élément <i> avec les classes Font Awesome
+const icon = document.createElement("i");
+icon.classList.add("fa-solid", "fa-circle-xmark");
+
+// Ajouter l'icône <i> au <span>
+crossChoix.appendChild(icon);
+
+// Ajouter la classe pour le style
+crossChoix.classList.add("delete-cross");
 
             // Ajouter la croix dans le span
             spanChoix.appendChild(crossChoix);
@@ -523,9 +532,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Créer la croix pour la suppression
             const cross = document.createElement("span");
-            cross.textContent = " ✖"; // La croix de suppression
+            const icon = document.createElement("i");
+icon.classList.add("fa-solid", "fa-circle-xmark");
+            // cross.textContent = " ✖"; // La croix de suppression
             cross.style.cursor = "pointer"; // Changer le curseur pour montrer que c'est cliquable
-
+       cross.appendChild(icon);
             // Ajouter la croix à l'élément span
             span.appendChild(cross);
             affichageChoixDiv.appendChild(span);
@@ -586,10 +597,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // Créer un nouvel élément pour afficher l'ustensile avec la croix
             const span = document.createElement("span");
             span.textContent = ustensilesClike[0]; // Afficher l'ustensile cliqué
+//================================
 
+
+
+//===============================
             const cross = document.createElement("span");
-            cross.textContent = " ✖"; // La croix de suppression
+            const icon = document.createElement("i");
+            icon.classList.add("fa-solid", "fa-circle-xmark");
+            // cross.textContent = " ✖"; // La croix de suppression
             cross.style.cursor = "pointer"; // Changer le curseur pour montrer que c'est cliquable
+            cross.appendChild(icon);
 
             // Ajouter la croix au span
             span.appendChild(cross);

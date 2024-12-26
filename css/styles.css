@@ -468,17 +468,23 @@ margin-top: -43px;
 }
 #affichageChoixAppareils{
     background-color: #FFD15B;
-    margin-left: 16px;
+    /* margin-left: 16px; */
     /* padding: 8px; */
-    margin-left: 7px;
-    width:82%;
+    /* margin-left: 7px;
+    width:82%; */
+    margin-left: -8px;
+    width: 100%;
+    padding-right:7px;
+    /* padding-bottom:7px; */
+    padding-left: 7px;
 }
 #affichageChoixUstensiles{
     background-color: #FFD15B;
-    margin-left: 16px;
+    padding-left: 7px;
+    /* margin-left: 16px; */
     /* padding: 8px; */
-    margin-left: 7px;
-    width:100%;
+    margin-left: -8px;
+    width: 104%;
 }
 
 
@@ -665,4 +671,25 @@ button {
     margin-bottom: 0;
     margin-left: 5%;
     color: #7A7A7A;
+}
+
+
+
+
+/* ========================================================== */
+
+#affichageChoixAppareils span span i {
+    /* font-size: 20px; Ajuste la taille de l'icône */
+  
+    padding-left:20%;
+}
+
+#affichageChoixUstensiles span span i {
+    /* font-size: 20px; Ajuste la taille de l'icône */
+  
+    padding-left:20%;
+}
+
+#affichageChoixIngredients span span i{
+    padding-left:20%;
 }
