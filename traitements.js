@@ -461,6 +461,7 @@ crossChoix.classList.add("delete-cross");
             divChoix.classList.add("ingredient-container"); // Ajouter une classe pour le conteneur
             divChoix.appendChild(spanChoix);  // Ajouter l'élément avec la croix dans le div
             affichageChoixIngredients.appendChild(divChoix);
+            document.getElementById('inputIngredients').value = '';
 
             // Créer l'élément à afficher dans 'result-container'
             const spanResultat = document.createElement("span");
@@ -609,6 +610,7 @@ icon.classList.add("fa-solid", "fa-circle-xmark");
             // Ajouter la croix à l'élément span
             span.appendChild(cross);
             affichageChoixDiv.appendChild(span);
+            document.getElementById('inputAppareils').value = '';
 
             // 2. Affichage dans 'result-container-appareils' (remplacer le contenu précédent)
             const affichageResultatAppareils = document.getElementById("result-container-appareils");
@@ -684,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 2. Affichage dans 'result-container-ustensiles' (remplacer l'ancien contenu)
             const containerAffichageUstensiles = document.getElementById("result-container-ustensiles");
-
+            document.getElementById('inputUstensiles').value = '';
             // Effacer tout contenu précédent dans result-container-ustensiles
             containerAffichageUstensiles.innerHTML = '';
 
