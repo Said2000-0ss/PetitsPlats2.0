@@ -1,36 +1,24 @@
 import { recipes } from './recipes.js';
-// import { recipes } from './recipesTriple.js';
-// import { recipes } from './recipesTest.js';
 //=====================================================================================================================================================
 //============================================================ MES VARIABLES ==========================================================================
 //=====================================================================================================================================================
 //MES VARIABLES PARTIE IMAGE
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
-// Sélectionne l'élément croix par son ID
 const croix = document.getElementById('croixGrandeBarre');
 //MES VARIABLES PARTIE SELECT
 let ingredientClike = [];
 let appareilClike = [];
 let ustensilesClike = [];
 let filteredRecipes = recipes;
-
-//MES VARIABLES PARTIE RECETTES
-//=====================================================================================================================================================
-//============================================================ MES FONCTIONS ==========================================================================
-//=====================================================================================================================================================
-
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE IMAGES DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 // Fonction pour gérer la recherche  // rechercheViaGrandeBarre(searchValue); 
 function handleSearch() {
     const searchValue = searchInput.value;
-    console.log(searchValue);
-    // Si la chaîne contient 3 lettres ou plus, lance la recherche
-    if (searchValue.length >= 3) {
+    if (searchValue.length >= 3) { // Si la chaîne contient 3 lettres ou plus, lance la recherche
         rechercheViaGrandeBarre(searchValue);  // Appelle la fonction de recherche
-        // Mettre la croix en display: block si elle n'est pas visible
         croix.style.display = 'block';
     } else {
         ParcourirTableauObjetsEnModeAffichageNavigateur() // Cette fonction devra afficher toutes les recettes
@@ -42,23 +30,22 @@ searchButton.addEventListener('click', function () {
     const searchValue = searchInput.value;
     rechercheViaGrandeBarre(searchValue);
     searchInput.value = "";
+    croix.style.display = 'none';
+    ParcourirTableauObjetsEnModeAffichageNavigateur()
 });
-
 searchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         const searchValue = searchInput.value;
         rechercheViaGrandeBarre(searchValue);
         searchInput.value = "";
+        croix.style.display = 'none';
+    ParcourirTableauObjetsEnModeAffichageNavigateur()
     }
 });
-
 searchInput.addEventListener('input', function () {
-    handleSearch();
-    
+    handleSearch(); 
 });
-//====================================================================================
-// Ajoute un écouteur d'événements au clic sur la croix
-croix.addEventListener('click', function () {
+croix.addEventListener('click', function () {// Ajoute un écouteur d'événements au clic sur la croix
     searchInput.value = '';  // Efface la barre de recherche
     ParcourirTableauObjetsEnModeAffichageNavigateur() // Cette fonction affichera toutes les recettes.
     croix.style.display = 'none';
@@ -68,42 +55,26 @@ croix.addEventListener('click', function () {
 //++++++++++++++++++++++++++++++++++++++++++++++++++ PARTIE SELECT DE MES FONCTIONS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
 function alimenterListesDeroulantes() {// Fonction pour alimenter les listes déroulantes avec les données du tableau recipes
-    // Utilisation de Set pour éviter les doublons
-    const ingredientsSet = new Set();
+    const ingredientsSet = new Set(); // Utilisation de Set pour éviter les doublons
     const appareilsSet = new Set();
     const ustensilesSet = new Set();
-    console.log("je suis le tableau filteredRecipes : ",filteredRecipes);// Vérification que le tableau recipes est défini et non vide
-    console.log("je suis le premier element du tableau", filteredRecipes[0])
-    // console.log(filteredRecipes[0])
     if (!Array.isArray(filteredRecipes) || filteredRecipes.length === 0) {
-        console.error("Le tableau recipes est vide ou non défini.");
+        // console.error("Le tableau recipes est vide ou non défini.");
         return;
     }
-//   console.log("c'est ok")
-    // Parcourir chaque recette dans le tableau recipes
-    filteredRecipes.forEach(recipe => {
-        // Ajouter chaque ingrédient du tableau dans le Set ingredientsSet
-        //faire if et else ( et mettre la defdans verifier si c filtree ou pas )
-        //==================================================================code que je viens de mettre......
-         // Vérifier si ingredientsSet est déjà défini ou non
+   
+    filteredRecipes.forEach(recipe => { // Parcourir chaque recette dans le tableau recipes
         if (typeof ingredientsSet === 'undefined' || ingredientsSet.size === 0) {
-            // Remplir ingredientsSet avec les ingrédients uniques
-            recipes.forEach(recipe => {
+            recipes.forEach(recipe => { // Remplir ingredientsSet avec les ingrédients uniques
                 recipe.ingredients.forEach(ingredient => {
                     ingredientsSet.add(ingredient.ingredient);  // Ajouter chaque ingrédient dans le Set
                 });
             });
-
             console.log("je viens de remplir ingredientsSet avec les ingrédients uniques.");
         } else {
             console.log("ingredientsSet est déjà défini et contient des éléments.");
         }
-        //====================================================================fin du code que je viens de mettre......
-        // recipe.ingredients.forEach(ingredient => {
-        //     ingredientsSet.add(ingredient.ingredient);
-        // });
-        // Ajouter chaque appareil dans le Set appareilsSet
-        appareilsSet.add(recipe.appliance);
+        appareilsSet.add(recipe.appliance);// Ajouter chaque appareil dans le Set appareilsSet
         // Ajouter chaque ustensile du tableau dans le Set ustensilesSet
         recipe.ustensils.forEach(ustensile => {
             // ustensilesSet.add(ustensile);
@@ -113,10 +84,9 @@ function alimenterListesDeroulantes() {// Fonction pour alimenter les listes dé
 console.log("je suis ingredientSet",ingredientsSet)
 console.log("je suis appareilsSet", appareilsSet)
 console.log("je suis ustensilesSet", ustensilesSet)
-    // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
-    function ajouterItemsDansListe(listeElement, itemsSet) {
-        // Vider la liste avant de l'alimenter
-        listeElement.innerHTML = '';
+  
+    function ajouterItemsDansListe(listeElement, itemsSet) {  // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
+        listeElement.innerHTML = ''; // Vider la liste avant de l'alimenter
         itemsSet.forEach(item => { // Ajouter chaque item du Set comme un élément <li> dans la liste
             const li = document.createElement('li');
             li.textContent = item;
@@ -134,74 +104,15 @@ console.log("je suis ustensilesSet", ustensilesSet)
     ajouterItemsDansListe(ustensilesListe, ustensilesSet);
 }
 
-// function toggleDropdown(contentId, chevronId) {// Fonction générique pour gérer l'affichage des listes déroulantes et des chevrons
-//     const chevron = document.getElementById(chevronId);
-//     const content = document.getElementById(contentId);
-//     // Vérifie si l'élément est caché ou non
-//     if (content.classList.contains('hidden')) {
-//         content.classList.remove('hidden'); // Affiche le contenu
-//         chevron.classList.remove('fa-chevron-down');
-//         chevron.classList.add('fa-chevron-up');
-//         console.log("je suis passé par la fonction toggle()")
-//     } else {
-//         content.classList.add('hidden'); // Cache le contenu
-//         chevron.classList.remove('fa-chevron-up');
-//         chevron.classList.add('fa-chevron-down');
-//         if (contentId == 'ingredients-list') {
-//             console.log("je suis passé par là et je compte vider la liste ingredients-list");
-//             const affichageChoixDiv = document.getElementById("affichageChoixIngredients");
-//             affichageChoixDiv.textContent = "";
-//         }
-//         if (contentId == 'appareils-list') {
-//             console.log("je suis passé par là et je compte vider la liste appareils-list");
-//             const affichageChoixDiv = document.getElementById("affichageChoixAppareils");
-//             affichageChoixDiv.textContent = "";
-//         }
-//         if (contentId == 'ustensiles-list') {
-//             console.log("je suis passé par là et je compte vider la liste ustensiles-list");
-//             const affichageChoixDiv = document.getElementById("affichageChoixUstensiles");
-//             affichageChoixDiv.textContent = "";
-//         }
-
-//     }
-// }
-// // Attacher l'événement de clic à chaque chevron
-// document.getElementById('ingredients-container').addEventListener('click', function () {
-//     // toggleDropdown('ingredients-list', 'ingredients-chevron');
-//     //  toggleDropdown('ingredients-container', 'ingredients-chevron');
-//     toggleDropdown('ingredients-content', 'ingredients-chevron');
-//     const affichageDiv = document.getElementById("affichageChoixIngredients");
-//     affichageDiv.textContent = "";
-//     document.getElementById('inputIngredients').value = ''; // Réinitialiser l'input
-//     console.log("je suis passé par le chevron ingredient")
-// });
-
-// document.getElementById('appareils-container').addEventListener('click', function () {
-//     toggleDropdown('appareils-content', 'appareils-chevron');
-//     const affichageDiv = document.getElementById("affichageChoixAppareils");
-//     affichageDiv.textContent = "";
-//     document.getElementById('inputAppareils').value = ''; // Réinitialiser l'input
-// });
-
-// document.getElementById('ustensiles-container').addEventListener('click', function () {
-//     toggleDropdown('ustensiles-content', 'ustensiles-chevron');
-//     const affichageDiv = document.getElementById("affichageChoixUstensiles");
-//     affichageDiv.textContent = "";
-//     document.getElementById('inputUstensiles').value = ''; // Réinitialiser l'input
-// });
-
-//=======================================================================================================
 function toggleDropdown(contentId, chevronId, syncContentIds = []) {
     const chevron = document.getElementById(chevronId);
     const content = document.getElementById(contentId);
-
     // Si la section est fermée
     if (content.classList.contains('hidden')) {
         // Affiche cette section
         content.classList.remove('hidden');
         chevron.classList.remove('fa-chevron-down');
         chevron.classList.add('fa-chevron-up');
-        
         // Ouvre aussi les autres sections spécifiées (sync)
         syncContentIds.forEach(syncContentId => {
             const syncContent = document.getElementById(syncContentId);
@@ -214,17 +125,11 @@ function toggleDropdown(contentId, chevronId, syncContentIds = []) {
                 }
             }
         });
-
-        console.log(`${contentId} ouvert`);
-
     } else {
         // Si la section est déjà ouverte, la fermer
         content.classList.add('hidden');
         chevron.classList.remove('fa-chevron-up');
         chevron.classList.add('fa-chevron-down');
-
-        console.log(`${contentId} fermé`);
-
         // Réinitialiser les champs et les affichages lorsque la section se ferme
         const affichageChoixDiv = document.getElementById(`affichageChoix${capitalizeFirstLetter(contentId.split('-')[0])}`);
         if (affichageChoixDiv) {
@@ -254,14 +159,6 @@ document.getElementById('appareils-container').addEventListener('click', functio
 document.getElementById('ustensiles-container').addEventListener('click', function () {
     toggleDropdown('ustensiles-content', 'ustensiles-chevron', ['ingredients-content', 'appareils-content']); // Ouvre aussi ingredients et appareils
 });
-
-
-
-
-//========================================================================================================
-
-
-
 
 
 //================================================ RECHERCHE VIA GRANDE BARRE ===============================================================================
@@ -349,7 +246,7 @@ function rechercheViaGrandeBarre(mots) {
     }
     // Mettre à jour le compteur de recettes
     const nbRecettesSpan = document.getElementById('nbRecettes');
-    nbRecettesSpan.textContent = `${compteur} recettes grandeBarre`;
+    nbRecettesSpan.textContent = `${compteur} recettes`;// recetttes via la grande Barre
 }//================================================  FIN DE LA RECHERCHE VIA GRANDE BARRE =======================================================================
 
 
@@ -362,9 +259,9 @@ function alimenterIngredientsListe() {// Fonction pour alimenter la liste des in
             ingredientsSet.add(ingredient.ingredient);
         });
     });
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
-    console.log(ingredientsSet,recipes);
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
+    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
+    // console.log(ingredientsSet,recipes);
+    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
     ingredientsSet.forEach(ingredient => { // Créer des éléments <li> pour chaque ingrédient
         const li = document.createElement('li');
         li.textContent = ingredient;
@@ -379,7 +276,7 @@ function alimenterAppareilsListe() {// Fonction pour alimenter la liste des appa
     recipes.forEach(recipe => {
         appareilsSet.add(recipe.appliance);
     });
-    console.log(appareilsSet, recipes)
+    // console.log(appareilsSet, recipes)
     appareilsSet.forEach(appareil => {    // Créer des éléments <li> pour chaque appareil
         const li = document.createElement('li');
         li.textContent = appareil;
@@ -440,10 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
             spanChoix.textContent = clickedText;
 
             // Créer la croix pour la suppression
-            const crossChoix = document.createElement("span");
-            // crossChoix.textContent = " ✖";
-            // crossChoix.classList.add("delete-cross"); // Ajouter la classe pour le style
-            // Créer un élément <i> avec les classes Font Awesome
+            const crossChoix = document.createElement("span");  
 const icon = document.createElement("i");
 icon.classList.add("fa-solid", "fa-circle-xmark");
 
@@ -455,20 +349,16 @@ crossChoix.classList.add("delete-cross");
 
             // Ajouter la croix dans le span
             spanChoix.appendChild(crossChoix);
-
             // Créer un conteneur div pour chaque élément (pour forcer le passage à la ligne)
             const divChoix = document.createElement("div");
             divChoix.classList.add("ingredient-container"); // Ajouter une classe pour le conteneur
             divChoix.appendChild(spanChoix);  // Ajouter l'élément avec la croix dans le div
             affichageChoixIngredients.appendChild(divChoix);
             document.getElementById('inputIngredients').value = '';
-
-            // Créer l'élément à afficher dans 'result-container'
             const spanResultat = document.createElement("span");
             spanResultat.classList.add("yellow-background");
-            spanResultat.textContent = clickedText + " x";
-
-            // Créer un conteneur div pour chaque élément (pour forcer le passage à la ligne)
+            // spanResultat.textContent = clickedText + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0" +" X";
+            spanResultat.textContent = clickedText  +" x";
             const divResultat = document.createElement("div");
             divResultat.classList.add("ingredient-container"); // Ajouter une classe pour le conteneur
             divResultat.appendChild(spanResultat);  // Ajouter l'élément dans le div
@@ -476,35 +366,27 @@ crossChoix.classList.add("delete-cross");
 
             // Ajouter un événement de suppression pour la croix dans 'affichageChoixIngredients'
             crossChoix.addEventListener('click', function () {
-                // Supprimer l'élément du conteneur affichageChoixIngredients
-                affichageChoixIngredients.removeChild(divChoix);
-                // Supprimer l'élément du conteneur affichageResultat
-                affichageResultat.removeChild(divResultat);
-                // Retirer l'élément de ingredientClike
-                const index = ingredientClike.indexOf(clickedText.toLowerCase());
+                affichageChoixIngredients.removeChild(divChoix); // Supprimer l'élément du conteneur affichageChoixIngredients
+                affichageResultat.removeChild(divResultat);// Supprimer l'élément du conteneur affichageResultat
+                const index = ingredientClike.indexOf(clickedText.toLowerCase());  // Retirer l'élément de ingredientClike
                 if (index > -1) {
                     ingredientClike.splice(index, 1);
                     verifierEtAfficherRecettes(); // Mettre à jour les recettes après suppression
                 }
             });
 
-            // Ajouter un événement de suppression pour les éléments dans 'result-container'
-            spanResultat.addEventListener('click', function () {
-                // Supprimer l'élément du conteneur affichageChoixIngredients
-                affichageChoixIngredients.removeChild(divChoix);
-                // Supprimer l'élément du conteneur affichageResultat
-                affichageResultat.removeChild(divResultat);
-                // Retirer l'élément de ingredientClike
-                const index = ingredientClike.indexOf(clickedText.toLowerCase());
+            spanResultat.addEventListener('click', function () { // Ajouter un événement de suppression pour les éléments dans 'result-container'
+                affichageChoixIngredients.removeChild(divChoix); // Supprimer l'élément du conteneur affichageChoixIngredients
+                affichageResultat.removeChild(divResultat); // Supprimer l'élément du conteneur affichageResultat
+                const index = ingredientClike.indexOf(clickedText.toLowerCase()); // Retirer l'élément de ingredientClike
                 if (index > -1) {
                     ingredientClike.splice(index, 1);
                     verifierEtAfficherRecettes(); // Mettre à jour les recettes après suppression
                 }
             });
-
             // Mettre à jour les recettes (ou d'autres actions nécessaires)
             verifierEtAfficherRecettes();
-            alimenterIngredientsListe();
+            alimenterListesDeroulantes();
         }
     });
 });
@@ -639,6 +521,7 @@ icon.classList.add("fa-solid", "fa-circle-xmark");
             span2.addEventListener('click', clearBothDivs);
 
             // Mettre à jour les recettes ou autres actions
+          
             verifierEtAfficherRecettes();
             alimenterIngredientsListe();
             // alimenterAppareilsListe();
@@ -668,15 +551,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Créer un nouvel élément pour afficher l'ustensile avec la croix
             const span = document.createElement("span");
             span.textContent = ustensilesClike[0]; // Afficher l'ustensile cliqué
-//================================
-
-
-
-//===============================
             const cross = document.createElement("span");
             const icon = document.createElement("i");
             icon.classList.add("fa-solid", "fa-circle-xmark");
-            // cross.textContent = " ✖"; // La croix de suppression
             cross.style.cursor = "pointer"; // Changer le curseur pour montrer que c'est cliquable
             cross.appendChild(icon);
 
@@ -898,6 +775,7 @@ document.getElementById('inputUstensiles').addEventListener('input', function ()
         ustensilesList.innerHTML = ''; // Réinitialiser ou afficher la liste complète // Si le texte est inférieur à 1 lettre, on réinitialise la liste des ustensiles
     alimenterUstensilesListe();
     }
+ 
 });
 
 // Fonction pour attacher l'événement de fermeture sur la croix
@@ -992,7 +870,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     }
     // Afficher le total des containerCard créés dans le span avec l'id "nbRecettes"
     const nbRecettesSpan = document.getElementById('nbRecettes');
-    nbRecettesSpan.textContent = `${compteur} recettes de départ`;
+    nbRecettesSpan.textContent = `${compteur} recettes `;// recettes de départ
 }
 
 //========================================================================================================
@@ -1115,7 +993,7 @@ filteredRecipes.push({
 //====================================================== APPELS DE FONCTIONS ==========================================================================
 //=====================================================================================================================================================
 // Appel de la fonction pour alimenter la liste des ingrédients
-alimenterIngredientsListe();
+// alimenterIngredientsListe();
 ParcourirTableauObjetsEnModeAffichageNavigateur();
 // Appel des fonctions lorsque le DOM est chargé
 document.addEventListener('DOMContentLoaded', () => {
