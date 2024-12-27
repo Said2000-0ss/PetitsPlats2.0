@@ -1,58 +1,71 @@
-body{
+body {
     background-color: #E6E6E6;
-    font-family: Arial;
-    margin:0;
-    padding:0;
+    font-family: Antom;
+    margin: 0;
+    padding: 0;
 }
-
 
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE IMAGES
 ==========================================================================================================================================================
 */
-
-
 #partieImage {
-   
-    position: relative; /* Permet au contenu à l'intérieur d'être positionné de manière absolue par rapport à ce conteneur */
-    /* width: 1000px; Taille de l'image */
+    position: relative;
+    /* Permet au contenu à l'intérieur d'être positionné de manière absolue par rapport à ce conteneur */
     width: 100%;
-    height: 600px; /* Taille de l'image */
+    height: 600px;
+    /* Taille de l'image */
 }
-#circle{
-    color:white;
-    font-size: 31px; /* Ajustez cette valeur pour réduire la taille de l'icône */
-    margin-left: 10px; /* Pour ajouter un espace entre le texte et l'icône */
+
+#circle {
+    color: white;
+    font-size: 31px;
+    /* Ajustez cette valeur pour réduire la taille de l'icône */
+    margin-left: 10px;
+    /* Pour ajouter un espace entre le texte et l'icône */
 }
+
 .header-text {
     position: absolute;
     letter-spacing: -0.05em;
-    top: 39px; /* Espace entre le haut de l'image et le texte */
-    left: 83px; /* Espace entre le côté gauche de l'image et le texte */
-    color: white; /* Couleur du texte en blanc */
-    font-size: 37px; /* Taille du texte */
-    font-weight: bold; /* Rendre le texte en gras */
-    z-index: 10; /* S'assurer que le texte est au-dessus de l'image */
+    top: 39px;
+    /* Espace entre le haut de l'image et le texte */
+    left: 83px;
+    /* Espace entre le côté gauche de l'image et le texte */
+    color: white;
+    /* Couleur du texte en blanc */
+    font-size: 37px;
+    /* Taille du texte */
+    font-weight: bold;
+    /* Rendre le texte en gras */
+    z-index: 10;
+    /* S'assurer que le texte est au-dessus de l'image */
 }
 
 #partieImage img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Pour s'assurer que l'image remplit bien son conteneur */
+    object-fit: cover;
+    /* Pour s'assurer que l'image remplit bien son conteneur */
 }
 
 .search-container {
-    position: absolute; /* Pour superposer au-dessus de l'image */
-    top: 67%; /* Positionnement vertical centré */
-    left: 50%; /* Positionnement horizontal centré */
-    transform: translate(-50%, -50%); /* Ajustement pour centrer parfaitement */
-    width: 70%; /* Ajustez la largeur du champ de recherche */
+    position: absolute;
+    /* Pour superposer au-dessus de l'image */
+    top: 67%;
+    /* Positionnement vertical centré */
+    left: 50%;
+    /* Positionnement horizontal centré */
+    transform: translate(-50%, -50%);
+    /* Ajustement pour centrer parfaitement */
+    width: 70%;
+    /* Ajustez la largeur du champ de recherche */
 }
 
 .search-input {
     width: 100%;
-    height:50px;
+    height: 50px;
     padding: 10px 40px 10px 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -62,84 +75,87 @@ body{
 
 .search-button {
     position: absolute;
-    right: -64px;
-    top: 86%;
+    right: -29%;
+    top: 79%;
     transform: translateY(-50%);
     background: none;
     border: none;
     padding: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 18px; 
     color: #555;
+  
+}
+
+#ingredients-list li {
+    padding: 8px;
 }
 
 .search-button i {
-    pointer-events: none; /* Désactive le clic sur l'icône */
+    pointer-events: none;
+    /* Désactive le clic sur l'icône */
 }
+
 .search-text {
-    letter-spacing: -0.05em;
-    font-weight: bold;
-    text-align: center; /* Centre le texte */
-    font-size: 40px;
-    margin-bottom: 15px; /* Espace entre le texte et l'input */
-    line-height: 1.5; /* Hauteur de ligne pour un espacement entre les lignes */
-    color: rgb(255, 205, 41); /* Couleur du texte */
+    font-family: Anton;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 66.24px;
+    text-align: center;
+    color: #FFD15B;
 }
-
-/* ==================================================== */
-
 
 .search-button .fa-stack {
-    font-size: 35px; /* Ajustez la taille selon vos besoins */
+        font-size: 35px;
+        padding-top: 5px;
 }
 
-/*====================================================*/
-/* .search-container {
-    position: relative;
-    width: 80%;
-    /* width:300px; */
-/* } */
-
-/* .search-input {
-    width: 100%;
-    padding: 10px 40px 10px 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
+#croixResultatIngredients{
+    display:none;
+    /* color:#FFD15B;; */
 }
-
-.search-button {
+#croix{
+    display: none;
+    color: grey;
     position: absolute;
-    right: 5px;
-    top: 50%;
+    right: 34px;
+    top: 90%;
     transform: translateY(-50%);
-    background: none;
-    border: none;
     padding: 5px;
     cursor: pointer;
     font-size: 18px;
-    color: #555;
-}
-
-.search-button i {
-    pointer-events: none; /* Désactive le clic sur l'icône */
-/* } */
- /* #partieImage img {
-    /* width: 1000px;
-    height: 500px; */
-    /* width: 1440px;
-height: 960px;
-top: -214px;
-gap: 0px;
-opacity: 0px;
-
- } */ 
-
+    }
 /* 
 ==========================================================================================================================================================
                                                                     PARTIE SELECT
 ==========================================================================================================================================================
 */
+/* #affichageChoix .close {
+    cursor: pointer;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+} */
+.close {
+    cursor: pointer;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;}
+/* Appliquer un style à la liste déroulante */
+ul {
+    list-style-type: none; /* Supprime les puces des <li> */
+    padding: 0; /* Supprime les marges internes */
+    margin: 0; /* Supprime les marges externes */
+    max-height: 200px; /* Limite la hauteur à environ 6 éléments */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si la liste dépasse 200px */
+    /* border: 1px solid #ccc; Ajoute une bordure pour plus de visibilité */
+}
+
+/* Style des éléments de liste
+li {
+    padding: 10px; /* Ajoute de l'espace autour du texte dans les <li> */
+   /* border-bottom: 1px solid #eee; /* Ajoute une bordure entre les éléments de liste */
+/* }  */
 select {
     margin-left: 37%;
     padding: 16px;
@@ -149,32 +165,405 @@ select {
     margin-bottom: 0px;
     font-weight: bold;
 }
-#partieSelect{
+
+#partieSelect {
     display: grid;
-    grid-template-columns: 20% 20% 20% 35%;
-   padding-top: 23px;
-   margin-bottom: 4%;
-   margin-left: 6px;
+    grid-template-columns: 21% 21% 21% 32%;
+    padding-top: 23px;
+    margin-bottom: 4%;
+    margin-left: 96px;
 }
-#ingredients{
+
+#ingredients {
     grid-column-start: 1;
     grid-row-start: 1;
 }
-#appareils{
+
+#appareils {
     grid-column-start: 2;
     grid-row-start: 1;
 }
-#ustensiles{
+#appareils-list {
+    background-color: white;
+    width: 104%;
+    margin-left: -4%;
+    padding-left: 0;
+    border-bottom-left-radius: 10px;
+   
+}
+/* Appliquer un style spécifique à la croix */
+.delete-cross {
+    color: black; 
+    font-size: 16px; /* Taille de la croix */
+    margin-left: 10px; /* Espacement entre le texte et la croix */
+    cursor: pointer; /* Indiquer que la croix est cliquable */
+    display: inline-block;
+    vertical-align: middle; /* Aligne la croix verticalement avec le texte */
+}
+.delete-cross:hover {
+    color: brown; /* Nouvelle couleur au survol */
+    /* Ajoute d'autres effets si nécessaire */
+    transform: scale(1.2); /* Par exemple, un effet de zoom */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transition douce */
+}
+
+/* Appliquer un style pour le conteneur de chaque élément avec Flexbox */
+.ingredient-container {
+    display: flex;
+    align-items: center; /* Aligne le texte et la croix verticalement au centre */
+    /* margin-bottom: 10px; Ajoute un peu d'espace entre les éléments */
+    justify-content: space-between; /* Place la croix à droite et le texte à gauche */
+}
+
+.yellow-background {
+ 
+    padding-left: 5px;
+   
+    flex-grow: 1; /* Permet au texte de prendre toute la place disponible */
+    text-align: left; /* Assure que le texte est aligné à gauche */
+}
+
+
+
+
+#ustensiles {
     grid-column-start: 3;
     grid-row-start: 1;
 }
-#nbRecettes{
+
+#ustensiles-list {
+    background-color: white;
+    width: 104%;
+    margin-left: -4%;
+    padding-left: 0;
+    border-bottom-left-radius: 10px;
+}
+
+#nbRecettes {
     grid-column-start: 4;
     grid-row-start: 1;
     text-align: right;
     padding-top: 3%;
     font-weight: bold;
+}
 
+#containerSelect {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 90%;
+    height: 229px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    background-color: brown;
+    border-radius: 11px;
+    border: 3px solid black;
+
+}
+
+#ingredients {
+    background-color: white;
+    padding-top: 3%;
+    width: 75%;
+    border-radius: 11px;
+    z-index: 1;
+}
+#containerChoix {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+
+#croixIngredients {
+    position: absolute;
+    right: 0;
+    margin-right: 21px;
+    display: none; /* Cacher la croix par défaut */
+    cursor: pointer; /* Curseur en forme de main pour indiquer que c'est cliquable */
+}
+
+
+#appareils {
+    padding-left: 3%;
+    background-color: white;
+    padding-top: 3%;
+    width: 75%;
+    border-radius: 11px;
+    z-index: 111;
+}
+.appareils-dropdown{
+    display: flex;
+    align-items: center;
+    font-family: arial;
+    font-size: larger;
+    
+}
+#containerChoixAppareils {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#affichageChoixAppareils {
+    padding-right: 20px; /* Espace pour éviter que le texte ne passe sous la croix */
+}
+
+#croixAppareils {
+    position: absolute;
+    right: 0;
+    margin-right: 21px;
+    display: none; /* Cacher la croix par défaut */
+    cursor: pointer;
+}
+
+
+#ustensiles {
+    padding-left: 3%;
+    background-color: white;
+    padding-top: 3%;
+    width: 75%;
+    border-radius: 11px;
+     z-index: 111;
+}
+#containerChoixUstensiles {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+#croixUstensiles {
+    position: absolute;
+    right: 0;
+    margin-right: 21px;
+    display: none; /* Cacher la croix par défaut */
+    cursor: pointer;
+}
+
+.ustensiles-dropdown{
+    display:flex;
+    align-items: center;
+    font-family: arial;
+    font-size: larger;
+}
+
+
+#dropdown-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-width: 225px;
+    margin-left: -10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+}
+
+/* Cacher les puces des éléments <li>*/
+ul {
+    list-style-type: none;
+    /* Supprime les puces des <li> */
+}
+
+.dropdown-item {
+    list-style-type: none;
+    /* Supprime la puce des éléments <li> */
+    padding: 8px;
+    /* margin-left: 7px; */
+    cursor: pointer;
+}
+
+/* Couleur de fond jaune au survol d'un <li> */
+.dropdown-item:hover {
+    background-color: #FFD15B;
+    /* Fond jaune au survol */
+}
+
+/* Cacher les listes déroulantes au départ */
+.hidden {
+    display: none;
+}
+
+#ingredients-list {
+    padding: 0;
+    margin: 0;
+}
+
+.ingredients-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: larger;
+    font-family: arial;
+    /* font-weight: bold; */
+    padding-bottom:12px;
+}
+
+#ingredients-chevron,#appareils-chevron,#ustensiles-chevron {
+    color: black;
+    margin-left: 33%;
+}
+
+#dropdown-list {
+    background-color: white;
+    border: none;
+}
+
+#inputIngredients {
+    margin-left: 8px;
+    margin-top: 0px;
+    width: 56%;
+    border: 1px solid grey;
+    /* border-radius: 11px; */
+    background-color: white;
+    height: 33px;
+    padding-left: 8px;
+}
+#inputAppareils{
+    margin-left: -4px;
+    margin-top: 10px;
+    width: 62%;
+    border: 1px solid grey;
+    /* border-radius: 11px; */
+    background-color: white;
+    height: 33px;
+    padding-left: 8px;
+}
+#inputUstensiles{
+    margin-left: -4px;
+    margin-top: 10px;
+    width: 62%;
+    border: 1px solid grey;
+    /* border-radius: 11px; */
+    background-color: white;
+    height: 33px;
+    padding-left: 8px;
+}
+
+#affichageChoixIngredients{
+    background-color: #FFD15B;
+    font-weight: bold;
+    /* margin-left: 16px; */
+    /* padding: 8px; */
+    /* margin-left: 7px; */
+    width: 100%;
+    padding-right: 20px; /* Espace pour éviter que le texte ne passe sous la croix */
+    padding-left: 12px;
+    
+     
+    
+    
+}
+#croixGrandeBarre{
+    position: absolute;
+    display:none;
+    font-weight: bold;
+    color: grey;
+    padding-left: 55em;
+   
+margin-top: -43px;
+}
+#affichageChoixAppareils{
+    background-color: #FFD15B;
+    font-weight: bold;
+    /* margin-left: 16px; */
+    /* padding: 8px; */
+    /* margin-left: 7px;
+    width:82%; */
+    margin-left: -8px;
+    width: 100%;
+    padding-right:7px;
+    /* padding-bottom:7px; */
+    padding-left: 7px;
+}
+#affichageChoixUstensiles{
+    background-color: #FFD15B;
+    padding-left: 7px;
+    font-weight: bold;
+    /* margin-left: 16px; */
+    /* padding: 8px; */
+    margin-left: -8px;
+    width: 104%;
+}
+
+
+/* ========================================================================================================================== */
+/* Styles pour que le bouton soit à l'intérieur de l'input */
+.input-container {
+    position: relative;
+    width: 250px;
+}
+
+.yellow-background {
+    background-color: #FFD15B;
+}
+input[type="text"] {
+    width: 100%;
+    padding-right: 30px;
+}
+
+button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* padding: 5px; */
+    padding-left: 15px;
+    margin-right: 25%;
+    margin-top: 7px;
+    color: grey;
+}
+
+#dropdown-list {
+    margin-top: 0px;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    position: relative;
+    color: black;
+    font-weight: bold;
+    font-family: arial;
+    background-color: #FFD15B;
+    border-radius: 11px;
+}
+
+.result .close {
+    position: absolute;
+    top: 9px;
+    right: 16px;
+    cursor: pointer;
+}
+
+#AffichageChoix {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding-top: 23px;
+    margin-bottom: 4%;
+    margin-left: 96px;
+    width: 15%;
+}
+#result-container {
+    width: 100%;
+    background-color: #FFD15B;
+}
+#result-container-appareils {
+    width: 100%;
+    background-color: #FFD15B;
+}
+#result-container-ustensiles {
+    width: 100%; 
+    background-color: #FFD15B;
 }
 
 /* 
@@ -184,7 +573,8 @@ select {
 */
 .section-image {
     position: relative;
-    width: 100%; /* S'ajuste à la taille du conteneur */
+    width: 100%;
+    /* S'ajuste à la taille du conteneur */
 }
 
 .section-image img {
@@ -198,96 +588,110 @@ select {
 
 .text-content {
     position: absolute;
-    top: 10px; /* Ajustez selon votre besoin */
-    right: 10px; /* Ajustez selon votre besoin */
+    top: 10px;
+    /* Ajustez selon votre besoin */
+    right: 10px;
+    /* Ajustez selon votre besoin */
     background-color: rgb(255, 205, 41);
     color: black;
-    padding: 5px 10px; /* Ajoute de l'espace autour du texte */
-    border-radius: 10px; /* Arrondit les coins */
-    font-size: 14px; /* Taille de la police */
-    font-weight: bold; /* Rend le texte en gras */
-    z-index: 1; /* Assure que le texte reste au-dessus de l'image */
+    padding: 5px 10px;
+    /* Ajoute de l'espace autour du texte */
+    border-radius: 10px;
+    /* Arrondit les coins */
+    font-size: 14px;
+    /* Taille de la police */
+    font-weight: bold;
+    /* Rend le texte en gras */
+    z-index: 1;
+    /* Assure que le texte reste au-dessus de l'image */
 }
 
-#partieRecettes{
+#partieRecettes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-left:8%;
-    margin-right:2%;
-    margin-top:2%; 
+    margin-left: 8%;
+    margin-right: 2%;
+    margin-top: 2%;
 }
-/* .card img{
-    width: 100%;
-    height: 250px; 
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    object-fit: cover;
-} */
-.card{
-    margin-right:10%;
+
+.card {
+    margin-right: 10%;
     background-color: white;
     border-radius: 24px;
     margin-bottom: 17%;
     padding-bottom: 11%;
 }
 
-/* ============================= */
-
-
-
-/* Styles pour la section recettes */
-/* .section-recettes h2,
-.section-recettes h3, */
 /* c'est le titre de la recette */
-.section-recettes h3{  
-    margin-left: 5%; /* Applique une marge de 5% */  
-}
-.section-recettes h4
- {
-    margin-left: 5%; /* Applique une marge de 5% */
-    color:#E6E6E6;
+.section-recettes h3 {
+    margin-left: 5%;
+    /* Applique une marge de 5% */
 }
 
-/* Styles pour la section ingrédients
-.section-ingredients h3,
-.section-ingredients h4 {
-    margin: 5%; /* Applique une marge de 5% */
-    /* font-size: medium; */
+.section-recettes h4 {
+    margin-left: 5%;
+    /* Applique une marge de 5% */
+    color: #7A7A7A;
+    ;
+}
 
-
-.presentationDiv{
+.presentationDiv {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left: 3%;
 }
-.section-recettes p{
+
+.section-recettes p {
     font-size: small;
     margin-left: 5%;
-    margin-right:5%;
+    margin-right: 5%;
 }
-.section-recettes h5{
-    margin:0;
-    padding:0;
-    margin-left: 5%; /* Applique une marge de 5% */ 
-    color:#E6E6E6;
-    
-}
-.ingredient-container h5{
-    /* margin-bottom:0;
-    padding:0; */
-}
-.titleIngredient{
-margin-bottom: 0;
-margin-left:5%;
-/* color:#E6E6E6; */
-}
-.titleQuantity{
+
+.section-recettes h5 {
     margin: 0;
-    margin-left:5%;
-    color:#E6E6E6;
+    padding: 0;
+    margin-left: 5%;
+    /* Applique une marge de 5% */
+    color: #7A7A7A;
+
 }
-.ingredients{
+
+
+.titleIngredient {
     margin-bottom: 0;
-    margin-left:5%;
-    color:#E6E6E6;
+    margin-left: 5%;
+    /* color:#E6E6E6; */
 }
+
+.titleQuantity {
+    padding-top: 10%;
+    padding-right: 9%;
+    margin-left: 9%;
+    color: #7A7A7A;
+}
+
+.ingredients {
+    margin-bottom: 0;
+    margin-left: 5%;
+    color: #7A7A7A;
+}
+
+
+
+
+/* ========================================================== */
+
+#affichageChoixAppareils span span i {
+    /* font-size: 20px; Ajuste la taille de l'icône */
+    padding-left:20%;
+}
+
+#affichageChoixUstensiles span span i {
+    /* font-size: 20px; Ajuste la taille de l'icône */
+    padding-left:20%;
+}
+
+#affichageChoixIngredients span span i{
+    padding-left:20%;
+}
+

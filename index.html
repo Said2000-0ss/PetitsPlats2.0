@@ -8,21 +8,24 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+
 </head>
 
 <body>
-    <!-- <p>==============================================================================================</p>
-    <h1>Je suis la div #partieImage</h1>
-    <p>==============================================================================================</p> -->
-  
+
+
     <div id="partieImage">
-        <div class="header-text"> LES PETITS PLATS 
-            <i id="circle" class="fa-regular fa-circle"></i></div>
+        <div class="header-text"> LES PETITS PLATS
+            <i id="circle" class="fa-solid fa-record-vinyl"></i>
+        </div>
+
         <img src="Images/Maskgroup.png" alt="">
         <div class="search-container">
-           
+
             <p class="search-text">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>DU QUOTIDIEN, SIMPLES ET DELICIEUSES</p>
-            <input type="text" id="searchInput" class="search-input" placeholder="Recherche une recette, un ingrédient, ...">
+            <input type="text" id="searchInput" class="search-input"
+                placeholder="Recherche une recette, un ingrédient, ...">
+            <div id="croixGrandeBarre">X</div>
             <button id="searchButton" class="search-button">
                 <span class="fa-stack fa-2x" style="flex-shrink: 0;">
                     <i class="fas fa-square fa-stack-2x" style="color: gray;"></i>
@@ -31,43 +34,116 @@
             </button>
         </div>
     </div>
-    
-    <!-- <p>==============================================================================================</p>
-    <h1>Je suis la div #partieSelect</h1>
-    <p>==============================================================================================</p> -->
     <div id="partieSelect">
 
-        <label for="ingredients"></label>
-        <select id="ingredients">
-            <option value="" disabled selected>Ingrédients</option> <!-- Option par défaut -->
-            <option value="Chocolat">Chocolat</option>
-            <option value="lait">lait</option>
-            <option value="bonbon">bonbon</option>
-        </select>
-        <label for="appareils"></label>
-        <select id="appareils">
-            <option value="" disabled selected>Appareils</option> <!-- Option par défaut -->
-            <option value="appareil1">appareil1</option>
-            <option value="appareil2">appareil2</option>
-            <option value="appareil3">appareil3</option>
-        </select>
-        <!-- <label for="ustensiles">Ustensiles :</label> -->
-        <label for="ustensiles"></label>
-        <select id="ustensiles">
-            <option value="" disabled selected>Ustensiles</option> <!-- Option par défaut -->
-            <option value="casserole">Casserole</option>
-            <option value="cuillere">Cuillère</option>
-            <option value="couteau">Couteau</option>
-        </select>
+
+
+        <div id="ingredients">
+            <div id="ingredients-container" class="ingredients-dropdown">
+                <span id="ingredients-text">Ingrédients</span>
+                <i id="ingredients-chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+
+
+            <div id="ingredients-content" class="hidden">
+
+                <div class="input-container">
+                    <input id="inputIngredients" type="text" placeholder="Rechercher un ingredient...">
+                    <button id="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div id="containerChoix">
+                    <div id="affichageChoixIngredients">
+
+                    </div>
+                    <div id="croixIngredients">X</div>
+                </div>
+
+                <ul id="ingredients-list">
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="appareils">
+            <div id="appareils-container" class="appareils-dropdown">
+                <span id="appareils-text">Appareils</span>
+                <i id="appareils-chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+
+
+
+
+            <div id="appareils-content" class="hidden">
+
+                <div class="input-container">
+                    <input id="inputAppareils" type="text" placeholder="Rechercher un appareil...">
+                    <button id="search-button1">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <div id="containerChoixAppareils">
+                    <div id="affichageChoixAppareils">
+
+                    </div>
+                    <div id="croixAppareils">X</div>
+                </div>
+
+
+                <ul id="appareils-list">
+                </ul>
+            </div>
+
+
+        </div>
+
+
+
+        <div id="ustensiles">
+            <div id="ustensiles-container" class="ustensiles-dropdown">
+                <span id="ustensiles-text">Ustensiles</span>
+                <i id="ustensiles-chevron" class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <div id="ustensiles-content" class="hidden">
+
+                <div class="input-container">
+                    <input id="inputUstensiles" type="text" placeholder="Rechercher un ustensile...">
+                    <button id="search-button2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div id="containerChoixUstensiles">
+                    <div id="affichageChoixUstensiles">
+
+                    </div>
+                    <div id="croixUstensiles">X</div>
+                </div>
+
+
+                <ul id="ustensiles-list">
+                </ul>
+            </div>
+
+
+
+        </div>
+
         <span id="nbRecettes"></span>
     </div>
-    <!-- <p>==============================================================================================</p>
-    <h1>Je suis la div #partieRecettes</h1>
-    <p>==============================================================================================</p> -->
+
+
+    <div id="AffichageChoix">
+        <div id="result-container"></div>
+        <div id="result-container-appareils"></div>
+        <div id="result-container-ustensiles"></div>
+
+    </div>
     <div id="partieRecettes">
 
     </div>
-    <!-- LIENS VERS MES FICHIERS JAVASCRIPT -->
     <script type="module" src="recipes.js"></script>
     <script type="module" src="recipesTest.js"></script>
     <script type="module" src="traitements.js"></script>
