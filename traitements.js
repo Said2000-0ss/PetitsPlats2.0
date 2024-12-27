@@ -63,37 +63,82 @@ function alimenterListesDeroulantes() {// Fonction pour alimenter les listes dé
         return;
     }
    
-    filteredRecipes.forEach(recipe => { // Parcourir chaque recette dans le tableau recipes
+    // filteredRecipes.forEach(recipe => { // Parcourir chaque recette dans le tableau recipes
+    //     if (typeof ingredientsSet === 'undefined' || ingredientsSet.size === 0) {
+    //         recipes.forEach(recipe => { // Remplir ingredientsSet avec les ingrédients uniques
+    //             recipe.ingredients.forEach(ingredient => {
+    //                 ingredientsSet.add(ingredient.ingredient);  // Ajouter chaque ingrédient dans le Set
+    //             });
+    //         });
+    //         console.log("je viens de remplir ingredientsSet avec les ingrédients uniques.");
+    //     } else {
+    //         console.log("ingredientsSet est déjà défini et contient des éléments.");
+    //     }
+    //     appareilsSet.add(recipe.appliance);// Ajouter chaque appareil dans le Set appareilsSet
+    //     // Ajouter chaque ustensile du tableau dans le Set ustensilesSet
+    //     recipe.ustensils.forEach(ustensile => {
+    //         // ustensilesSet.add(ustensile);
+    //         ustensilesSet.add(ustensile.toLowerCase());
+    //     });
+    // });
+    //=======================================
+    for (let i = 0; i < filteredRecipes.length; i++) { // Parcourir chaque recette dans filteredRecipes
+        const recipe = filteredRecipes[i];
+    
         if (typeof ingredientsSet === 'undefined' || ingredientsSet.size === 0) {
-            recipes.forEach(recipe => { // Remplir ingredientsSet avec les ingrédients uniques
-                recipe.ingredients.forEach(ingredient => {
-                    ingredientsSet.add(ingredient.ingredient);  // Ajouter chaque ingrédient dans le Set
-                });
-            });
+            for (let j = 0; j < recipes.length; j++) { // Remplir ingredientsSet avec les ingrédients uniques
+                const currentRecipe = recipes[j];
+    
+                for (let k = 0; k < currentRecipe.ingredients.length; k++) {
+                    const ingredient = currentRecipe.ingredients[k];
+                    ingredientsSet.add(ingredient.ingredient); // Ajouter chaque ingrédient dans le Set
+                }
+            }
             console.log("je viens de remplir ingredientsSet avec les ingrédients uniques.");
         } else {
             console.log("ingredientsSet est déjà défini et contient des éléments.");
         }
-        appareilsSet.add(recipe.appliance);// Ajouter chaque appareil dans le Set appareilsSet
-        // Ajouter chaque ustensile du tableau dans le Set ustensilesSet
-        recipe.ustensils.forEach(ustensile => {
-            // ustensilesSet.add(ustensile);
+    
+        // Ajouter chaque appareil dans le Set appareilsSet
+        appareilsSet.add(recipe.appliance);
+    
+        // Ajouter chaque ustensile dans le Set ustensilesSet
+        for (let l = 0; l < recipe.ustensils.length; l++) {
+            const ustensile = recipe.ustensils[l];
             ustensilesSet.add(ustensile.toLowerCase());
-        });
-    });
+        }
+    }
+    
+    //=======================================
 console.log("je suis ingredientSet",ingredientsSet)
 console.log("je suis appareilsSet", appareilsSet)
 console.log("je suis ustensilesSet", ustensilesSet)
   
-    function ajouterItemsDansListe(listeElement, itemsSet) {  // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
+    // function ajouterItemsDansListe(listeElement, itemsSet) {  // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
+    //     listeElement.innerHTML = ''; // Vider la liste avant de l'alimenter
+    //     itemsSet.forEach(item => { // Ajouter chaque item du Set comme un élément <li> dans la liste
+    //         const li = document.createElement('li');
+    //         li.textContent = item;
+    //         li.classList.add('dropdown-item'); // Ajout de la classe 'dropdown-item'
+    //         listeElement.appendChild(li); // Insertion de l'élément dans la liste
+    //     });
+    // }
+    function ajouterItemsDansListe(listeElement, itemsSet) {  
+        // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
         listeElement.innerHTML = ''; // Vider la liste avant de l'alimenter
-        itemsSet.forEach(item => { // Ajouter chaque item du Set comme un élément <li> dans la liste
+    
+        // Convertir le Set en tableau pour pouvoir utiliser une boucle for
+        const itemsArray = Array.from(itemsSet);
+    
+        for (let i = 0; i < itemsArray.length; i++) { // Parcourir chaque élément du tableau
+            const item = itemsArray[i];
             const li = document.createElement('li');
             li.textContent = item;
             li.classList.add('dropdown-item'); // Ajout de la classe 'dropdown-item'
             listeElement.appendChild(li); // Insertion de l'élément dans la liste
-        });
+        }
     }
+    
     // Sélectionner les éléments <ul> dans le DOM
     const ingredientsListe = document.getElementById('ingredients-list');
     const appareilsListe = document.getElementById('appareils-list');
@@ -251,54 +296,121 @@ function rechercheViaGrandeBarre(mots) {
 
 
 //========================================================== ALIMENTER MES SELECTS ===================================================================
-function alimenterIngredientsListe() {// Fonction pour alimenter la liste des ingrédients
+// function alimenterIngredientsListe() {// Fonction pour alimenter la liste des ingrédients
+//     const ingredientsList = document.querySelector('#ingredients-list');
+//     const ingredientsSet = new Set();
+//     recipes.forEach(recipe => {// Parcourir le tableau des recettes et alimenter les ingrédients
+//         recipe.ingredients.forEach(ingredient => {
+//             ingredientsSet.add(ingredient.ingredient);
+//         });
+//     });
+//     // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
+//     // console.log(ingredientsSet,recipes);
+//     // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
+//     ingredientsSet.forEach(ingredient => { // Créer des éléments <li> pour chaque ingrédient
+//         const li = document.createElement('li');
+//         li.textContent = ingredient;
+//         li.classList.add('dropdown-item');
+//         ingredientsList.appendChild(li);
+//     });
+// }
+function alimenterIngredientsListe() {  
+    // Fonction pour alimenter la liste des ingrédients
     const ingredientsList = document.querySelector('#ingredients-list');
     const ingredientsSet = new Set();
-    recipes.forEach(recipe => {// Parcourir le tableau des recettes et alimenter les ingrédients
-        recipe.ingredients.forEach(ingredient => {
+
+    // Parcourir le tableau des recettes et alimenter les ingrédients
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+        for (let j = 0; j < recipe.ingredients.length; j++) {
+            const ingredient = recipe.ingredients[j];
             ingredientsSet.add(ingredient.ingredient);
-        });
-    });
-    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
-    // console.log(ingredientsSet,recipes);
-    // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++")
-    ingredientsSet.forEach(ingredient => { // Créer des éléments <li> pour chaque ingrédient
+        }
+    }
+
+    // Créer des éléments <li> pour chaque ingrédient
+    const ingredientsArray = Array.from(ingredientsSet);
+    for (let i = 0; i < ingredientsArray.length; i++) {
+        const ingredient = ingredientsArray[i];
         const li = document.createElement('li');
         li.textContent = ingredient;
         li.classList.add('dropdown-item');
         ingredientsList.appendChild(li);
-    });
+    }
 }
 
-function alimenterAppareilsListe() {// Fonction pour alimenter la liste des appareils
+
+// function alimenterAppareilsListe() {// Fonction pour alimenter la liste des appareils
+//     const appareilsList = document.querySelector('#appareils-list');
+//     const appareilsSet = new Set(); // Parcourir le tableau des recettes et alimenter les appareils
+//     recipes.forEach(recipe => {
+//         appareilsSet.add(recipe.appliance);
+//     });
+//     // console.log(appareilsSet, recipes)
+//     appareilsSet.forEach(appareil => {    // Créer des éléments <li> pour chaque appareil
+//         const li = document.createElement('li');
+//         li.textContent = appareil;
+//         li.classList.add('dropdown-item');
+//         appareilsList.appendChild(li);
+//     });
+// }
+function alimenterAppareilsListe() {  
+    // Fonction pour alimenter la liste des appareils
     const appareilsList = document.querySelector('#appareils-list');
-    const appareilsSet = new Set(); // Parcourir le tableau des recettes et alimenter les appareils
-    recipes.forEach(recipe => {
-        appareilsSet.add(recipe.appliance);
-    });
-    // console.log(appareilsSet, recipes)
-    appareilsSet.forEach(appareil => {    // Créer des éléments <li> pour chaque appareil
+    const appareilsSet = new Set();
+
+    // Parcourir le tableau des recettes et alimenter les appareils
+    for (let i = 0; i < recipes.length; i++) {
+        appareilsSet.add(recipes[i].appliance);
+    }
+
+    // Créer des éléments <li> pour chaque appareil
+    const appareilsArray = Array.from(appareilsSet);
+    for (let i = 0; i < appareilsArray.length; i++) {
+        const appareil = appareilsArray[i];
         const li = document.createElement('li');
         li.textContent = appareil;
         li.classList.add('dropdown-item');
         appareilsList.appendChild(li);
-    });
+    }
 }
 
+// function alimenterUstensilesListe() {
+//     const ustensilesList = document.querySelector('#ustensiles-list');
+//     const ustensilesSet = new Set();
+//     recipes.forEach(recipe => { // Parcourir le tableau des recettes et alimenter les ustensiles
+//         recipe.ustensils.forEach(ustensile => {
+//             ustensilesSet.add(ustensile);
+//         });
+//     });
+//     ustensilesSet.forEach(ustensile => {  // Créer des éléments <li> pour chaque ustensile
+//         const li = document.createElement('li');
+//         li.textContent = ustensile;
+//         li.classList.add('dropdown-item');
+//         ustensilesList.appendChild(li);
+//     });
+// }
 function alimenterUstensilesListe() {
     const ustensilesList = document.querySelector('#ustensiles-list');
     const ustensilesSet = new Set();
-    recipes.forEach(recipe => { // Parcourir le tableau des recettes et alimenter les ustensiles
-        recipe.ustensils.forEach(ustensile => {
-            ustensilesSet.add(ustensile);
-        });
-    });
-    ustensilesSet.forEach(ustensile => {  // Créer des éléments <li> pour chaque ustensile
+
+    // Parcourir le tableau des recettes et alimenter les ustensiles
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+        for (let j = 0; j < recipe.ustensils.length; j++) {
+            ustensilesSet.add(recipe.ustensils[j]);
+        }
+    }
+
+    // Créer des éléments <li> pour chaque ustensile
+    const ustensilesArray = Array.from(ustensilesSet);
+    for (let i = 0; i < ustensilesArray.length; i++) {
+        const ustensile = ustensilesArray[i];
         const li = document.createElement('li');
         li.textContent = ustensile;
         li.classList.add('dropdown-item');
         ustensilesList.appendChild(li);
-    });
+    }
 }
 
 
@@ -662,28 +774,60 @@ function attachCloseEvent() {
 }
 
 // Fonction pour réafficher l'intégralité de la liste des ingrédients
+// function displayFullIngredientsList() {
+//     const ingredientsList = document.getElementById('ingredients-list');
+//     ingredientsList.innerHTML = ''; // Vider d'abord la liste
+//     const uniqueIngredients = new Set();
+//      recipes.forEach(recipe => {// Afficher tous les ingrédients à nouveau
+//         recipe.ingredients.forEach(ingredientObj => {
+//             if (!uniqueIngredients.has(ingredientObj.ingredient.toLowerCase())) {
+//                 uniqueIngredients.add(ingredientObj.ingredient.toLowerCase());
+//                 const li = document.createElement('li');
+//                 li.textContent = ingredientObj.ingredient;
+//                 li.addEventListener('click', function () { // Ajouter un écouteur d'événement de clic pour chaque <li>
+//                     affichageChoix.innerHTML = `B${li.textContent} <span class="close">X</span>`;
+//                     // affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
+//                     // affichageChoix.style.display = 'block';
+//                     ingredientsList.innerHTML = ''; // Vider la liste
+//                     attachCloseEvent(); // Attacher l'événement de la croix
+//                 });
+//                 ingredientsList.appendChild(li);
+//             }
+//         });
+//     });
+// }
 function displayFullIngredientsList() {
     const ingredientsList = document.getElementById('ingredients-list');
     ingredientsList.innerHTML = ''; // Vider d'abord la liste
     const uniqueIngredients = new Set();
-     recipes.forEach(recipe => {// Afficher tous les ingrédients à nouveau
-        recipe.ingredients.forEach(ingredientObj => {
+
+    // Remplacement de recipes.forEach par une boucle for
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
+
+        // Remplacement de recipe.ingredients.forEach par une boucle for
+        for (let j = 0; j < recipe.ingredients.length; j++) {
+            const ingredientObj = recipe.ingredients[j];
+
             if (!uniqueIngredients.has(ingredientObj.ingredient.toLowerCase())) {
                 uniqueIngredients.add(ingredientObj.ingredient.toLowerCase());
+                
                 const li = document.createElement('li');
                 li.textContent = ingredientObj.ingredient;
-                li.addEventListener('click', function () { // Ajouter un écouteur d'événement de clic pour chaque <li>
+
+                // Ajouter un écouteur d'événement de clic pour chaque <li>
+                li.addEventListener('click', function () {
                     affichageChoix.innerHTML = `B${li.textContent} <span class="close">X</span>`;
-                    // affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
-                    // affichageChoix.style.display = 'block';
                     ingredientsList.innerHTML = ''; // Vider la liste
                     attachCloseEvent(); // Attacher l'événement de la croix
                 });
+
                 ingredientsList.appendChild(li);
             }
-        });
-    });
+        }
+    }
 }
+
 
 function verifierEtAfficherRecettes() {
     const ingredientParam = ingredientClike === "" ? null : ingredientClike;
@@ -692,43 +836,92 @@ function verifierEtAfficherRecettes() {
     afficherRecettesFiltrees(ingredientParam, appareilParam, ustensileParam);
 }
 
-document.getElementById('inputAppareils').addEventListener('input', function () {
+// document.getElementById('inputAppareils').addEventListener('input', function () {
+//     const inputText = this.value.trim().toLowerCase();
+//     const affichageChoix = document.getElementById('affichageChoixAppareils');
+//     const appareilsList = document.getElementById('appareils-list');
+//     // Si le texte a 1 lettre ou plus, on filtre la liste des appareils
+//     if (inputText.length >= 1) {// On vide la liste des appareils avant de la remplir avec les résultats filtrés
+//         appareilsList.innerHTML = ''; // Créer un ensemble pour s'assurer qu'il n'y a pas de doublons
+//         const uniqueAppareils = new Set(); // Filtrer les appareils qui contiennent le texte saisi
+//         const filteredAppareils = recipes.filter(recipe => {
+//             return recipe.appliance.toLowerCase().includes(inputText);
+//         });
+//         filteredAppareils.forEach(recipe => {    // Afficher les appareils filtrés dans la liste déroulante
+//             const appareil = recipe.appliance.toLowerCase();
+//             if (!uniqueAppareils.has(appareil)) {
+//                 uniqueAppareils.add(appareil);
+//                 const li = document.createElement('li');
+//                 li.textContent = recipe.appliance;
+//                 li.classList.add('dropdown-item');
+//                 // Ajouter un écouteur d'événement de clic pour chaque <li>
+//                 li.addEventListener('click', function () {
+//                     // Afficher l'appareil sélectionné dans "affichageChoix"
+//                     affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
+//                     affichageChoix.style.display = 'block';
+//                     appareilsList.innerHTML = ''; // Vider la liste filtrée
+//                     attachCloseEventAppareils(); // Attacher l'événement de la croix
+//                     // Debug : Vérifie si la croix est bien ajoutée
+//                     console.log('Cross added: ', document.querySelector('#affichageChoixAppareils .close'));
+//                 });
+//                 appareilsList.appendChild(li);
+//             }
+//         });
+//     } else {
+//         // Si le texte est inférieur à 1 lettre, on réinitialise la liste des appareils
+//         appareilsList.innerHTML = ''; // Réinitialiser ou afficher la liste complète
+//         alimenterAppareilsListe();
+//     }
+// });
+document.getElementById('inputAppareils').oninput = function () {
     const inputText = this.value.trim().toLowerCase();
     const affichageChoix = document.getElementById('affichageChoixAppareils');
     const appareilsList = document.getElementById('appareils-list');
+
     // Si le texte a 1 lettre ou plus, on filtre la liste des appareils
-    if (inputText.length >= 1) {// On vide la liste des appareils avant de la remplir avec les résultats filtrés
-        appareilsList.innerHTML = ''; // Créer un ensemble pour s'assurer qu'il n'y a pas de doublons
-        const uniqueAppareils = new Set(); // Filtrer les appareils qui contiennent le texte saisi
-        const filteredAppareils = recipes.filter(recipe => {
-            return recipe.appliance.toLowerCase().includes(inputText);
-        });
-        filteredAppareils.forEach(recipe => {    // Afficher les appareils filtrés dans la liste déroulante
-            const appareil = recipe.appliance.toLowerCase();
-            if (!uniqueAppareils.has(appareil)) {
-                uniqueAppareils.add(appareil);
-                const li = document.createElement('li');
-                li.textContent = recipe.appliance;
-                li.classList.add('dropdown-item');
-                // Ajouter un écouteur d'événement de clic pour chaque <li>
-                li.addEventListener('click', function () {
-                    // Afficher l'appareil sélectionné dans "affichageChoix"
-                    affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
-                    affichageChoix.style.display = 'block';
-                    appareilsList.innerHTML = ''; // Vider la liste filtrée
-                    attachCloseEventAppareils(); // Attacher l'événement de la croix
-                    // Debug : Vérifie si la croix est bien ajoutée
-                    console.log('Cross added: ', document.querySelector('#affichageChoixAppareils .close'));
-                });
-                appareilsList.appendChild(li);
+    if (inputText.length >= 1) {
+        // On vide la liste des appareils avant de la remplir avec les résultats filtrés
+        appareilsList.innerHTML = '';
+
+        // Créer un ensemble pour s'assurer qu'il n'y a pas de doublons
+        const uniqueAppareils = new Set();
+
+        // Filtrer les appareils qui contiennent le texte saisi
+        for (let i = 0; i < recipes.length; i++) {
+            const recipe = recipes[i];
+            if (recipe.appliance.toLowerCase().includes(inputText)) {
+                const appareil = recipe.appliance.toLowerCase();
+                if (!uniqueAppareils.has(appareil)) {
+                    uniqueAppareils.add(appareil);
+                    
+                    // Créer l'élément <li> pour chaque appareil
+                    const li = document.createElement('li');
+                    li.textContent = recipe.appliance;
+                    li.classList.add('dropdown-item');
+                    
+                    // Ajouter un écouteur d'événement de clic pour chaque <li>
+                    li.onclick = function () {
+                        // Afficher l'appareil sélectionné dans "affichageChoix"
+                        affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
+                        affichageChoix.style.display = 'block';
+                        appareilsList.innerHTML = ''; // Vider la liste filtrée
+                        attachCloseEventAppareils(); // Attacher l'événement de la croix
+
+                        // Debug : Vérifie si la croix est bien ajoutée
+                        console.log('Cross added: ', document.querySelector('#affichageChoixAppareils .close'));
+                    };
+                    
+                    // Ajouter l'élément <li> dans la liste des appareils
+                    appareilsList.appendChild(li);
+                }
             }
-        });
+        }
     } else {
         // Si le texte est inférieur à 1 lettre, on réinitialise la liste des appareils
-        appareilsList.innerHTML = ''; // Réinitialiser ou afficher la liste complète
-        alimenterAppareilsListe();
+        appareilsList.innerHTML = '';
+        alimenterAppareilsListe(); // Réinitialiser ou afficher la liste complète
     }
-});
+};
 
 // Fonction pour attacher l'événement de fermeture sur la croix
 function attachCloseEventAppareils() {
@@ -740,42 +933,97 @@ function attachCloseEventAppareils() {
         });
     }
 }
+// document.getElementById('inputUstensiles').addEventListener('input', function () {
+//     const inputText = this.value.trim().toLowerCase();
+//     const affichageChoix = document.getElementById('affichageChoixUstensiles');
+//     const ustensilesList = document.getElementById('ustensiles-list');
+//     if (inputText.length >= 1) {// Si le texte a 1 lettre ou plus, on filtre la liste des ustensiles
+//         ustensilesList.innerHTML = '';  // On vide la liste des ustensiles avant de la remplir avec les résultats filtrés
+//         const uniqueUstensiles = new Set();// Créer un ensemble pour s'assurer qu'il n'y a pas de doublon
+//         const filteredUstensiles = recipes.filter(recipe => {    // Filtrer les ustensiles qui contiennent le texte saisi
+//             return recipe.ustensils.some(ustensile =>
+//                 ustensile.toLowerCase().includes(inputText)
+//             );
+//         });
+//         filteredUstensiles.forEach(recipe => {  // Afficher les ustensiles filtrés dans la liste déroulante
+//             recipe.ustensils.forEach(ustensile => {
+//                 const ustensileLower = ustensile.toLowerCase();
+//                 if (ustensileLower.includes(inputText) && !uniqueUstensiles.has(ustensileLower)) {
+//                     uniqueUstensiles.add(ustensileLower);
+//                     const li = document.createElement('li');
+//                     li.textContent = ustensile;
+//                     li.classList.add('dropdown-item');  // Ajouter un écouteur d'événement de clic pour chaque <li>
+//                     li.addEventListener('click', function () {   // Afficher l'ustensile sélectionné dans "affichageChoix"
+//                         affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
+//                         affichageChoix.style.display = 'block';
+//                         ustensilesList.innerHTML = ''; // Vider la liste filtrée
+//                         attachCloseEventUstensiles(); // Attacher l'événement de la croix
+//                         console.log('Cross added: ', document.querySelector('#affichageChoixUstensiles .close'));// Debug : Vérifie si la croix est bien ajoutée
+//                     });
+//                     ustensilesList.appendChild(li);
+//                 }
+//             });
+//         });
+//     } else {
+//         ustensilesList.innerHTML = ''; // Réinitialiser ou afficher la liste complète // Si le texte est inférieur à 1 lettre, on réinitialise la liste des ustensiles
+//     alimenterUstensilesListe();
+//     }
+ 
+// });
 document.getElementById('inputUstensiles').addEventListener('input', function () {
     const inputText = this.value.trim().toLowerCase();
     const affichageChoix = document.getElementById('affichageChoixUstensiles');
     const ustensilesList = document.getElementById('ustensiles-list');
-    if (inputText.length >= 1) {// Si le texte a 1 lettre ou plus, on filtre la liste des ustensiles
-        ustensilesList.innerHTML = '';  // On vide la liste des ustensiles avant de la remplir avec les résultats filtrés
-        const uniqueUstensiles = new Set();// Créer un ensemble pour s'assurer qu'il n'y a pas de doublon
-        const filteredUstensiles = recipes.filter(recipe => {    // Filtrer les ustensiles qui contiennent le texte saisi
-            return recipe.ustensils.some(ustensile =>
-                ustensile.toLowerCase().includes(inputText)
-            );
-        });
-        filteredUstensiles.forEach(recipe => {  // Afficher les ustensiles filtrés dans la liste déroulante
-            recipe.ustensils.forEach(ustensile => {
+    
+    if (inputText.length >= 1) { // Si le texte a 1 lettre ou plus, on filtre la liste des ustensiles
+        ustensilesList.innerHTML = ''; // On vide la liste des ustensiles avant de la remplir avec les résultats filtrés
+        const uniqueUstensiles = new Set(); // Créer un ensemble pour s'assurer qu'il n'y a pas de doublon
+        
+        // Filtrer les ustensiles qui contiennent le texte saisi
+        const filteredUstensiles = [];
+        for (let i = 0; i < recipes.length; i++) {
+            const recipe = recipes[i];
+            for (let j = 0; j < recipe.ustensils.length; j++) {
+                if (recipe.ustensils[j].toLowerCase().includes(inputText)) {
+                    filteredUstensiles.push(recipe);
+                    break; // Sortir de la boucle interne une fois qu'un ustensile correspond
+                }
+            }
+        }
+
+        // Afficher les ustensiles filtrés dans la liste déroulante
+        for (let i = 0; i < filteredUstensiles.length; i++) {
+            const recipe = filteredUstensiles[i];
+            for (let j = 0; j < recipe.ustensils.length; j++) {
+                const ustensile = recipe.ustensils[j];
                 const ustensileLower = ustensile.toLowerCase();
+                
                 if (ustensileLower.includes(inputText) && !uniqueUstensiles.has(ustensileLower)) {
                     uniqueUstensiles.add(ustensileLower);
+                    
                     const li = document.createElement('li');
                     li.textContent = ustensile;
-                    li.classList.add('dropdown-item');  // Ajouter un écouteur d'événement de clic pour chaque <li>
-                    li.addEventListener('click', function () {   // Afficher l'ustensile sélectionné dans "affichageChoix"
+                    li.classList.add('dropdown-item');
+                    
+                    // Ajouter un écouteur d'événement de clic pour chaque <li>
+                    li.addEventListener('click', function () {
+                        // Afficher l'ustensile sélectionné dans "affichageChoix"
                         affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
                         affichageChoix.style.display = 'block';
                         ustensilesList.innerHTML = ''; // Vider la liste filtrée
                         attachCloseEventUstensiles(); // Attacher l'événement de la croix
-                        console.log('Cross added: ', document.querySelector('#affichageChoixUstensiles .close'));// Debug : Vérifie si la croix est bien ajoutée
+                        console.log('Cross added: ', document.querySelector('#affichageChoixUstensiles .close')); // Debug : Vérifie si la croix est bien ajoutée
                     });
+
                     ustensilesList.appendChild(li);
                 }
-            });
-        });
+            }
+        }
     } else {
-        ustensilesList.innerHTML = ''; // Réinitialiser ou afficher la liste complète // Si le texte est inférieur à 1 lettre, on réinitialise la liste des ustensiles
-    alimenterUstensilesListe();
+        // Si le texte est inférieur à 1 lettre, on réinitialise la liste des ustensiles
+        ustensilesList.innerHTML = ''; 
+        alimenterUstensilesListe(); // Réinitialiser ou afficher la liste complète
     }
- 
 });
 
 // Fonction pour attacher l'événement de fermeture sur la croix
