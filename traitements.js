@@ -616,8 +616,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
+//ecouteurs d'evenements pour la mise en place de la liste filtrée
 document.getElementById('inputIngredients').addEventListener('input', function () {
     const inputText = this.value.trim().toLowerCase();
     const affichageChoix = document.getElementById('affichageChoixIngredients');
