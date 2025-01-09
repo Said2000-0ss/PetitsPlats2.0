@@ -59,7 +59,7 @@ function alimenterListesDeroulantes() {// Fonction pour alimenter les listes dé
     const appareilsSet = new Set();
     const ustensilesSet = new Set();
     if (!Array.isArray(filteredRecipes) || filteredRecipes.length === 0) {
-        // console.error("Le tableau recipes est vide ou non défini.");
+        console.error("Le tableau recipes est vide ou non défini.");
         return;
     }
    
@@ -148,6 +148,10 @@ console.log("je suis ustensilesSet", ustensilesSet)
     ajouterItemsDansListe(appareilsListe, appareilsSet);
     ajouterItemsDansListe(ustensilesListe, ustensilesSet);
 }
+
+
+
+
 
 function toggleDropdown(contentId, chevronId, syncContentIds = []) {
     const chevron = document.getElementById(chevronId);
@@ -338,6 +342,9 @@ function alimenterIngredientsListe() {
         ingredientsList.appendChild(li);
     }
 }
+// function alimenterIngredientsListe() {
+//     console.log("je suis passé par la");
+// }
 
 
 // function alimenterAppareilsListe() {// Fonction pour alimenter la liste des appareils
@@ -433,12 +440,12 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("Vous avez cliqué sur :", clickedText);
 
             // Si ingredientClike a déjà deux éléments, on supprime le premier avant d'ajouter le nouvel élément
-            if (ingredientClike.length >= 2) {
-                ingredientClike.shift(); // Supprimer le premier élément de la liste
-                // Supprimer le premier élément affiché dans les deux divs
-                affichageChoixIngredients.removeChild(affichageChoixIngredients.firstChild);
-                affichageResultat.removeChild(affichageResultat.firstChild);
-            }
+            // if (ingredientClike.length >= 2) {
+            //     ingredientClike.shift(); // Supprimer le premier élément de la liste
+            //     // Supprimer le premier élément affiché dans les deux divs
+            //     affichageChoixIngredients.removeChild(affichageChoixIngredients.firstChild);
+            //     affichageResultat.removeChild(affichageResultat.firstChild);
+            // }
 
             // Ajouter l'élément cliqué à ingredientClike
             ingredientClike.push(clickedText.toLowerCase());
@@ -537,7 +544,7 @@ document.getElementById('croixAppareils').addEventListener('click', () => {// Fo
     affichageResultatAppareils.classList.add("yellow-background");
     verifierEtAfficherRecettes();
     alimenterAppareilsListe();
-    alimenterIngredientsListe();
+    // alimenterIngredientsListe();
 });
 
 
@@ -555,8 +562,9 @@ inputUstensiles.value = '';
     containerAffichageUstensiles.textContent = '';
     
     verifierEtAfficherRecettes();
-    alimenterUstensilesListe();
-    alimenterIngredientsListe();
+    // alimenterUstensilesListe();
+    // alimenterIngredientsListe();
+    alimenterListesDeroulantes();
 });
 
 function filtrerUstensilesListe() {// Fonction pour filtrer les ustensiles en fonction de la saisie dans l'input
@@ -649,7 +657,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const clickedText = event.target.textContent;
 
             // Mettre à jour ustensilesClike avec un seul élément
-            ustensilesClike = [clickedText.toLowerCase()];
+        ustensilesClike.push(clickedText.toLowerCase()) ;
             console.log("je suis la variable : ustensilesClike : " + ustensilesClike); 
 
             console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
@@ -658,11 +666,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
 
             // Effacer tout contenu précédent dans affichageChoixUstensiles
-            affichageChoixUstensiles.innerHTML = '';
+            // affichageChoixUstensiles.innerHTML = '';
 
             // Créer un nouvel élément pour afficher l'ustensile avec la croix
             const span = document.createElement("span");
-            span.textContent = ustensilesClike[0]; // Afficher l'ustensile cliqué
+            span.textContent = clickedText.toLowerCase(); // Afficher l'ustensile cliqué
             const cross = document.createElement("span");
             const icon = document.createElement("i");
             icon.classList.add("fa-solid", "fa-circle-xmark");
