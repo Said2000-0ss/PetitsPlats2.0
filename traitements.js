@@ -85,20 +85,25 @@ function alimenterListesDeroulantes() {// Fonction pour alimenter les listes dé
     for (let i = 0; i < filteredRecipes.length; i++) { // Parcourir chaque recette dans filteredRecipes
         const recipe = filteredRecipes[i];
     
-        if (typeof ingredientsSet === 'undefined' || ingredientsSet.size === 0) {
-            for (let j = 0; j < recipes.length; j++) { // Remplir ingredientsSet avec les ingrédients uniques
-                const currentRecipe = recipes[j];
+        // if (typeof ingredientsSet === 'undefined' || ingredientsSet.size === 0) {
+        //     for (let j = 0; j < recipes.length; j++) { // Remplir ingredientsSet avec les ingrédients uniques
+        //         const currentRecipe = recipes[j];
     
-                for (let k = 0; k < currentRecipe.ingredients.length; k++) {
-                    const ingredient = currentRecipe.ingredients[k];
-                    ingredientsSet.add(ingredient.ingredient); // Ajouter chaque ingrédient dans le Set
-                }
-            }
-            console.log("je viens de remplir ingredientsSet avec les ingrédients uniques.");
-        } else {
-            console.log("ingredientsSet est déjà défini et contient des éléments.");
+        //         for (let k = 0; k < currentRecipe.ingredients.length; k++) {
+        //             const ingredient = currentRecipe.ingredients[k];
+        //             ingredientsSet.add(ingredient.ingredient); // Ajouter chaque ingrédient dans le Set
+        //         }
+        //     }
+        //     console.log("je viens de remplir ingredientsSet avec les ingrédients uniques.");
+        // } else {
+        //     console.log("ingredientsSet est déjà défini et contient des éléments.");
+        // }
+        console.log(recipe)
+        for (let l = 0; l < recipe.ingredients.length; l++) {
+            const ingredient = recipe.ingredients[l].ingredient ? recipe.ingredients[l].ingredient : recipe.ingredients[l];
+            console.log(ingredient)
+            ingredientsSet.add(ingredient.toLowerCase());
         }
-    
         // Ajouter chaque appareil dans le Set appareilsSet
         appareilsSet.add(recipe.appliance);
     
@@ -454,6 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const spanChoix = document.createElement("span");
             spanChoix.classList.add("yellow-background");
             spanChoix.textContent = clickedText;
+            // spanText.textContent = ustensilesClike[0] + " x"; 
 
             // Créer la croix pour la suppression
             const crossChoix = document.createElement("span");  
@@ -478,6 +484,7 @@ crossChoix.classList.add("delete-cross");
             spanResultat.classList.add("yellow-background");
             // spanResultat.textContent = clickedText + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0" +" X";
             spanResultat.textContent = clickedText  +" x";
+
             const divResultat = document.createElement("div");
             divResultat.classList.add("ingredient-container"); // Ajouter une classe pour le conteneur
             divResultat.appendChild(spanResultat);  // Ajouter l'élément dans le div
@@ -643,7 +650,7 @@ icon.classList.add("fa-solid", "fa-circle-xmark");
             // Mettre à jour les recettes ou autres actions
           
             verifierEtAfficherRecettes();
-            alimenterIngredientsListe();
+            // alimenterIngredientsListe();
             // alimenterAppareilsListe();
         }
     });
@@ -655,6 +662,14 @@ document.addEventListener('DOMContentLoaded', function () {
     ustensilsList.addEventListener('click', function (event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
+
+            //==============================================
+            if (ustensilesClike.includes(clickedText.toLowerCase())) {
+                console.log("Cet élément a déjà été ajouté :", clickedText);
+                return; // Ne rien faire si l'élément est déjà dans la liste
+            }
+
+            //===============================================
 
             // Mettre à jour ustensilesClike avec un seul élément
         ustensilesClike.push(clickedText.toLowerCase()) ;
@@ -712,8 +727,12 @@ document.addEventListener('DOMContentLoaded', function () {
             span2.addEventListener('click', clearBothDivs);
 
             // Mettre à jour les recettes ou autres actions
+            // verifierEtAfficherRecettes();
+            // alimenterIngredientsListe();
+            // verifierEtAfficherRecettes();
+            // alimenterIngredientsListe();
             verifierEtAfficherRecettes();
-            alimenterIngredientsListe();
+            alimenterListesDeroulantes();
         }
     });
 });
@@ -1152,9 +1171,9 @@ if(appliance.length>0){
 
  matchUstensile = recipe.ustensils.some(ust => ustensile.includes(ust.toLowerCase()));
 }   // Si la recette correspond aux critères
-        console.log(matchIngredient ,matchAppliance ,matchUstensile)
+        // console.log(matchIngredient ,matchAppliance ,matchUstensile)
         if (matchIngredient && matchAppliance && matchUstensile) {
-            console.log(recipe);
+            // console.log(recipe);
 filteredRecipes.push({
     ingredients: recipe.ingredients.map(ingredient => {
         // Si ingredient est un objet avec une propriété `ingredient`
