@@ -945,7 +945,7 @@ document.getElementById('inputAppareils').oninput = function () {
                     // Ajouter un écouteur d'événement de clic pour chaque <li>
                     li.onclick = function () {
                         // Afficher l'appareil sélectionné dans "affichageChoix"
-                        affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
+                        // affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
                         affichageChoix.style.display = 'block';
                         appareilsList.innerHTML = ''; // Vider la liste filtrée
                         attachCloseEventAppareils(); // Attacher l'événement de la croix
@@ -1051,7 +1051,7 @@ document.getElementById('inputUstensiles').addEventListener('input', function ()
                     // Ajouter un écouteur d'événement de clic pour chaque <li>
                     li.addEventListener('click', function () {
                         // Afficher l'ustensile sélectionné dans "affichageChoix"
-                        affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
+                        // affichageChoix.innerHTML = `${li.textContent} <span class="close">X</span>`;
                         affichageChoix.style.display = 'block';
                         ustensilesList.innerHTML = ''; // Vider la liste filtrée
                         attachCloseEventUstensiles(); // Attacher l'événement de la croix
