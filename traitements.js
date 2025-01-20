@@ -463,14 +463,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Créer la croix pour la suppression
             const crossChoix = document.createElement("span");  
-const icon = document.createElement("i");
-icon.classList.add("fa-solid", "fa-circle-xmark");
+            const icon = document.createElement("i");
+            icon.classList.add("fa-solid", "fa-circle-xmark");
 
-// Ajouter l'icône <i> au <span>
-crossChoix.appendChild(icon);
+            // Ajouter l'icône <i> au <span>
+            crossChoix.appendChild(icon);
 
-// Ajouter la classe pour le style
-crossChoix.classList.add("delete-cross");
+            // Ajouter la classe pour le style
+            crossChoix.classList.add("delete-cross");
 
             // Ajouter la croix dans le span
             spanChoix.appendChild(crossChoix);
@@ -592,145 +592,161 @@ document.querySelector('#inputUstensiles').addEventListener('input', filtrerUste
 
 document.addEventListener('DOMContentLoaded', function () {
     const appareilsList = document.getElementById('appareils-list');
+    const affichageChoixAppareils = document.getElementById("affichageChoixAppareils");
+    const affichageResultatAppareils = document.getElementById("result-container-appareils");
+
     appareilsList.addEventListener('click', function (event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
-            console.log("Vous avez cliqué sur la liste appareils:", clickedText);
 
-            // Réinitialiser appareilClike et ajouter le nouvel appareil
-            appareilClike = [clickedText.toLowerCase()];
-            console.log("je suis la variable : appareilClike:  " + appareilClike);
-
-            // 1. Affichage dans 'affichageChoixAppareils' (remplacer le contenu précédent)
-            const affichageChoixDiv = document.getElementById("affichageChoixAppareils");
-            affichageChoixDiv.innerHTML = ''; // Effacer le contenu précédent
-
-            // Créer l'élément à afficher avec la croix
-            const span = document.createElement("span");
-            span.textContent = appareilClike[0]; // Afficher le texte de l'appareil sélectionné
-
-            // Créer la croix pour la suppression
-            const cross = document.createElement("span");
-            const icon = document.createElement("i");
-icon.classList.add("fa-solid", "fa-circle-xmark");
-            // cross.textContent = " ✖"; // La croix de suppression
-            cross.style.cursor = "pointer"; // Changer le curseur pour montrer que c'est cliquable
-       cross.appendChild(icon);
-            // Ajouter la croix à l'élément span
-            span.appendChild(cross);
-            affichageChoixDiv.appendChild(span);
-            document.getElementById('inputAppareils').value = '';
-
-            // 2. Affichage dans 'result-container-appareils' (remplacer le contenu précédent)
-            const affichageResultatAppareils = document.getElementById("result-container-appareils");
-            affichageResultatAppareils.innerHTML = ''; // Effacer le contenu précédent
-
-            // Créer un nouvel élément à afficher dans cette div
-            const span2 = document.createElement("span");
-            span2.classList.add("yellow-background");
-            span2.textContent = appareilClike[0] + " x"; // Afficher l'appareil sélectionné avec un 'x'
-
-            // Ajouter l'élément à affichageResultatAppareils
-            affichageResultatAppareils.appendChild(span2);
-
-            // Ajouter un événement pour supprimer les deux divs quand on clique sur la croix
-            function clearBothDivs() {
-                affichageChoixAppareils.innerHTML = ''; // Effacer affichageChoixAppareils
-                affichageResultatAppareils.innerHTML = ''; // Effacer result-container-appareils
-                appareilClike = []; // Réinitialiser appareilClike
-                verifierEtAfficherRecettes(); // Mettre à jour les recettes
+            // Vérifier si l'élément a déjà été ajouté
+            if (appareilClike.includes(clickedText.toLowerCase())) {
+                console.log("Cet élément a déjà été ajouté :", clickedText);
+                return; // Ne rien faire si l'élément est déjà dans la liste
             }
 
-            // Ajouter l'événement de suppression pour la croix dans 'affichageChoixAppareils'
-            cross.addEventListener('click', clearBothDivs);
+            console.log("Vous avez cliqué sur :", clickedText);
 
-            // Ajouter un événement de suppression pour 'result-container-appareils' si c'est la croix de ce container
-            span2.addEventListener('click', clearBothDivs);
+            // Ajouter l'élément cliqué à appareilClike
+            appareilClike.push(clickedText.toLowerCase());
 
-            // Mettre à jour les recettes ou autres actions
-          
+            // Créer le span dans 'affichageChoixAppareils' avec la croix pour supprimer
+            const spanAppareils = document.createElement("span");
+            spanAppareils.classList.add("yellow-background");
+            spanAppareils.textContent = clickedText;
+
+            // Créer la croix pour la suppression
+            const crossAppareils = document.createElement("span");
+            const icon = document.createElement("i");
+            icon.classList.add("fa-solid", "fa-circle-xmark");
+
+            // Ajouter l'icône <i> au <span>
+            crossAppareils.appendChild(icon);
+            crossAppareils.classList.add("delete-cross");
+
+            // Ajouter la croix dans le span
+            spanAppareils.appendChild(crossAppareils);
+            // Créer un conteneur div pour chaque élément (pour forcer le passage à la ligne)
+            const divAppareils = document.createElement("div");
+            divAppareils.classList.add("ingredient-container");
+            divAppareils.appendChild(spanAppareils);
+            affichageChoixAppareils.appendChild(divAppareils);
+            document.getElementById('inputAppareils').value = '';
+
+            const spanResultatAppareils = document.createElement("span");
+            spanResultatAppareils.classList.add("yellow-background");
+            spanResultatAppareils.textContent = clickedText + " x";
+
+            const divResultatAppareils = document.createElement("div");
+            divResultatAppareils.classList.add("ingredient-container");
+            divResultatAppareils.appendChild(spanResultatAppareils);
+            affichageResultatAppareils.appendChild(divResultatAppareils);
+
+            // Ajouter un événement de suppression pour la croix dans 'affichageChoixAppareils'
+            crossAppareils.addEventListener('click', function () {
+                affichageChoixAppareils.removeChild(divAppareils);
+                affichageResultatAppareils.removeChild(divResultatAppareils);
+                const index = appareilClike.indexOf(clickedText.toLowerCase());
+                if (index > -1) {
+                    appareilClike.splice(index, 1);
+                    verifierEtAfficherRecettes(); // Mettre à jour les recettes après suppression
+                }
+            });
+
+            spanResultatAppareils.addEventListener('click', function () { // Ajouter un événement de suppression pour les éléments dans 'result-container-appareils'
+                affichageChoixAppareils.removeChild(divAppareils);
+                affichageResultatAppareils.removeChild(divResultatAppareils);
+                const index = appareilClike.indexOf(clickedText.toLowerCase());
+                if (index > -1) {
+                    appareilClike.splice(index, 1);
+                    verifierEtAfficherRecettes(); // Mettre à jour les recettes après suppression
+                }
+            });
+
+            // Mettre à jour les recettes
             verifierEtAfficherRecettes();
-            // alimenterIngredientsListe();
-            // alimenterAppareilsListe();
+            // alimenterListesDeroulantes();
+            alimenterAppareilsListe();
         }
     });
 });
 
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const ustensilsList = document.getElementById('ustensiles-list');
+    const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
+    const affichageResultatUstensiles = document.getElementById("result-container-ustensiles");
+
     ustensilsList.addEventListener('click', function (event) {
         if (event.target.tagName === 'LI') {
             const clickedText = event.target.textContent;
 
-            //==============================================
+            // Vérifier si l'élément a déjà été ajouté
             if (ustensilesClike.includes(clickedText.toLowerCase())) {
                 console.log("Cet élément a déjà été ajouté :", clickedText);
                 return; // Ne rien faire si l'élément est déjà dans la liste
             }
 
-            //===============================================
+            console.log("Vous avez cliqué sur :", clickedText);
 
-            // Mettre à jour ustensilesClike avec un seul élément
-        ustensilesClike.push(clickedText.toLowerCase()) ;
-            console.log("je suis la variable : ustensilesClike : " + ustensilesClike); 
+            // Ajouter l'élément cliqué à ustensilesClike
+            ustensilesClike.push(clickedText.toLowerCase());
 
-            console.log("Vous avez cliqué sur la liste ustensiles :", clickedText);
+            // Créer le span dans 'affichageChoixUstensiles' avec la croix pour supprimer
+            const spanUstensiles = document.createElement("span");
+            spanUstensiles.classList.add("yellow-background");
+            spanUstensiles.textContent = clickedText;
 
-            // 1. Affichage dans 'affichageChoixUstensiles' (remplacer l'ancien contenu)
-            const affichageChoixUstensiles = document.getElementById("affichageChoixUstensiles");
-
-            // Effacer tout contenu précédent dans affichageChoixUstensiles
-            // affichageChoixUstensiles.innerHTML = '';
-
-            // Créer un nouvel élément pour afficher l'ustensile avec la croix
-            const span = document.createElement("span");
-            span.textContent = clickedText.toLowerCase(); // Afficher l'ustensile cliqué
-            const cross = document.createElement("span");
+            // Créer la croix pour la suppression
+            const crossUstensiles = document.createElement("span");  
             const icon = document.createElement("i");
             icon.classList.add("fa-solid", "fa-circle-xmark");
-            cross.style.cursor = "pointer"; // Changer le curseur pour montrer que c'est cliquable
-            cross.appendChild(icon);
 
-            // Ajouter la croix au span
-            span.appendChild(cross);
-            affichageChoixUstensiles.appendChild(span);
+            // Ajouter l'icône <i> au <span>
+            crossUstensiles.appendChild(icon);
+            crossUstensiles.classList.add("delete-cross");
 
-            // 2. Affichage dans 'result-container-ustensiles' (remplacer l'ancien contenu)
-            const containerAffichageUstensiles = document.getElementById("result-container-ustensiles");
+            // Ajouter la croix dans le span
+            spanUstensiles.appendChild(crossUstensiles);
+            // Créer un conteneur div pour chaque élément (pour forcer le passage à la ligne)
+            const divUstensiles = document.createElement("div");
+            divUstensiles.classList.add("ingredient-container");
+            divUstensiles.appendChild(spanUstensiles);
+            affichageChoixUstensiles.appendChild(divUstensiles);
             document.getElementById('inputUstensiles').value = '';
-            // Effacer tout contenu précédent dans result-container-ustensiles
-            containerAffichageUstensiles.innerHTML = '';
 
-            // Créer un nouvel élément à afficher dans cette div
-            const span2 = document.createElement("span");
-            span2.classList.add("yellow-background");
-            const spanText = document.createElement("span");
-            spanText.textContent = ustensilesClike[0] + " x"; // Afficher l'ustensile sélectionné avec un 'x'
+            const spanResultatUstensiles = document.createElement("span");
+            spanResultatUstensiles.classList.add("yellow-background");
+            spanResultatUstensiles.textContent = clickedText  +" x";
 
-            // Ajouter l'élément au container
-            span2.appendChild(spanText);
-            containerAffichageUstensiles.appendChild(span2);
-
-            // Ajouter un événement pour supprimer les deux divs quand on clique sur la croix
-            function clearBothDivs() {
-                affichageChoixUstensiles.innerHTML = '';  // Effacer affichageChoixUstensiles
-                containerAffichageUstensiles.innerHTML = '';  // Effacer result-container-ustensiles
-                ustensilesClike = [];  // Réinitialiser le tableau
-                verifierEtAfficherRecettes();  // Mettre à jour les recettes
-            }
+            const divResultatUstensiles = document.createElement("div");
+            divResultatUstensiles.classList.add("ingredient-container");
+            divResultatUstensiles.appendChild(spanResultatUstensiles);
+            affichageResultatUstensiles.appendChild(divResultatUstensiles);
 
             // Ajouter un événement de suppression pour la croix dans 'affichageChoixUstensiles'
-            cross.addEventListener('click', clearBothDivs);
+            crossUstensiles.addEventListener('click', function () {
+                affichageChoixUstensiles.removeChild(divUstensiles);
+                affichageResultatUstensiles.removeChild(divResultatUstensiles);
+                const index = ustensilesClike.indexOf(clickedText.toLowerCase());
+                if (index > -1) {
+                    ustensilesClike.splice(index, 1);
+                    verifierEtAfficherRecettes(); // Mettre à jour les recettes après suppression
+                }
+            });
 
-            // Ajouter un événement de suppression pour 'result-container-ustensiles' si c'est la croix de ce container
-            span2.addEventListener('click', clearBothDivs);
+            spanResultatUstensiles.addEventListener('click', function () { // Ajouter un événement de suppression pour les éléments dans 'result-container-ustensiles'
+                affichageChoixUstensiles.removeChild(divUstensiles);
+                affichageResultatUstensiles.removeChild(divResultatUstensiles);
+                const index = ustensilesClike.indexOf(clickedText.toLowerCase());
+                if (index > -1) {
+                    ustensilesClike.splice(index, 1);
+                    verifierEtAfficherRecettes(); // Mettre à jour les recettes après suppression
+                }
+            });
 
-            // Mettre à jour les recettes ou autres actions
-            // verifierEtAfficherRecettes();
-            // alimenterIngredientsListe();
-            // verifierEtAfficherRecettes();
-            // alimenterIngredientsListe();
+            // Mettre à jour les recettes
             verifierEtAfficherRecettes();
             alimenterListesDeroulantes();
         }
