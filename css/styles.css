@@ -546,12 +546,12 @@ button {
 
 #AffichageChoix {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    padding-top: 23px;
-    margin-bottom: 4%;
-    margin-left: 96px;
-    width: 15%;
+        flex-direction: row;
+        align-items: flex-start;
+        padding-top: 23px;
+        margin-bottom: 5%;
+        margin-left: 84px;
+        width: 34%;
 }
 #result-container {
     width: 100%;
