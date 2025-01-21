@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Créer la croix dans le spanResultat (texte "x" ici pour result-container)
             const crossResultat = document.createElement("span");
             crossResultat.classList.add("delete-cross");
-            crossResultat.textContent = "x";  // Texte "x" pour la croix
+            crossResultat.textContent = "X";  // Texte "x" pour la croix
 
             // Ajouter la croix à spanResultat
             spanResultat.appendChild(crossResultat);
@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Créer la croix (texte "x") pour la suppression dans spanResultatAppareils
             const crossResultatAppareils = document.createElement("span");
-            crossResultatAppareils.textContent = " x";  // Ajouter " x" comme texte pour la croix
+            crossResultatAppareils.textContent = " X";  // Ajouter " x" comme texte pour la croix
 
             // Appliquer les classes pour s'assurer que la croix est à droite
             crossResultatAppareils.classList.add("delete-cross-resultat");
@@ -743,7 +743,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Créer la croix (texte "x") pour la suppression dans spanResultatUstensiles
             const crossResultatUstensiles = document.createElement("span");
-            crossResultatUstensiles.textContent = " x";  // Ajouter " x" comme texte pour la croix
+            crossResultatUstensiles.textContent = " X";  // Ajouter " x" comme texte pour la croix
 
             // Appliquer les classes pour s'assurer que la croix est à droite
             crossResultatUstensiles.classList.add("delete-cross-resultat");

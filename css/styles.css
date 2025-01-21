@@ -213,6 +213,7 @@ select {
     align-items: center; /* Aligne le texte et la croix verticalement au centre */
     /* margin-bottom: 10px; Ajoute un peu d'espace entre les éléments */
     justify-content: space-between; /* Place la croix à droite et le texte à gauche */
+    
 }
 
 .yellow-background {
@@ -554,16 +555,16 @@ button {
         width: 60%;
 }
 #result-container {
-    width: 100%;
-    background-color: #FFD15B;
+    width: 99%;
+    margin-right: 1%;
 }
 #result-container-appareils {
-    width: 100%;
-    background-color: #FFD15B;
+    width: 99%;
+    margin-right: 1%;
 }
 #result-container-ustensiles {
-    width: 100%; 
-    background-color: #FFD15B;
+    width: 99%;
+    margin-right: 1%;
 }
 
 /* 
@@ -701,16 +702,21 @@ button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+    border-radius:9px;
 }
 
 .yellow-background {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    background-color: yellow;
-    border-radius: 4px;
-    width: 100%;
+    display: flex
+    ;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 5px; */
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-right: 9px;
+        background-color: #FFD15B;
+        border-radius: 9px;
+        width: 100%;
 }
 
 .delete-cross, .delete-cross-resultat {
@@ -721,7 +727,7 @@ button {
 }
 
 .delete-cross:hover, .delete-cross-resultat:hover {
-    color: red; /* Change la couleur au survol pour indiquer l'action */
+    color: white; /* Change la couleur au survol pour indiquer l'action */
 }
 
 
