@@ -695,3 +695,33 @@ button {
     padding-left:20%;
 }
 
+/* =============================================================================================== */
+.ingredient-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.yellow-background {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: yellow;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.delete-cross {
+    margin-left: auto; /* Assure que la croix se place à droite */
+    cursor: pointer;  /* Change le curseur pour indiquer que c'est cliquable */
+    font-weight: bold; /* Met le "x" en gras pour plus de visibilité */
+    font-size: 16px;  /* Assure que le "x" a une taille de police appropriée */
+}
+
+.delete-cross:hover {
+    color: red; /* Change la couleur au survol pour indiquer l'action */
+}
+
+

@@ -444,14 +444,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             console.log("Vous avez cliqué sur :", clickedText);
 
-            // Si ingredientClike a déjà deux éléments, on supprime le premier avant d'ajouter le nouvel élément
-            // if (ingredientClike.length >= 2) {
-            //     ingredientClike.shift(); // Supprimer le premier élément de la liste
-            //     // Supprimer le premier élément affiché dans les deux divs
-            //     affichageChoixIngredients.removeChild(affichageChoixIngredients.firstChild);
-            //     affichageResultat.removeChild(affichageResultat.firstChild);
-            // }
-
             // Ajouter l'élément cliqué à ingredientClike
             ingredientClike.push(clickedText.toLowerCase());
 
@@ -459,31 +451,39 @@ document.addEventListener('DOMContentLoaded', function () {
             const spanChoix = document.createElement("span");
             spanChoix.classList.add("yellow-background");
             spanChoix.textContent = clickedText;
-            // spanText.textContent = ustensilesClike[0] + " x"; 
 
-            // Créer la croix pour la suppression
+            // Créer la croix pour la suppression (icône FontAwesome ici pour ingredient-container)
             const crossChoix = document.createElement("span");  
-            const icon = document.createElement("i");
-            icon.classList.add("fa-solid", "fa-circle-xmark");
+            const iconChoix = document.createElement("i");
+            iconChoix.classList.add("fa-solid", "fa-circle-xmark");
 
-            // Ajouter l'icône <i> au <span>
-            crossChoix.appendChild(icon);
+            // Ajouter l'icône au <span> dans spanChoix
+            crossChoix.appendChild(iconChoix);
 
             // Ajouter la classe pour le style
             crossChoix.classList.add("delete-cross");
 
             // Ajouter la croix dans le span
             spanChoix.appendChild(crossChoix);
+            
             // Créer un conteneur div pour chaque élément (pour forcer le passage à la ligne)
             const divChoix = document.createElement("div");
             divChoix.classList.add("ingredient-container"); // Ajouter une classe pour le conteneur
             divChoix.appendChild(spanChoix);  // Ajouter l'élément avec la croix dans le div
             affichageChoixIngredients.appendChild(divChoix);
             document.getElementById('inputIngredients').value = '';
+            
             const spanResultat = document.createElement("span");
             spanResultat.classList.add("yellow-background");
-            // spanResultat.textContent = clickedText + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0" +" X";
-            spanResultat.textContent = clickedText  +" x";
+            spanResultat.textContent = clickedText;
+
+            // Créer la croix dans le spanResultat (texte "x" ici pour result-container)
+            const crossResultat = document.createElement("span");
+            crossResultat.classList.add("delete-cross");
+            crossResultat.textContent = "x";  // Texte "x" pour la croix
+
+            // Ajouter la croix à spanResultat
+            spanResultat.appendChild(crossResultat);
 
             const divResultat = document.createElement("div");
             divResultat.classList.add("ingredient-container"); // Ajouter une classe pour le conteneur
@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Ajouter un événement de suppression pour la croix dans 'affichageChoixIngredients'
             crossChoix.addEventListener('click', function () {
                 affichageChoixIngredients.removeChild(divChoix); // Supprimer l'élément du conteneur affichageChoixIngredients
-                affichageResultat.removeChild(divResultat);// Supprimer l'élément du conteneur affichageResultat
+                affichageResultat.removeChild(divResultat); // Supprimer l'élément du conteneur affichageResultat
                 const index = ingredientClike.indexOf(clickedText.toLowerCase());  // Retirer l'élément de ingredientClike
                 if (index > -1) {
                     ingredientClike.splice(index, 1);
@@ -510,12 +510,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     verifierEtAfficherRecettes(); // Mettre à jour les recettes après suppression
                 }
             });
+
             // Mettre à jour les recettes (ou d'autres actions nécessaires)
             verifierEtAfficherRecettes();
             alimenterListesDeroulantes();
         }
     });
 });
+
+
+
+
+
 
 
 
