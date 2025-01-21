@@ -719,7 +719,7 @@ document.addEventListener('DOMContentLoaded', function () {
             spanUstensiles.textContent = clickedText;
 
             // Créer la croix pour la suppression
-            const crossUstensiles = document.createElement("span");  
+            const crossUstensiles = document.createElement("span");
             const icon = document.createElement("i");
             icon.classList.add("fa-solid", "fa-circle-xmark");
 
@@ -736,9 +736,20 @@ document.addEventListener('DOMContentLoaded', function () {
             affichageChoixUstensiles.appendChild(divUstensiles);
             document.getElementById('inputUstensiles').value = '';
 
+            // Créer le span pour afficher dans 'result-container-ustensiles'
             const spanResultatUstensiles = document.createElement("span");
             spanResultatUstensiles.classList.add("yellow-background");
-            spanResultatUstensiles.textContent = clickedText  +" x";
+            spanResultatUstensiles.textContent = clickedText;  // Ajouter le texte sans la croix
+
+            // Créer la croix (texte "x") pour la suppression dans spanResultatUstensiles
+            const crossResultatUstensiles = document.createElement("span");
+            crossResultatUstensiles.textContent = " x";  // Ajouter " x" comme texte pour la croix
+
+            // Appliquer les classes pour s'assurer que la croix est à droite
+            crossResultatUstensiles.classList.add("delete-cross-resultat");
+
+            // Ajouter la croix dans le spanResultatUstensiles
+            spanResultatUstensiles.appendChild(crossResultatUstensiles);
 
             const divResultatUstensiles = document.createElement("div");
             divResultatUstensiles.classList.add("ingredient-container");
@@ -756,7 +767,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            spanResultatUstensiles.addEventListener('click', function () { // Ajouter un événement de suppression pour les éléments dans 'result-container-ustensiles'
+            // Ajouter un événement de suppression pour 'spanResultatUstensiles' (affichageResultatUstensiles)
+            crossResultatUstensiles.addEventListener('click', function () {
                 affichageChoixUstensiles.removeChild(divUstensiles);
                 affichageResultatUstensiles.removeChild(divResultatUstensiles);
                 const index = ustensilesClike.indexOf(clickedText.toLowerCase());
@@ -768,10 +780,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Mettre à jour les recettes
             verifierEtAfficherRecettes();
-            alimenterListesDeroulantes();
+            alimenterListesDeroulantes();  // Mettre à jour les listes déroulantes des ustensiles
         }
     });
 });
+
 
 
 
