@@ -639,9 +639,20 @@ document.addEventListener('DOMContentLoaded', function () {
             affichageChoixAppareils.appendChild(divAppareils);
             document.getElementById('inputAppareils').value = '';
 
+            // Créer le span pour afficher dans 'result-container-appareils'
             const spanResultatAppareils = document.createElement("span");
             spanResultatAppareils.classList.add("yellow-background");
-            spanResultatAppareils.textContent = clickedText + " x";
+            spanResultatAppareils.textContent = clickedText; // On ajoute ici le texte sans la croix
+
+            // Créer la croix (texte "x") pour la suppression dans spanResultatAppareils
+            const crossResultatAppareils = document.createElement("span");
+            crossResultatAppareils.textContent = " x";  // Ajouter " x" comme texte pour la croix
+
+            // Appliquer les classes pour s'assurer que la croix est à droite
+            crossResultatAppareils.classList.add("delete-cross-resultat");
+
+            // Ajouter la croix dans le spanResultatAppareils
+            spanResultatAppareils.appendChild(crossResultatAppareils);
 
             const divResultatAppareils = document.createElement("div");
             divResultatAppareils.classList.add("ingredient-container");
@@ -659,7 +670,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            spanResultatAppareils.addEventListener('click', function () { // Ajouter un événement de suppression pour les éléments dans 'result-container-appareils'
+            // Ajouter un événement de suppression pour 'spanResultatAppareils' (affichageResultatAppareils)
+            crossResultatAppareils.addEventListener('click', function () {
                 affichageChoixAppareils.removeChild(divAppareils);
                 affichageResultatAppareils.removeChild(divResultatAppareils);
                 const index = appareilClike.indexOf(clickedText.toLowerCase());
@@ -671,11 +683,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Mettre à jour les recettes
             verifierEtAfficherRecettes();
-            // alimenterListesDeroulantes();
-            alimenterAppareilsListe();
+            alimenterAppareilsListe(); // Mettre à jour la liste des appareils
         }
     });
 });
+
+
+
 
 
 
