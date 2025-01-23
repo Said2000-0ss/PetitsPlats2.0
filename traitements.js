@@ -157,33 +157,24 @@ console.log("je suis ustensilesSet", ustensilesSet)
 
 
 
-
-function toggleDropdown(contentId, chevronId, syncContentIds = []) {
+function toggleDropdown(contentId, chevronId) {
     const chevron = document.getElementById(chevronId);
     const content = document.getElementById(contentId);
+
     // Si la section est fermée
     if (content.classList.contains('hidden')) {
         // Affiche cette section
         content.classList.remove('hidden');
+        content.classList.add('visible'); // Applique la classe visible pour afficher la section
         chevron.classList.remove('fa-chevron-down');
         chevron.classList.add('fa-chevron-up');
-        // Ouvre aussi les autres sections spécifiées (sync)
-        syncContentIds.forEach(syncContentId => {
-            const syncContent = document.getElementById(syncContentId);
-            if (syncContent) {
-                syncContent.classList.remove('hidden');
-                const syncChevron = document.getElementById(`${syncContentId.replace('content', 'chevron')}`);
-                if (syncChevron) {
-                    syncChevron.classList.remove('fa-chevron-down');
-                    syncChevron.classList.add('fa-chevron-up');
-                }
-            }
-        });
     } else {
         // Si la section est déjà ouverte, la fermer
-        content.classList.add('hidden');
+        content.classList.remove('visible');
+        content.classList.add('hidden'); // Applique la classe hidden pour masquer la section
         chevron.classList.remove('fa-chevron-up');
         chevron.classList.add('fa-chevron-down');
+        
         // Réinitialiser les champs et les affichages lorsque la section se ferme
         const affichageChoixDiv = document.getElementById(`affichageChoix${capitalizeFirstLetter(contentId.split('-')[0])}`);
         if (affichageChoixDiv) {
@@ -196,6 +187,7 @@ function toggleDropdown(contentId, chevronId, syncContentIds = []) {
     }
 }
 
+
 // Fonction utilitaire pour capitaliser la première lettre
 function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -203,16 +195,17 @@ function capitalizeFirstLetter(str) {
 
 // Attacher l'événement de clic à chaque chevron
 document.getElementById('ingredients-container').addEventListener('click', function () {
-    toggleDropdown('ingredients-content', 'ingredients-chevron', ['appareils-content', 'ustensiles-content']); // Ouvre aussi appareils et ustensiles
+    toggleDropdown('ingredients-content', 'ingredients-chevron');
 });
 
 document.getElementById('appareils-container').addEventListener('click', function () {
-    toggleDropdown('appareils-content', 'appareils-chevron', ['ingredients-content', 'ustensiles-content']); // Ouvre aussi ingredients et ustensiles
+    toggleDropdown('appareils-content', 'appareils-chevron');
 });
 
 document.getElementById('ustensiles-container').addEventListener('click', function () {
-    toggleDropdown('ustensiles-content', 'ustensiles-chevron', ['ingredients-content', 'appareils-content']); // Ouvre aussi ingredients et appareils
+    toggleDropdown('ustensiles-content', 'ustensiles-chevron');
 });
+
 
 
 //================================================ RECHERCHE VIA GRANDE BARRE ===============================================================================
@@ -503,6 +496,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             spanResultat.addEventListener('click', function () { // Ajouter un événement de suppression pour les éléments dans 'result-container'
                 affichageChoixIngredients.removeChild(divChoix); // Supprimer l'élément du conteneur affichageChoixIngredients
+                
                 affichageResultat.removeChild(divResultat); // Supprimer l'élément du conteneur affichageResultat
                 const index = ingredientClike.indexOf(clickedText.toLowerCase()); // Retirer l'élément de ingredientClike
                 if (index > -1) {
