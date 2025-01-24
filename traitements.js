@@ -98,10 +98,11 @@ function alimenterListesDeroulantes() {// Fonction pour alimenter les listes dé
         // } else {
         //     console.log("ingredientsSet est déjà défini et contient des éléments.");
         // }
-        console.log(recipe)
+
+        // console.log(recipe)
         for (let l = 0; l < recipe.ingredients.length; l++) {
             const ingredient = recipe.ingredients[l].ingredient ? recipe.ingredients[l].ingredient : recipe.ingredients[l];
-            console.log(ingredient)
+            // console.log(ingredient)
             ingredientsSet.add(ingredient.toLowerCase());
         }
         // Ajouter chaque appareil dans le Set appareilsSet
@@ -115,9 +116,12 @@ function alimenterListesDeroulantes() {// Fonction pour alimenter les listes dé
     }
     
     //=======================================
-console.log("je suis ingredientSet",ingredientsSet)
-console.log("je suis appareilsSet", appareilsSet)
-console.log("je suis ustensilesSet", ustensilesSet)
+// console.log("je suis ingredientSet",ingredientsSet)
+// console.log("je suis appareilsSet", appareilsSet)
+// console.log("je suis ustensilesSet", ustensilesSet)
+
+
+
   
     // function ajouterItemsDansListe(listeElement, itemsSet) {  // Fonction pour alimenter les listes déroulantes avec des éléments de type <li>
     //     listeElement.innerHTML = ''; // Vider la liste avant de l'alimenter
@@ -495,7 +499,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             spanResultat.addEventListener('click', function () { // Ajouter un événement de suppression pour les éléments dans 'result-container'
-                affichageChoixIngredients.removeChild(divChoix); // Supprimer l'élément du conteneur affichageChoixIngredients
+                // affichageChoixIngredients.removeChild(divChoix); // Supprimer l'élément du conteneur affichageChoixIngredients
+                if (affichageChoixIngredients.contains(divChoix)) {
+                    affichageChoixIngredients.removeChild(divChoix);
+                }
+                
                 
                 affichageResultat.removeChild(divResultat); // Supprimer l'élément du conteneur affichageResultat
                 const index = ingredientClike.indexOf(clickedText.toLowerCase()); // Retirer l'élément de ingredientClike
@@ -655,7 +663,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Ajouter un événement de suppression pour la croix dans 'affichageChoixAppareils'
             crossAppareils.addEventListener('click', function () {
-                affichageChoixAppareils.removeChild(divAppareils);
+               
+                if (affichageChoixAppareils.contains(divAppareils)) {
+    affichageChoixAppareils.removeChild(divAppareils);
+}
                 affichageResultatAppareils.removeChild(divResultatAppareils);
                 const index = appareilClike.indexOf(clickedText.toLowerCase());
                 if (index > -1) {
@@ -666,7 +677,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Ajouter un événement de suppression pour 'spanResultatAppareils' (affichageResultatAppareils)
             crossResultatAppareils.addEventListener('click', function () {
-                affichageChoixAppareils.removeChild(divAppareils);
+                // affichageChoixAppareils.removeChild(divAppareils);
+                if (affichageChoixAppareils.contains(divAppareils)) {
+                    affichageChoixAppareils.removeChild(divAppareils);
+                }
                 affichageResultatAppareils.removeChild(divResultatAppareils);
                 const index = appareilClike.indexOf(clickedText.toLowerCase());
                 if (index > -1) {
@@ -677,7 +691,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Mettre à jour les recettes
             verifierEtAfficherRecettes();
-            alimenterAppareilsListe(); // Mettre à jour la liste des appareils
+           alimenterListesDeroulantes();
+             //alimenterAppareilsListe(); // Mettre à jour la liste des appareils
         }
     });
 });
@@ -752,7 +767,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Ajouter un événement de suppression pour la croix dans 'affichageChoixUstensiles'
             crossUstensiles.addEventListener('click', function () {
-                affichageChoixUstensiles.removeChild(divUstensiles);
+                // affichageChoixUstensiles.removeChild(divUstensiles);
+                if (affichageChoixUstensiles.contains(divUstensiles)) {
+                    affichageChoixUstensiles.removeChild(divUstensiles);
+                }
                 affichageResultatUstensiles.removeChild(divResultatUstensiles);
                 const index = ustensilesClike.indexOf(clickedText.toLowerCase());
                 if (index > -1) {
@@ -763,7 +781,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Ajouter un événement de suppression pour 'spanResultatUstensiles' (affichageResultatUstensiles)
             crossResultatUstensiles.addEventListener('click', function () {
-                affichageChoixUstensiles.removeChild(divUstensiles);
+                if (affichageChoixUstensiles.contains(divUstensiles)) {
+                    affichageChoixUstensiles.removeChild(divUstensiles);
+                }
                 affichageResultatUstensiles.removeChild(divResultatUstensiles);
                 const index = ustensilesClike.indexOf(clickedText.toLowerCase());
                 if (index > -1) {
@@ -1202,7 +1222,22 @@ function afficherRecettesFiltrees(ingredients, appliance, ustensile) {
         const recipe = recipes[i];
         let matchIngredient=true; 
 if(ingredients.length>0){
-         matchIngredient = recipe.ingredients.some(ing => ingredients.includes(ing.ingredient.toLowerCase()));
+    // console.log(recipe.ingredients)
+  
+    for(const ing2 of ingredients ){
+        // console.log(ing2)
+        
+        matchIngredient = recipe.ingredients.some((ing )=>{ 
+            // console.log(ing2, ing.ingredient.toLowerCase(),ing2==ing.ingredient.toLowerCase() )
+            return ing2==ing.ingredient.toLowerCase()
+        });
+        // console.log(matchIngredient)
+if(matchIngredient==false){
+    break;
+}
+    }
+        
+         
         }
 let matchAppliance =true; 
 if(appliance.length>0){
@@ -1211,10 +1246,21 @@ if(appliance.length>0){
 
     let matchUstensile =true; 
     if(ustensile.length>0){
-
- matchUstensile = recipe.ustensils.some(ust => ustensile.includes(ust.toLowerCase()));
+        for(const ust2 of ustensile ){
+            // console.log(ing2)
+            matchUstensile = recipe.ustensils.some(ust => ust2==ust.toLowerCase());
+            // matchIngredient = recipe.ingredients.some((ing )=>{ 
+            //     // console.log(ing2, ing.ingredient.toLowerCase(),ing2==ing.ingredient.toLowerCase() )
+            //     return ing2==ing.ingredient.toLowerCase()
+            // });
+            // console.log(matchIngredient)
+    if(matchUstensile==false){
+        break;
+    }
+        }
+ 
 }   // Si la recette correspond aux critères
-        // console.log(matchIngredient ,matchAppliance ,matchUstensile)
+        console.log(matchIngredient ,matchAppliance ,matchUstensile)
         if (matchIngredient && matchAppliance && matchUstensile) {
             // console.log(recipe);
 filteredRecipes.push({
