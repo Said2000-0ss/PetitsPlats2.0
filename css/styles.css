@@ -89,7 +89,16 @@ body {
 
 #ingredients-list li {
     padding: 8px;
+
 }
+
+#ingredients-list  {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+
 
 .search-button i {
     pointer-events: none;
@@ -177,6 +186,8 @@ select {
 #ingredients {
     grid-column-start: 1;
     grid-row-start: 1;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 #appareils {
@@ -189,6 +200,7 @@ select {
     margin-left: -4%;
     padding-left: 0;
     border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
    
 }
 /* Appliquer un style spécifique à la croix */
@@ -213,6 +225,7 @@ select {
     align-items: center; /* Aligne le texte et la croix verticalement au centre */
     /* margin-bottom: 10px; Ajoute un peu d'espace entre les éléments */
     justify-content: space-between; /* Place la croix à droite et le texte à gauche */
+    
 }
 
 .yellow-background {
@@ -237,6 +250,7 @@ select {
     margin-left: -4%;
     padding-left: 0;
     border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #nbRecettes {
@@ -265,8 +279,10 @@ select {
     background-color: white;
     padding-top: 3%;
     width: 75%;
-    border-radius: 11px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     z-index: 1;
+    height: 15%;
 }
 #containerChoix {
     position: relative;
@@ -292,12 +308,21 @@ select {
     width: 75%;
     border-radius: 11px;
     z-index: 111;
+    height: 15%;
 }
 .appareils-dropdown{
     display: flex;
     align-items: center;
     font-family: arial;
     font-size: larger;
+    background-color: white;
+    width: 100%;
+    margin-left: -4%;
+    padding-left: 4%;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    padding-top: 1%;
+    padding-bottom: 5%;
     
 }
 #containerChoixAppareils {
@@ -326,6 +351,8 @@ select {
     width: 75%;
     border-radius: 11px;
      z-index: 111;
+     height: 15%;
+    
 }
 #containerChoixUstensiles {
     position: relative;
@@ -343,12 +370,26 @@ select {
 }
 
 .ustensiles-dropdown{
-    display:flex;
+    display: flex ;
     align-items: center;
     font-family: arial;
     font-size: larger;
+    background-color: white;
+    /* height: 34px; */
+    padding-left: 3%;
+    width: 101%;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    margin-left: -4%;
+    /* margin-top: 1%; */
+    padding-bottom: 1%;
+    padding-top: 1%;
+    padding-bottom: 5%;
 }
-
+#ingredients-list{
+    /* background-color: yellow; */
+    border-bottom-left-radius:12px;
+}
 
 #dropdown-list {
     list-style-type: none;
@@ -393,14 +434,20 @@ ul {
 }
 
 .ingredients-dropdown {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-left: 8px;
-    font-size: larger;
-    font-family: arial;
-    /* font-weight: bold; */
-    padding-bottom:12px;
+    display: flex
+    ;
+        align-items: center;
+        cursor: pointer;
+        margin-left: 0px;
+        font-size: larger;
+        font-family: arial;
+        /* font-weight: bold; */
+        padding-bottom: 12px;
+        background-color: white;
+        /* border-radius: 12px; */
+        border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+        padding-left: 3%;
 }
 
 #ingredients-chevron,#appareils-chevron,#ustensiles-chevron {
@@ -414,9 +461,9 @@ ul {
 }
 
 #inputIngredients {
-    margin-left: 8px;
+    margin-left: 0px;
     margin-top: 0px;
-    width: 56%;
+    width: 59%;
     border: 1px solid grey;
     /* border-radius: 11px; */
     background-color: white;
@@ -424,9 +471,9 @@ ul {
     padding-left: 8px;
 }
 #inputAppareils{
-    margin-left: -4px;
-    margin-top: 10px;
-    width: 62%;
+    margin-left: -8px;
+    margin-top: -1px;
+    width: 63%;
     border: 1px solid grey;
     /* border-radius: 11px; */
     background-color: white;
@@ -434,14 +481,14 @@ ul {
     padding-left: 8px;
 }
 #inputUstensiles{
-    margin-left: -4px;
-    margin-top: 10px;
-    width: 62%;
+    margin-left: -8px;
+    /* margin-top: 7px; */
+    width: 63%;
     border: 1px solid grey;
     /* border-radius: 11px; */
     background-color: white;
     height: 33px;
-    padding-left: 8px;
+    padding-left: 7px;
 }
 
 #affichageChoixIngredients{
@@ -546,24 +593,24 @@ button {
 
 #AffichageChoix {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    padding-top: 23px;
-    margin-bottom: 4%;
-    margin-left: 96px;
-    width: 15%;
+        flex-direction: row;
+        align-items: flex-start;
+        padding-top: 23px;
+        margin-bottom: 5%;
+        margin-left: 84px;
+        width: 60%;
 }
 #result-container {
-    width: 100%;
-    background-color: #FFD15B;
+    width: 99%;
+    margin-right: 1%;
 }
 #result-container-appareils {
-    width: 100%;
-    background-color: #FFD15B;
+    width: 99%;
+    margin-right: 1%;
 }
 #result-container-ustensiles {
-    width: 100%; 
-    background-color: #FFD15B;
+    width: 99%;
+    margin-right: 1%;
 }
 
 /* 
@@ -695,3 +742,44 @@ button {
     padding-left:20%;
 }
 
+/* =============================================================================================== */
+.ingredient-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    border-radius:9px;
+}
+
+.yellow-background {
+    display: flex
+    ;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 5px; */
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-right: 9px;
+        background-color: #FFD15B;
+        border-radius: 9px;
+        width: 100%;
+}
+
+.delete-cross, .delete-cross-resultat {
+    margin-left: auto; /* Force la croix à se positionner à droite */
+    cursor: pointer;  /* Change le curseur pour indiquer que c'est cliquable */
+    font-weight: bold; /* Met le "x" en gras pour plus de visibilité */
+    font-size: 16px;  /* Assure que le "x" a une taille de police appropriée */
+}
+
+.delete-cross:hover, .delete-cross-resultat:hover {
+    color: white; /* Change la couleur au survol pour indiquer l'action */
+}
+
+.visible{
+    background-color: white;
+    margin-top:-3%;
+    border-bottom-left-radius:12px;
+    border-bottom-right-radius:12px;
+    
+}
