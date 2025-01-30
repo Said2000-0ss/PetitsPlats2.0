@@ -154,6 +154,74 @@ document.getElementById('ustensiles-container').addEventListener('click', functi
     toggleDropdown('ustensiles-content', 'ustensiles-chevron');
 });
 
+//======================================================creation nouvelle carte =================================================================
+function afficherCarte(recipe, targetDiv) {
+    // Création de la carte principale
+    const containerCard = document.createElement('div');
+    containerCard.className = 'card';
+
+    // SECTION IMAGE
+    const sectionImage = document.createElement('div');
+    sectionImage.className = 'section-image';
+    const image = document.createElement('img');
+    image.src = `../images/${recipe.image}`;
+    image.alt = 'Image de la carte';
+    const time = document.createElement('div');
+    time.className = 'text-content';
+    time.textContent = `${recipe.time}min`;
+    sectionImage.appendChild(image);
+    sectionImage.appendChild(time);
+
+    // SECTION RECETTES
+    const sectionRecettes = document.createElement('div');
+    sectionRecettes.className = 'section-recettes';
+    const titre = document.createElement('h3');
+    titre.textContent = `${recipe.name}`;
+    const titreRecette = document.createElement('h4');
+    titreRecette.textContent = 'Recette';
+    const description = document.createElement('p');
+    description.textContent = recipe.description;
+    sectionRecettes.appendChild(titre);
+    sectionRecettes.appendChild(titreRecette);
+    sectionRecettes.appendChild(description);
+
+    // SECTION INGREDIENTS
+    const sectionIngredients = document.createElement('div');
+    sectionIngredients.className = 'section-ingredients';
+    const titreIngredients = document.createElement('h4');
+    titreIngredients.textContent = 'Ingredients';
+    titreIngredients.className = 'ingredients';
+    sectionIngredients.appendChild(titreIngredients);
+    const presentation = document.createElement('div');
+    presentation.className = 'presentationDiv';
+    sectionIngredients.appendChild(presentation);
+
+    // Ajout des ingrédients à la carte
+    recipe.ingredients.forEach(ingredient => {
+        const ingredientContainer = document.createElement('div');
+        ingredientContainer.className = 'ingredient-container';
+        const ingredientTitle = document.createElement('h5');
+        ingredientTitle.textContent = `${ingredient.ingredient}`;
+        ingredientTitle.className = 'titleIngredient';
+        const quantityTitle = document.createElement('h5');
+        quantityTitle.className = 'titleQuantity';
+        quantityTitle.textContent = ingredient.quantity 
+            ? `${ingredient.quantity} ${ingredient.unit || ''}` 
+            : '---';
+
+        ingredientContainer.appendChild(ingredientTitle);
+        ingredientContainer.appendChild(quantityTitle);
+        presentation.appendChild(ingredientContainer);
+    });
+
+    // Ajouter les sous-divisions à la carte
+    containerCard.appendChild(sectionImage);
+    containerCard.appendChild(sectionRecettes);
+    containerCard.appendChild(sectionIngredients);
+
+    // Ajouter la carte principale à la div cible
+    targetDiv.appendChild(containerCard);
+}
 
 
 //================================================ RECHERCHE VIA GRANDE BARRE ===============================================================================
@@ -162,6 +230,7 @@ function rechercheViaGrandeBarre(mots) {
     let compteur = 0;
     const targetDiv = document.getElementById('partieRecettes');
     targetDiv.innerHTML = '';  // Réinitialiser la div cible
+
     // Parcourir les recettes et appliquer les filtres
     recipes.forEach(recipe => {
         // Vérification si les mots recherchés sont présents dans le titre, la description ou les ingrédients
@@ -171,75 +240,8 @@ function rechercheViaGrandeBarre(mots) {
 
         // Si la recette correspond aux critères
         if (matchTitle || matchDescription || matchIngredients) {
-            // Création de la carte principale
-            const containerCard = document.createElement('div');
-            containerCard.className = 'card';
-
-            // SECTION IMAGE
-            const sectionImage = document.createElement('div');
-            sectionImage.className = 'section-image';
-            const image = document.createElement('img');
-            image.src = `../images/${recipe.image}`;
-            image.alt = 'Image de la carte';
-            const time = document.createElement('div');
-            time.className = 'text-content';
-            time.textContent = `${recipe.time}min`;
-            sectionImage.appendChild(image);
-            sectionImage.appendChild(time);
-
-            // SECTION RECETTES
-            const sectionRecettes = document.createElement('div');
-            sectionRecettes.className = 'section-recettes';
-            const titre = document.createElement('h3');
-            titre.textContent = `${recipe.name}`;
-            const titreRecette = document.createElement('h4');
-            titreRecette.textContent = 'Recette';
-            const description = document.createElement('p');
-            description.textContent = recipe.description;
-            sectionRecettes.appendChild(titre);
-            sectionRecettes.appendChild(titreRecette);
-            sectionRecettes.appendChild(description);
-
-            // SECTION INGREDIENTS
-            const sectionIngredients = document.createElement('div');
-            sectionIngredients.className = 'section-ingredients';
-            const titreIngredients = document.createElement('h4');
-            titreIngredients.textContent = 'Ingredients';
-            titreIngredients.className = 'ingredients';
-            sectionIngredients.appendChild(titreIngredients);
-            const presentation = document.createElement('div');
-            presentation.className = 'presentationDiv';
-            sectionIngredients.appendChild(presentation);
-
-            // Ajout des ingrédients à la carte
-            recipe.ingredients.forEach(ingredient => {
-                const ingredientContainer = document.createElement('div');
-                ingredientContainer.className = 'ingredient-container';
-                const ingredientTitle = document.createElement('h5');
-                ingredientTitle.textContent = `${ingredient.ingredient}`;
-                ingredientTitle.className = 'titleIngredient';
-                const quantityTitle = document.createElement('h5');
-                quantityTitle.className = 'titleQuantity';
-                if (ingredient.quantity) {
-                    quantityTitle.textContent = `${ingredient.quantity}`;
-                    if (ingredient.unit) {
-                        quantityTitle.textContent += ` ${ingredient.unit}`;
-                    }
-                } else {
-                    quantityTitle.textContent = '---';
-                }
-                ingredientContainer.appendChild(ingredientTitle);
-                ingredientContainer.appendChild(quantityTitle);
-                presentation.appendChild(ingredientContainer);
-            });
-
-            // Ajouter les sous-divisions à la carte
-            containerCard.appendChild(sectionImage);
-            containerCard.appendChild(sectionRecettes);
-            containerCard.appendChild(sectionIngredients);
-
-            // Ajouter la carte principale à la div cible
-            targetDiv.appendChild(containerCard);
+            // Utilisation de la fonction afficherCarte()
+            afficherCarte(recipe, targetDiv);
 
             // Incrémenter le compteur
             compteur++;
@@ -250,6 +252,7 @@ function rechercheViaGrandeBarre(mots) {
     const nbRecettesSpan = document.getElementById('nbRecettes');
     nbRecettesSpan.textContent = `${compteur} recettes`; // recetttes via la grande Barre
 }
+
 
 //================================================  FIN DE LA RECHERCHE VIA GRANDE BARRE =======================================================================
 
@@ -931,80 +934,11 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     const targetDiv = document.getElementById('partieRecettes');
     // Réinitialiser la div cible (si nécessaire) pour effacer les anciennes cartes
     targetDiv.innerHTML = '';
+
     // Parcourir le tableau d'objets récupéré
-    recipes.forEach(recipe => { // Remplacer la boucle for par forEach
-        // Création de la carte principale
-        const containerCard = document.createElement('div');
-        containerCard.className = 'card';
-
-        // SECTION IMAGE
-        const sectionImage = document.createElement('div');
-        sectionImage.className = 'section-image';
-        const image = document.createElement('img');
-        image.src = `../images/${recipe.image}`;
-        image.alt = 'Image de la carte';
-        const time = document.createElement('div');
-        time.className = 'text-content';
-        time.textContent = `${recipe.time}min`;
-        sectionImage.appendChild(image);
-        sectionImage.appendChild(time);
-
-        // SECTION RECETTES
-        const sectionRecettes = document.createElement('div');
-        sectionRecettes.className = 'section-recettes';
-        const titre = document.createElement('h3');
-        titre.textContent = `${recipe.name}`;
-        const titreRecette = document.createElement('h4');
-        titreRecette.textContent = 'Recette';
-        const description = document.createElement('p');
-        description.textContent = recipe.description;
-        sectionRecettes.appendChild(titre);
-        sectionRecettes.appendChild(titreRecette);
-        sectionRecettes.appendChild(description);
-
-        // SECTION INGREDIENTS
-        const sectionIngredients = document.createElement('div');
-        sectionIngredients.className = 'section-ingredients';
-        const titreIngredients = document.createElement('h4');
-        titreIngredients.textContent = 'Ingredients';
-        titreIngredients.className = 'ingredients';
-        sectionIngredients.appendChild(titreIngredients);
-        const presentation = document.createElement('div'); // je commence ici , je crée une div qui me permettra de faire ma mise en forme
-        presentation.className = "presentationDiv";
-        sectionIngredients.appendChild(presentation);
-
-        // Remplacer la boucle for pour les ingrédients par forEach
-        recipe.ingredients.forEach(ingredient => { // Remplacer la boucle for par forEach
-            // Créer une div pour chaque paire ingrédient + quantité
-            const ingredientContainer = document.createElement('div');
-            ingredientContainer.className = 'ingredient-container';
-            const ingredientTitle = document.createElement('h5');
-            ingredientTitle.textContent = `${ingredient.ingredient}`;
-            ingredientTitle.className = 'titleIngredient';
-            sectionIngredients.appendChild(ingredientTitle);
-            const quantityTitle = document.createElement('h5');
-            quantityTitle.className = 'titleQuantity';
-            if (ingredient.quantity) {
-                quantityTitle.textContent = `${ingredient.quantity}`;
-                if (ingredient.unit) {
-                    quantityTitle.textContent += ` ${ingredient.unit}`;
-                }
-            } else {
-                quantityTitle.textContent = "---";
-            }
-            ingredientContainer.appendChild(ingredientTitle); // Ajouter les éléments à la div container
-            ingredientContainer.appendChild(quantityTitle); // Ajouter la div container à la div principale "tuvasyariver"
-            presentation.appendChild(ingredientContainer);
-        });
-
-        // Ajouter les sous-divisions à la carte
-        containerCard.appendChild(sectionImage);
-        containerCard.appendChild(sectionRecettes);
-        containerCard.appendChild(sectionIngredients);
-
-        // Ajouter la carte principale à la div cible
-        targetDiv.appendChild(containerCard);
-
+    recipes.forEach(recipe => { 
+        // Utilisation de la fonction afficherCarte()
+        afficherCarte(recipe, targetDiv);
         // Incrémenter le compteur
         compteur++;
     });
@@ -1013,6 +947,7 @@ function ParcourirTableauObjetsEnModeAffichageNavigateur() {
     const nbRecettesSpan = document.getElementById('nbRecettes');
     nbRecettesSpan.textContent = `${compteur} recettes `; // recettes de départ
 }
+
 
 
 //========================================================================================================
@@ -1066,76 +1001,8 @@ function afficherRecettesFiltrees(ingredients, appliance, ustensile) {
                 })
             });
 
-            const containerCard = document.createElement('div');
-            containerCard.className = 'card';
-
-            // SECTION IMAGE
-            const sectionImage = document.createElement('div');
-            sectionImage.className = 'section-image';
-            const image = document.createElement('img');
-            image.src = `../images/${recipe.image}`;
-            image.alt = 'Image de la carte';
-            const time = document.createElement('div');
-            time.className = 'text-content';
-            time.textContent = `${recipe.time}min`;
-            sectionImage.appendChild(image);
-            sectionImage.appendChild(time);
-
-            // SECTION RECETTES
-            const sectionRecettes = document.createElement('div');
-            sectionRecettes.className = 'section-recettes';
-            const titre = document.createElement('h3');
-            titre.textContent = `${recipe.name}`;
-            const titreRecette = document.createElement('h4');
-            titreRecette.textContent = 'Recette';
-            const description = document.createElement('p');
-            description.textContent = recipe.description;
-            sectionRecettes.appendChild(titre);
-            sectionRecettes.appendChild(titreRecette);
-            sectionRecettes.appendChild(description);
-
-            // SECTION INGREDIENTS
-            const sectionIngredients = document.createElement('div');
-            sectionIngredients.className = 'section-ingredients';
-            const titreIngredients = document.createElement('h4');
-            titreIngredients.textContent = 'Ingredients';
-            titreIngredients.className = 'ingredients';
-            sectionIngredients.appendChild(titreIngredients);
-            const presentation = document.createElement('div');
-            presentation.className = 'presentationDiv';
-            sectionIngredients.appendChild(presentation);
-
-            // Ajout des ingrédients à la carte avec forEach
-            recipe.ingredients.forEach(ingredient => { // Remplacer la boucle for par forEach
-                const ingredientContainer = document.createElement('div');
-                ingredientContainer.className = 'ingredient-container';
-                const ingredientTitle = document.createElement('h5');
-                ingredientTitle.textContent = `${ingredient.ingredient}`;
-                ingredientTitle.className = 'titleIngredient';
-                const quantityTitle = document.createElement('h5');
-                quantityTitle.className = 'titleQuantity';
-
-                if (ingredient.quantity) {
-                    quantityTitle.textContent = `${ingredient.quantity}`;
-                    if (ingredient.unit) {
-                        quantityTitle.textContent += ` ${ingredient.unit}`;
-                    }
-                } else {
-                    quantityTitle.textContent = '---';
-                }
-
-                ingredientContainer.appendChild(ingredientTitle);
-                ingredientContainer.appendChild(quantityTitle);
-                presentation.appendChild(ingredientContainer);
-            });
-
-            // Ajouter les sous-divisions à la carte
-            containerCard.appendChild(sectionImage);
-            containerCard.appendChild(sectionRecettes);
-            containerCard.appendChild(sectionIngredients);
-
-            // Ajouter la carte principale à la div cible
-            targetDiv.appendChild(containerCard);
+            // Utilisation de la fonction afficherCarte() à la place du code redondant
+            afficherCarte(recipe, targetDiv);
 
             // Incrémenter le compteur
             compteur++;
@@ -1147,6 +1014,7 @@ function afficherRecettesFiltrees(ingredients, appliance, ustensile) {
     nbRecettesSpan.textContent = `${compteur} recettes trouvées`;
     alimenterListesDeroulantes();
 }
+
 
 //=====================================================================================================================================================
 //====================================================== APPELS DE FONCTIONS ==========================================================================
